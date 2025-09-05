@@ -1,19 +1,17 @@
-﻿  imgui.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_dx9.cpp
-  imgui_impl_win32.cpp
-  imgui_ja_gryph_ranges.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  App.cpp
-  main.cpp
-  ObjectManager.cpp
-  SceneManager.cpp
-  Time.cpp
-  BootScene.cpp
-  PlayScene.cpp
+﻿  PlayScene.cpp
+C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14): error C2512: 'Monster::Monster': クラス、構造体、共用体に既定のコンストラクターがありません。
+  (ソース ファイル 'Source/PlayScene.cpp' をコンパイルしています)
+  C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14):
+  引数リスト '()' を一致させようとしているとき
+  C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14):
+  テンプレートインスタンス化コンテキスト (最初に最も古いもの) は
+  	C:\Users\student\Documents\Project1\project\Source\PlayScene.cpp(6,2):
+  	コンパイル対象の関数 テンプレート インスタンス化 'C *Instantiate<Monster>(void)' のリファレンスを確認してください
+          with
+          [
+              C=Monster
+          ]
+  
   SceneFactory.cpp
   TitleScene.cpp
   コードを生成中...
-  project.vcxproj -> D:\DxLibコピーデータ\PrivateProject\project\x64\Debug\project.exe
