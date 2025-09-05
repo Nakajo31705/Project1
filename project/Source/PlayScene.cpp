@@ -1,7 +1,9 @@
 #include "PlayScene.h"
+#include "Monster.h"
 
 PlayScene::PlayScene()
 {
+	Instantiate<Monster>();
 }
 
 PlayScene::~PlayScene()
