@@ -45,3 +45,13 @@ const std::string& Monster::GetName()
 {
 	return name;
 }
+
+void Monster::SetSkillName(const std::string& skillName)
+{
+	attackPower = skillList.GetPower(skillName);
+}
+
+void Monster::SetSkillPower() const
+{
+	return attackPower;
+}

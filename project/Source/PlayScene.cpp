@@ -3,7 +3,7 @@
 
 PlayScene::PlayScene()
 {
-	Instantiate<Monster>();
+	Monster* monster = new Monster("ƒ‚ƒ“ƒXƒ^[", 100);
 }
 
 PlayScene::~PlayScene()
