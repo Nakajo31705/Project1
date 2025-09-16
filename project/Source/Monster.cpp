@@ -1,8 +1,9 @@
 #include "Monster.h"
 
-Monster::Monster(const std::string& _name, int _maxHP)
+
+Monster::Monster()
 {
-	name = _name;
+	
 }
 
 Monster::~Monster()
@@ -15,8 +16,17 @@ void Monster::Update()
 
 void Monster::Draw()
 {
+	std::string monsterInfo = name + "[" + std::to_string(currentHP) + "/" + std::to_string(maxHP) + "]";
+	DrawString(100, 100, monsterInfo.c_str(), GetColor(255, 255, 255));
+
+	if (attackMessageTimer > 0)
+	{
+		DrawString(100, 120, attackMessage.c_str(), GetColor(255, 255, 255));
+		attackMessageTimer--;
+	}
 }
 
+//ƒ_ƒ[ƒW‚ğó‚¯‚½‚Æ‚«‚Ìˆ—
 void Monster::TakeDamege(int damage)
 {
 	currentHP -= damage;
@@ -29,29 +39,19 @@ void Monster::TakeDamege(int damage)
 	DrawString(100, 100, nameInfo.c_str(), GetColor(255, 255, 255));
 }
 
-void Monster::Attack(Monster& target)
+//UŒ‚‚Ìˆ—
+void Monster::Attack(Monster& target, std::string& skillName)
 {
-	std::string attackInfo = name + "‚ÌUŒ‚!";
-	DrawString(100, 120, attackInfo.c_str(), GetColor(255, 255, 255));
+	int attackPower = skillList.GetPower(skillName);
+	
+	attackMessage = name + "‚Ì" + skillName + "!";
+	attackMessageTimer = 60;
+
 	target.TakeDamege(attackPower);
 }
 
+//€–SŠm”F
 bool Monster::IsDead() const
 {
 	return currentHP <= 0;
-}
-
-const std::string& Monster::GetName()
-{
-	return name;
-}
-
-void Monster::SetSkillName(const std::string& skillName)
-{
-	attackPower = skillList.GetPower(skillName);
-}
-
-void Monster::SetSkillPower() const
-{
-	return attackPower;
 }

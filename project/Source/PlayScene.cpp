@@ -3,7 +3,7 @@
 
 PlayScene::PlayScene()
 {
-	Monster* monster = new Monster("ƒ‚ƒ“ƒXƒ^[", 100);
+	new Monster;
 }
 
 PlayScene::~PlayScene()

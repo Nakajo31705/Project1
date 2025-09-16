@@ -7,23 +7,23 @@
 class Monster : public GameObject
 {
 public:
-	Monster(const std::string& _name, int _maxHP);
+	Monster();
 	~Monster();
 	void Update() override;
 	void Draw() override;
 
 	void TakeDamege(int damage);
-	void Attack(Monster& target);
+	void Attack(Monster& target, std::string& skillName);
 
 	bool IsDead() const;
-	const std::string& GetName();
-	void SetSkillName(const std::string& skillName);
-	void SetSkillPower()const;
 
 private:
 	std::string name;	//名前
 	int currentHP;		//現在のHP
 	int maxHP;			//MAXHP
-	int attackPower;	//攻撃力
 	SkillList skillList;//スキルリストから技の威力を取得
+
+	//デバッグ用
+	std::string attackMessage;
+	int attackMessageTimer = 0;
 };

@@ -2,6 +2,6 @@
 
 Skill::Skill(std::string _skillName, int _attackPower)
 {
-	_skillName = skillName;
-	_attackPower = attackPower;
+	skillName = _skillName;
+	attackPower = _attackPower;
 }

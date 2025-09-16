@@ -1,17 +1,5 @@
-﻿  PlayScene.cpp
-C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14): error C2512: 'Monster::Monster': クラス、構造体、共用体に既定のコンストラクターがありません。
-  (ソース ファイル 'Source/PlayScene.cpp' をコンパイルしています)
-  C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14):
-  引数リスト '()' を一致させようとしているとき
-  C:\Users\student\Documents\Project1\project\Library\GameObject.h(103,14):
-  テンプレートインスタンス化コンテキスト (最初に最も古いもの) は
-  	C:\Users\student\Documents\Project1\project\Source\PlayScene.cpp(6,2):
-  	コンパイル対象の関数 テンプレート インスタンス化 'C *Instantiate<Monster>(void)' のリファレンスを確認してください
-          with
-          [
-              C=Monster
-          ]
-  
-  SceneFactory.cpp
-  TitleScene.cpp
+﻿  Monster.cpp
+  Skill.cpp
+  SkillList.cpp
   コードを生成中...
+  project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe
