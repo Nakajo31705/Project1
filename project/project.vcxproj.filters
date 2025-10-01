@@ -62,6 +62,15 @@
     <ClCompile Include="Source\Skill.cpp">
       <Filter>PlayScene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MonsterList.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MonsterDataBase.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -129,9 +138,6 @@
     <ClInclude Include="Source\Monster.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterList.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SkillList.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
@@ -142,6 +148,15 @@
       <Filter>PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\Command.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MonsterList.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MonsterDataBase.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,12 +2,12 @@
 #include "DxLib.h"
 #include "../Library/GameObject.h"
 #include <string>
-#include "SkillList.h"
 
 class Monster : public GameObject
 {
 public:
 	Monster();
+	Monster(const std::string& _name, int _hp);
 	~Monster();
 	void Update() override;
 	void Draw() override;
@@ -17,11 +17,13 @@ public:
 
 	bool IsDead() const;
 
+	std::string GetName()const { return name; }
+	int GetHP()const { return currentHP; }
+
 private:
 	std::string name;	//名前
 	int currentHP;		//現在のHP
 	int maxHP;			//MAXHP
-	SkillList skillList;//スキルリストから技の威力を取得
 
 	//デバッグ用
 	std::string attackMessage;

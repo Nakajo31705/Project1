@@ -5,8 +5,8 @@ class Skill
 {
 public:
 	Skill(std::string _skillName, int _attackPower);
-	std::string name = skillName;
-	int power = attackPower;
+	std::string GetName() const { return skillName; }
+	int GetPower() const { return attackPower; }
 private:
 	std::string skillName;	//‹Z–¼
 	int attackPower;		//ˆÐ—Í

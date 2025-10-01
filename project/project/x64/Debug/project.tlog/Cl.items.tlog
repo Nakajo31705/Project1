@@ -12,7 +12,10 @@ C:\Users\student\Documents\Project1\project\Library\ObjectManager.cpp;C:\Users\s
 C:\Users\student\Documents\Project1\project\Library\SceneManager.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\SceneManager.obj
 C:\Users\student\Documents\Project1\project\Library\Time.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Time.obj
 C:\Users\student\Documents\Project1\project\Source\BootScene.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\BootScene.obj
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Enemy.obj
 C:\Users\student\Documents\Project1\project\Source\Monster.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Monster.obj
+C:\Users\student\Documents\Project1\project\Source\MonsterDataBase.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\MonsterDataBase.obj
+C:\Users\student\Documents\Project1\project\Source\MonsterList.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\MonsterList.obj
 C:\Users\student\Documents\Project1\project\Source\Player.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Player.obj
 C:\Users\student\Documents\Project1\project\Source\PlayScene.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\PlayScene.obj
 C:\Users\student\Documents\Project1\project\Source\SceneFactory.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\SceneFactory.obj
