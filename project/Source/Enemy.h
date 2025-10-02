@@ -6,10 +6,10 @@
 class Enemy
 {
 public:
-	Enemy(const Monster& _monster, const std::vector<Skill>& _skills);
+	Enemy(const std::vector<Monster>& _monster, const std::vector<Skill>& _skills);
 	void Update();
 	void Draw();
 private:
-	Monster enemyMonster;
+	std::vector<Monster> enemyMonster;
 	std::vector<Skill> enemySkills;
 };

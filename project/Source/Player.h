@@ -8,7 +8,7 @@
 class Player : GameObject
 {
 public:
-	Player(const Monster& _monster, const std::vector<Skill>& _skills);
+	Player(const std::vector<Monster>& _monster, const std::vector<Skill>& _skills);
 	~Player();
 	void Update();
 	void Draw();
@@ -16,6 +16,6 @@ public:
 	void IsDead();
 
 private:
-	Monster myMonster;
+	std::vector<Monster> myMonster;
 	std::vector<Skill> mySkills;
 };

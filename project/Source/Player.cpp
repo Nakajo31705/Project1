@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.h"
 
-Player::Player(const Monster& _monster, const std::vector<Skill>& _skills)
+Player::Player(const std::vector<Monster>& _monster, const std::vector<Skill>& _skills)
 	: myMonster(_monster), mySkills(_skills) {}
 
 Player::~Player()

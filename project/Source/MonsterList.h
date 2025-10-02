@@ -6,7 +6,7 @@ class MonsterList
 {
 public:
 	MonsterList();
-	int GetHP(std::string& name) const;
+	int GetHP(const std::string& name) const;
 private:
 	std::vector<Monster> monsters;
 };
