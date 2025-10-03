@@ -8,15 +8,16 @@ MonsterDataBase::MonsterDataBase()
 
 	//ƒ‚ƒ“ƒXƒ^[‚Ìî•ñ‚ğæ‚èo‚·
 	std::vector<Monster> playerMonster = {
-		Monster ("‰Š‚Ì¸—ì",monsterList.GetHP("‰Š‚Ì¸—ì")),
-	};
-
-	std::vector<Skill>playerSkills = {
-		Skill("‰ŠUŒ‚", skillList.GetPower("‰ŠUŒ‚")),
+		Monster("‰Š‚Ì¸—ì",monsterList.GetHP("‰Š‚Ì¸—ì"),{
+			Skill("‰ŠUŒ‚", skillList.GetPower("‰ŠUŒ‚"))
+	}),
+		Monster("…‚Ì¸—ì",monsterList.GetHP("…‚Ì¸—ì"),{
+			Skill("…UŒ‚", skillList.GetPower("…UŒ‚"))
+	}),
 	};
 
 	//ƒ‚ƒ“ƒXƒ^[‚Æ‹Z‚Ìî•ñ‚ğ“n‚·
-	Player player(playerMonster, playerSkills);
+	Player player(playerMonster);
 
 
 

@@ -4,10 +4,11 @@ Monster::Monster()
 {
 }
 
-Monster::Monster(const std::string& _name, int _hp)
+Monster::Monster(const std::string& _name, int _hp,std::vector<Skill> _skills)
 {
 	name = _name;
 	currentHP = _hp;
+	skills = _skills;
 }
 
 Monster::~Monster()
