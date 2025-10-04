@@ -1,8 +1,8 @@
 #include "Enemy.h"
 #include <iostream>
 
-Enemy::Enemy(const std::vector<Monster>& _monster, const std::vector<Skill>& _skills)
-	:enemyMonster(_monster), enemySkills(_skills) {}
+Enemy::Enemy(const std::vector<Monster>& _monster)
+	:enemyMonster(_monster){}
 
 void Enemy::Update()
 {

@@ -3,32 +3,63 @@
 MonsterDataBase::MonsterDataBase()
 {
 	//データベースを初期化
-	MonsterList monsterList;
-	SkillList skillList;
+	InitializeMonsters();
+	InitializeSkills();
+}
 
-	//モンスターの情報を取り出す
-	std::vector<Monster> playerMonster = {
-		Monster("炎の精霊",monsterList.GetHP("炎の精霊"),{
-			Skill("炎攻撃", skillList.GetPower("炎攻撃"))
-	}),
-		Monster("水の精霊",monsterList.GetHP("水の精霊"),{
-			Skill("水攻撃", skillList.GetPower("水攻撃"))
-	}),
-	};
+//モンスターのHPを取得する関数
+int MonsterDataBase::GetMonsterHP(const std::string& monsterName) const
+{
+	auto it = monsterHP.find(monsterName);
+	if (it != monsterHP.end())
+	{
+		return it->second;
+	}
+	//名前が見つからない場合は0を返す
+	return 0;
+}
 
-	//モンスターと技の情報を渡す
-	Player player(playerMonster);
+//技の威力を取得する関数
+int MonsterDataBase::GetSkillPower(const std::string& skillName) const
+{
+	auto it = skillPower.find(skillName);
+	if (it != skillPower.end())
+	{
+		return it->second;
+	}
+	//名前が見つからない場合は0を返す
+	return 0;
+}
 
+//リストを取得する関数
+std::vector<Monster> MonsterDataBase::GetMonsters() const
+{
+	return monsterList;
+}
 
+void MonsterDataBase::InitializeMonsters()
+{
+	//モンスターのデータ設定
+	monsterHP["炎の精霊"] = 100;
+	monsterHP["水の精霊"] = 100;
+	monsterHP["草の精霊"] = 100;
+	monsterHP["光の精霊"] = 100;
+	monsterHP["闇の精霊"] = 100;
 
-	//エネミーのモンスター
-	std::vector<Monster> enemyMonster = {
-		Monster("水の精霊", monsterList.GetHP("水の精霊")),
-	};
+	//モンスターをリストに追加
+	monsterList.push_back(Monster("炎の精霊", monsterHP["炎の精霊"]));
+	monsterList.push_back(Monster("水の精霊", monsterHP["水の精霊"]));
+	monsterList.push_back(Monster("草の精霊", monsterHP["草の精霊"]));
+	monsterList.push_back(Monster("光の精霊", monsterHP["光の精霊"]));
+	monsterList.push_back(Monster("闇の精霊", monsterHP["闇の精霊"]));
+}
 
-	std::vector<Skill>enemySkills = {
-		Skill("水攻撃", skillList.GetPower("水攻撃")),
-	};
-
-	Enemy enemy(enemyMonster, enemySkills);
+void MonsterDataBase::InitializeSkills()
+{
+	//技の威力を設定
+	skillPower["炎攻撃"] = 20;
+	skillPower["水攻撃"] = 20;
+	skillPower["草攻撃"] = 20;
+	skillPower["光攻撃"] = 20;
+	skillPower["闇攻撃"] = 20;
 }

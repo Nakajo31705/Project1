@@ -1,7 +1,4 @@
-//#include "Skill.h"
-//
-//Skill::Skill(std::string _skillName, int _attackPower)
-//{
-//	skillName = _skillName;
-//	attackPower = _attackPower;
-//}
+#include "Skill.h"
+
+Skill::Skill(const std::string& _name, int _power)
+	: name(_name),power(_power){}
