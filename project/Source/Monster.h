@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "DxLib.h"
 #include "../Library/GameObject.h"
 #include <string>
@@ -8,25 +9,24 @@
 class Monster : public GameObject
 {
 public:
-	Monster();
-	Monster(const std::string& _name, int _hp);
+	Monster(std::string _name, int _maxHP);
 	~Monster();
 	void Update() override;
 	void Draw() override;
 
-	void TakeDamege(int damage);
-	void Attack(Monster& target, std::string& skillName);
-	void AddSkill(const Skill& skill);
-	const std::string& GetName() const;
+	void Attack(Monster& target, const Skill& _skill);
+	void TakeDamage(int _damage);
 
-	bool IsDead() const;
+	std::string GetName() const;
+	int GetCurrentHP() const;
+	void SetSkills(const std::vector<Skill>& _skills);
+	const std::vector<Skill>& GetSkills() const;
 
 private:
-	std::string name;	//名前
-	int hp;
+	std::string name;
+	int maxHP;
+	int currentHP;
+
 	std::vector<Skill> skills;
 
-	//デバッグ用
-	std::string attackMessage;
-	int attackMessageTimer = 0;
 };

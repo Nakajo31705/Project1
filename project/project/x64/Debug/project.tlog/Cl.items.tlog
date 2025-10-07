@@ -15,10 +15,8 @@ C:\Users\student\Documents\Project1\project\Source\BootScene.cpp;C:\Users\studen
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Enemy.obj
 C:\Users\student\Documents\Project1\project\Source\Monster.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Monster.obj
 C:\Users\student\Documents\Project1\project\Source\MonsterDataBase.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\MonsterDataBase.obj
-C:\Users\student\Documents\Project1\project\Source\MonsterList.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\MonsterList.obj
 C:\Users\student\Documents\Project1\project\Source\Player.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Player.obj
 C:\Users\student\Documents\Project1\project\Source\PlayScene.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\PlayScene.obj
 C:\Users\student\Documents\Project1\project\Source\SceneFactory.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\SceneFactory.obj
 C:\Users\student\Documents\Project1\project\Source\Skill.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\Skill.obj
-C:\Users\student\Documents\Project1\project\Source\SkillList.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\SkillList.obj
 C:\Users\student\Documents\Project1\project\Source\TitleScene.cpp;C:\Users\student\Documents\Project1\project\project\x64\Debug\TitleScene.obj

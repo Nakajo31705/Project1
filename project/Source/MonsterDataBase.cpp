@@ -37,6 +37,11 @@ std::vector<Monster> MonsterDataBase::GetMonsters() const
 	return monsterList;
 }
 
+std::vector<Skill> MonsterDataBase::GetSkills() const
+{
+	return skillList;
+}
+
 void MonsterDataBase::InitializeMonsters()
 {
 	//ƒ‚ƒ“ƒXƒ^[‚Ìƒf[ƒ^İ’è
@@ -62,4 +67,11 @@ void MonsterDataBase::InitializeSkills()
 	skillPower["‘UŒ‚"] = 20;
 	skillPower["ŒõUŒ‚"] = 20;
 	skillPower["ˆÅUŒ‚"] = 20;
+
+	//‹Z‚ğƒŠƒXƒg‚É’Ç‰Á
+	skillList.push_back(Skill("‰ŠUŒ‚", skillPower["‰ŠUŒ‚"]));
+	skillList.push_back(Skill("…UŒ‚", skillPower["…UŒ‚"]));
+	skillList.push_back(Skill("‘UŒ‚", skillPower["‘UŒ‚"]));
+	skillList.push_back(Skill("ŒõUŒ‚", skillPower["ŒõUŒ‚"]));
+	skillList.push_back(Skill("ˆÅUŒ‚", skillPower["ˆÅUŒ‚"]));
 }

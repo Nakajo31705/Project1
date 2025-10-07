@@ -3,7 +3,7 @@
 
 PlayScene::PlayScene()
 {
-	new Monster();
+	//new Monster();
 }
 
 PlayScene::~PlayScene()

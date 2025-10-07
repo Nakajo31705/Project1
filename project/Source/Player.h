@@ -4,14 +4,13 @@
 #include "MonsterDataBase.h"
 
 
-class Player : GameObject
+class Player : public GameObject
 {
 public:
 	Player(MonsterDataBase& db);
 	~Player();
 	void Update();
 	void Draw();
-	void IsDead();
 
 private:
 	std::vector<Monster> monsters;

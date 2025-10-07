@@ -13,7 +13,17 @@ Player::Player(MonsterDataBase& db)
 		//技を設定
 		if (name == "炎の精霊")
 		{
+			std::vector<Skill> skills;
+			skills.push_back(Skill("炎攻撃", db.GetSkillPower("炎攻撃")));
+			monster.SetSkills(skills);
 		}
+
+		else if (name == "水の精霊")
+		{
+			//上と処理の内容は一緒でこのまま増やせばパーティを作れる
+		}
+
+		monsters.push_back(monster);
 	}
 }
 
@@ -27,14 +37,5 @@ void Player::Update()
 }
 
 void Player::Draw()
-{
-	/*std::cout << "モンスター名:" << myMonster.GetName() << ",HP: " << myMonster.GetHP() << "\n";
-	for (const auto& skill : mySkills)
-	{
-		std::cout << "スキル: " << skill.GetName() << "(威力: " << skill.GetPower() << ")\n";
-	}*/
-}
-
-void Player::IsDead()
 {
 }
