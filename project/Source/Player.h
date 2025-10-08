@@ -9,8 +9,8 @@ class Player : public GameObject
 public:
 	Player(MonsterDataBase& db);
 	~Player();
-	void Update();
-	void Draw();
+	void Update() override;
+	void Draw() override;
 
 private:
 	std::vector<Monster> monsters;

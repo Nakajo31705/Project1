@@ -1,5 +1,4 @@
-﻿  MonsterDataBase.cpp
-  Player.cpp
-  PlayScene.cpp
+﻿  PlayScene.cpp
+  SceneFactory.cpp
   コードを生成中...
   project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe

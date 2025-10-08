@@ -15,12 +15,16 @@ Player::Player(MonsterDataBase& db)
 		{
 			std::vector<Skill> skills;
 			skills.push_back(Skill("‰ŠUŒ‚", db.GetSkillPower("‰ŠUŒ‚")));
+			skills.push_back(Skill("ŒõUŒ‚", db.GetSkillPower("ŒõUŒ‚")));
 			monster.SetSkills(skills);
 		}
 
 		else if (name == "…‚Ì¸—ì")
 		{
-			//ã‚Æˆ—‚Ì“à—e‚Íˆê‚Å‚±‚Ì‚Ü‚Ü‘‚â‚¹‚Îƒp[ƒeƒB‚ğì‚ê‚é
+			std::vector<Skill> skills;
+			skills.push_back(Skill("…UŒ‚", db.GetSkillPower("…UŒ‚")));
+			skills.push_back(Skill("ˆÅUŒ‚", db.GetSkillPower("ˆÅUŒ‚")));
+			monster.SetSkills(skills);
 		}
 
 		monsters.push_back(monster);

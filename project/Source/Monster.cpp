@@ -38,13 +38,14 @@ int Monster::GetCurrentHP() const
 	return currentHP;
 }
 
+const std::vector<Skill>& Monster::GetSkills() const
+{
+	return skills;
+}
+
 void Monster::SetSkills(const std::vector<Skill>& _skills)
 {
 	skills = _skills;
 }
 
-const std::vector<Skill>& Monster::GetSkills() const
-{
-	return skills;
-}
 

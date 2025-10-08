@@ -1,5 +1,6 @@
 #pragma once
 #include "../Library/SceneBase.h"
+#include "MonsterDataBase.h"
 
 /// <summary>
 /// ゲームプレイのシーンを制御する
@@ -11,4 +12,8 @@ public:
 	~PlayScene();
 	void Update() override;
 	void Draw() override;
+
+private:
+	//モンスターデータベース
+	MonsterDataBase MDB;
 };

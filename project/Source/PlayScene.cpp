@@ -1,9 +1,13 @@
 #include "PlayScene.h"
-#include "Monster.h"
+#include "GameManager.h"
+#include "Player.h"
+#include "Enemy.h"
 
 PlayScene::PlayScene()
 {
-	//new Monster();
+	new Player(MDB);
+	new Enemy(MDB);
+	new GameManager();
 }
 
 PlayScene::~PlayScene()

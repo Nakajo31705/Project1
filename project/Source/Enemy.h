@@ -1,15 +1,17 @@
 #pragma once
+#include "../Library/GameObject.h"
 #include <vector>
-#include "Monster.h"
-#include "Skill.h"
+#include <iostream>
+#include "MonsterDataBase.h"
 
-class Enemy
+
+class Enemy : public GameObject
 {
 public:
-	Enemy(const std::vector<Monster>& _monster);
-	void Update();
-	void Draw();
+	Enemy(MonsterDataBase& db);
+	~Enemy();
+	void Update() override;
+	void Draw() override;
 private:
-	std::vector<Monster> enemyMonster;
-	std::vector<Skill> enemySkills;
+	std::vector<Monster> monsters;
 };
