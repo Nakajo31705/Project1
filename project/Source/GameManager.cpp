@@ -2,7 +2,6 @@
 
 GameManager::GameManager()
 {
-	currentTurn = BattleState::Player;
 }
 
 GameManager::~GameManager()
@@ -11,16 +10,19 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
-	switch (currentTurn)
-	{
-	case BattleState::Start:
-		nextTurn = BattleState::Player;
-		break;
-	}
-
-	
+	if (currentState)
+		currentState->Update();
 }
 
 void GameManager::Draw()
 {
+}
+
+void GameManager::ChangeState(TurnState* newState)
+{
+	if (currentState)
+		currentState->Exit();
+	currentState = newState;
+	if (currentState)
+		currentState->Enter();
 }

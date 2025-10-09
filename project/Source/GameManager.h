@@ -1,5 +1,6 @@
 #pragma once
 #include "../Library/GameObject.h"
+#include "TurnState.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -11,18 +12,8 @@ public:
 	~GameManager();
 	void Update() override;
 	void Draw() override;
-private:
-	enum BattleState
-	{
-		Start,
-		Player,
-		Enemy,
-		Change,
-		Wait,
-		Win,
-		Lose
-	};
 
-	BattleState currentTurn;
-	BattleState nextTurn;
+	void ChangeState(TurnState* newState);
+private:
+	TurnState* currentState = nullptr;
 };

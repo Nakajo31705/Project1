@@ -28,6 +28,13 @@ Player::Player(MonsterDataBase& db)
 		}
 
 		monsters.push_back(monster);
+
+		//最初のモンスターをバトル場に設定
+		if (!reserveMonsters.empty())
+		{
+			activeMoster = &reserveMonsters[0];
+			reserveMonsters.erase(reserveMonsters.begin());
+		}
 	}
 }
 
@@ -37,9 +44,18 @@ Player::~Player()
 
 void Player::Update()
 {
-	
+	DrawString(100, 100, (activeMoster->GetName() + "をバトル場に出した").c_str(), GetColor(255, 255, 255));
 }
 
 void Player::Draw()
+{
+}
+
+Monster* Player::GetActiveMonster()
+{
+	return nullptr;
+}
+
+void Player::SwitchMonster(int index)
 {
 }

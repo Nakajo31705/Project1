@@ -14,9 +14,6 @@
     <ClCompile Include="Source\TitleScene.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\PlayScene.cpp">
-      <Filter>PlayScene</Filter>
-    </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
@@ -50,22 +47,30 @@
     <ClCompile Include="Library\Time.cpp">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Monster.cpp">
-      <Filter>PlayScene</Filter>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Player.cpp">
-      <Filter>PlayScene</Filter>
+    <ClCompile Include="Source\GameManager.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Monster.cpp">
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
     <ClCompile Include="Source\MonsterDataBase.cpp">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy.cpp">
-      <Filter>PlayScene</Filter>
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlayScene.cpp">
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
     <ClCompile Include="Source\Skill.cpp">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameManager.cpp" />
+    <ClCompile Include="Source\PlayerTurn.cpp">
+      <Filter>PlayScene\Turn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -84,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="Source\TitleScene.h">
       <Filter>TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PlayScene.h">
-      <Filter>PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -130,26 +132,32 @@
     <ClInclude Include="Library\myDxLib.h">
       <Filter>Library</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Monster.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Player.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Skill.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Command.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\MonsterDataBase.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Enemy.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameManager.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Monster.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MonsterDataBase.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Player.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayScene.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Skill.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerTurn.h">
+      <Filter>PlayScene\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TurnState.h">
+      <Filter>PlayScene\Turn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +175,15 @@
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{a717257b-67b3-4bfa-834c-1e34032b33b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\h">
+      <UniqueIdentifier>{685cd329-39cf-427d-a97a-9f61a853930d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\CPP">
+      <UniqueIdentifier>{82b8d5ac-be0f-4952-9d56-43b8bdc02c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\Turn">
+      <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
