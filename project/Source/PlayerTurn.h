@@ -29,6 +29,10 @@ private:
 	GameManager* gameManager;
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
+
+	int defDraw = 100;
+	int menuDrawX = 1300;
+	int menuDrawY = 500;
 };
 
 

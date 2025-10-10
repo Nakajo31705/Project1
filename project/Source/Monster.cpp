@@ -17,7 +17,7 @@ void Monster::Draw()
 
 void Monster::Attack(Monster& target, const Skill& _skill)
 {
-	std::cout << name << "は" << target.GetName() << "に" << _skill.GetName() << "を使った\n";
+	DrawString(100, 100, (name + "は" + target.GetName() + "に" + _skill.GetName() + "を使った").c_str(), GetColor(255, 255, 255));
 	target.TakeDamage(_skill.GetPower());
 }
 
@@ -25,7 +25,7 @@ void Monster::TakeDamage(int _damage)
 {
 	currentHP -= _damage;
 	if (currentHP < 0) currentHP = 0;
-	std::cout << name << "は" << _damage << "のダメージを受けた\n";
+	DrawString(100, 100, (name + "は" + std::to_string(_damage) + "のダメージを受けた").c_str(), GetColor(255, 255, 255));
 }
 
 std::string  Monster::GetName() const

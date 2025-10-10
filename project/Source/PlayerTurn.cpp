@@ -6,7 +6,7 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 
 void PlayerTurn::Enter()
 {
-	DrawString(100, 100, "プレイヤーのターン", GetColor(255, 255, 255));
+	DrawString(defDraw, defDraw, "プレイヤーのターン", GetColor(255, 255, 255));
 }
 
 void PlayerTurn::Update()
@@ -29,13 +29,14 @@ void PlayerTurn::Update()
 
 void PlayerTurn::Exit()
 {
-	DrawString(100, 100, "プレイヤーのターン終了", GetColor(255, 255, 255));
+	DrawString(defDraw, defDraw, "プレイヤーのターン終了", GetColor(255, 255, 255));
 }
 
 void PlayerTurn::Menu()
 {
 	const int MENU_NUM = 2;
 	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" };
+	int yOffset = 30;
 
 	//メニューの表示
 	for (int i = 0; i < MENU_NUM; i++)
@@ -43,12 +44,12 @@ void PlayerTurn::Menu()
 		if (i == selected)
 		{
 			//→表示
-			DrawString(1300, 500 + i * 30, "→", GetColor(255, 255, 0));
-			DrawString(1320, 500 + i * 30, menu[i], GetColor(255, 255, 0));
+			DrawString(menuDrawX, menuDrawY + i * yOffset, "→", GetColor(255, 255, 0));
+			DrawString(menuDrawX+20, menuDrawY + i * yOffset, menu[i], GetColor(255, 255, 0));
 		}
 		else
 		{
-			DrawString(1320, 500 + i * 30, menu[i], GetColor(255, 255, 255));
+			DrawString(menuDrawX+20, menuDrawY + i * yOffset, menu[i], GetColor(255, 255, 255));
 		}
 	}
 
@@ -71,11 +72,11 @@ void PlayerTurn::Menu()
 	{
 		if (selected == 0)
 		{
-			DrawString(100, 200, "技を選択", GetColor(255, 255, 255));
+			DrawString(defDraw, defDraw*2, "技を選択", GetColor(255, 255, 255));
 		}
 		else if (selected == 1)
 		{
-			DrawString(100, 200, "モンスターを交換", GetColor(255, 255, 255));
+			DrawString(defDraw, defDraw*2, "モンスターを交換", GetColor(255, 255, 255));
 		}
 		WaitTimer(500);
 	}

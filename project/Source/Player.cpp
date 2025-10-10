@@ -32,8 +32,12 @@ Player::Player(MonsterDataBase& db)
 		//最初のモンスターをバトル場に設定
 		if (!reserveMonsters.empty())
 		{
-			activeMoster = &reserveMonsters[0];
+			activeMonster = &reserveMonsters[0];
 			reserveMonsters.erase(reserveMonsters.begin());
+		}
+		else
+		{
+			reserveMonsters.push_back(monster);
 		}
 	}
 }
@@ -44,7 +48,7 @@ Player::~Player()
 
 void Player::Update()
 {
-	DrawString(100, 100, (activeMoster->GetName() + "をバトル場に出した").c_str(), GetColor(255, 255, 255));
+	DrawString(100, 100, (activeMonster->GetName() + "をバトル場に出した").c_str(), GetColor(255, 255, 255));
 }
 
 void Player::Draw()
@@ -56,6 +60,62 @@ Monster* Player::GetActiveMonster()
 	return nullptr;
 }
 
-void Player::SwitchMonster(int index)
+void Player::SwitchMonster()
 {
+	int yOffset = 30;
+
+	//控えのモンスターの表示
+	for (int i = 0; i < reserveMonsters.size(); i++)
+	{
+		const Monster& monster = reserveMonsters[i];
+		if (i == selectMonsterIndex)
+		{
+			DrawString(monsterDrawX, monsterDrawY + i * yOffset, "→", GetColor(255, 255, 0));
+			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, monster.GetName().c_str(), GetColor(255, 255, 0));
+		}
+		else
+		{
+			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, monster.GetName().c_str(), GetColor(255, 255, 255));
+		}
+	}
+
+	//キー入力の判定
+	if (CheckHitKey(KEY_INPUT_UP) == 1)
+	{
+		selectMonsterIndex--;
+		if (selectMonsterIndex < 0) selectMonsterIndex = reserveMonsters.size() - 1;
+		WaitTimer(150);
+	}
+	if (CheckHitKey(KEY_INPUT_DOWN) == 1)
+	{
+		selectMonsterIndex++;
+		if (selectMonsterIndex >= reserveMonsters.size()) selectMonsterIndex = 0;
+		WaitTimer(150);
+	}
+
+	//決定の処理
+	if (CheckHitKey(KEY_INPUT_RETURN) == 1)
+	{
+		selectedMonster = &reserveMonsters[selectMonsterIndex];
+		DrawString(defDraw, defDraw, (selectedMonster->GetName() + "を選択").c_str(), GetColor(255, 255, 255));
+		WaitTimer(500);
+	}
+
+	if (selectedMonster != nullptr && activeMonster != nullptr)
+	{
+		//バトル場のモンスターを控えに戻す
+		reserveMonsters.push_back(*activeMonster);
+
+		//控えから選んだモンスターを削除
+		reserveMonsters.erase(reserveMonsters.begin() + selectMonsterIndex);
+
+		//選んだモンスターをバトル場に設定
+		activeMonster = selectedMonster;
+
+		//インデックスリセット
+		selectMonsterIndex = 0;
+
+		DrawString(defDraw, defDraw, (activeMonster->GetName() + "をバトル場に出した!").c_str(), GetColor(255, 255, 255));
+		WaitTimer(500);
+	}
 }
