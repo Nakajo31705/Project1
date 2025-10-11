@@ -9,5 +9,5 @@ namespace Screen
 	static const int HEIGHT = 720;
 	static const BOOL WINDOW_MODE = TRUE;
 	static const char* WINDOW_NAME = "project";
-	static const float WINDOW_EXTEND = 1.0f;
+	static const float WINDOW_EXTEND = 1.3f;
 };

@@ -16,7 +16,6 @@ public:
 	void SwitchMonster();
 
 private:
-	std::vector<Monster> monsters;
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> reserveMonsters;	//控えのモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス

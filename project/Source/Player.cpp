@@ -27,28 +27,34 @@ Player::Player(MonsterDataBase& db)
 			monster.SetSkills(skills);
 		}
 
-		monsters.push_back(monster);
+		reserveMonsters.push_back(monster);
+	}
 
-		//最初のモンスターをバトル場に設定
-		if (!reserveMonsters.empty())
-		{
-			activeMonster = &reserveMonsters[0];
-			reserveMonsters.erase(reserveMonsters.begin());
-		}
-		else
-		{
-			reserveMonsters.push_back(monster);
-		}
+	//最初のモンスターをバトル場に設定
+	if (!reserveMonsters.empty())
+	{
+		activeMonster = &reserveMonsters[0];
 	}
 }
 
 Player::~Player()
 {
+	if (activeMonster != nullptr)
+		delete activeMonster;
+		activeMonster = nullptr;
 }
 
 void Player::Update()
 {
-	DrawString(100, 100, (activeMonster->GetName() + "をバトル場に出した").c_str(), GetColor(255, 255, 255));
+	if (activeMonster) {
+		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした");
+		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));
+	}
+	else{
+		DrawString(defDraw, defDraw, "activeMonsterがnullです。", GetColor(255, 255, 255));
+	}
+	
+	
 }
 
 void Player::Draw()
