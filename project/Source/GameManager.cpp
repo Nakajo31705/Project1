@@ -21,7 +21,11 @@ void GameManager::Draw()
 void GameManager::ChangeState(TurnState* newState)
 {
 	if (currentState)
+	{
 		currentState->Exit();
+		delete currentState;
+	}
+		
 	currentState = newState;
 	if (currentState)
 		currentState->Enter();

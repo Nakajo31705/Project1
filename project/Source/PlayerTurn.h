@@ -1,6 +1,7 @@
 #pragma once
 #include "GameManager.h"
 #include "TurnState.h"
+#include "EnemyTurn.h"
 #include "Player.h"
 
 enum class PlayerSubState
@@ -22,11 +23,10 @@ public:
 
 	//ƒƒjƒ…[
 	void Menu();
-	void SkillSelect();
-	void MonsterSelect();
 
 private:
 	GameManager* gameManager;
+	Player* player;
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 

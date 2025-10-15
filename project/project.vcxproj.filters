@@ -71,6 +71,9 @@
     <ClCompile Include="Source\PlayerTurn.cpp">
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
+    <ClCompile Include="Source\EnemyTurn.cpp">
+      <Filter>PlayScene\Turn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -157,6 +160,9 @@
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
     <ClInclude Include="Source\TurnState.h">
+      <Filter>PlayScene\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemyTurn.h">
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,9 @@
 #include "PlayerTurn.h"
 
 PlayerTurn::PlayerTurn(GameManager* gm)
-	:gameManager(gm) {
+	:gameManager(gm)
+{
+	
 }
 
 void PlayerTurn::Enter()
@@ -17,12 +19,13 @@ void PlayerTurn::Update()
 		Menu();
 		break;
 	case PlayerSubState::SkillSelect:
+		player->SkillSelect();
 		break;
 	case PlayerSubState::MonsterSelect:
+		player->SwitchMonster();
 		break;
 	case PlayerSubState::Done:
-		//行動完了時はこんな感じで書く
-	// gamaManager->ChangeState(new EnemyTurn(gameManager));
+		gameManager->ChangeState(new EnemyTurn(gameManager));
 		break;
 	}
 }
@@ -73,19 +76,14 @@ void PlayerTurn::Menu()
 		if (selected == 0)
 		{
 			DrawString(defDraw, defDraw*2, "技を選択", GetColor(255, 255, 255));
+			subState = PlayerSubState::SkillSelect;
+			
 		}
 		else if (selected == 1)
 		{
 			DrawString(defDraw, defDraw*2, "モンスターを交換", GetColor(255, 255, 255));
+			subState = PlayerSubState::MonsterSelect;
 		}
 		WaitTimer(500);
 	}
-}
-
-void PlayerTurn::SkillSelect()
-{
-}
-
-void PlayerTurn::MonsterSelect()
-{
 }

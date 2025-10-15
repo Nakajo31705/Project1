@@ -10,7 +10,7 @@ Player::Player(MonsterDataBase& db)
 	{
 		Monster monster(name, db.GetMonsterHP(name));
 
-		//技を設定
+		//モンスターごとに技を設定
 		if (name == "炎の精霊")
 		{
 			std::vector<Skill> skills;
@@ -27,10 +27,11 @@ Player::Player(MonsterDataBase& db)
 			monster.SetSkills(skills);
 		}
 
+		//控えのリストにモンスターを追加
 		reserveMonsters.push_back(monster);
 	}
 
-	//最初のモンスターをバトル場に設定
+	//控えリストの最初のモンスターをバトル場に設定
 	if (!reserveMonsters.empty())
 	{
 		activeMonster = &reserveMonsters[0];
@@ -39,37 +40,31 @@ Player::Player(MonsterDataBase& db)
 
 Player::~Player()
 {
-	if (activeMonster != nullptr)
-		delete activeMonster;
-		activeMonster = nullptr;
 }
 
 void Player::Update()
 {
-	if (activeMonster) {
-		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした");
-		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));
-	}
-	else{
-		DrawString(defDraw, defDraw, "activeMonsterがnullです。", GetColor(255, 255, 255));
-	}
-	
 	
 }
 
 void Player::Draw()
 {
+	if (activeMonster) {
+		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
+		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));
+	}
+	else {
+		DrawString(defDraw, defDraw, "activeMonsterがNullです。", GetColor(255, 255, 255));
+	}
 }
 
 Monster* Player::GetActiveMonster()
 {
-	return nullptr;
+	return activeMonster;
 }
 
 void Player::SwitchMonster()
 {
-	int yOffset = 30;
-
 	//控えのモンスターの表示
 	for (int i = 0; i < reserveMonsters.size(); i++)
 	{
@@ -103,7 +98,7 @@ void Player::SwitchMonster()
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1)
 	{
 		selectedMonster = &reserveMonsters[selectMonsterIndex];
-		DrawString(defDraw, defDraw, (selectedMonster->GetName() + "を選択").c_str(), GetColor(255, 255, 255));
+		DrawString(defDraw, defDraw, (selectedMonster->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
 		WaitTimer(500);
 	}
 
@@ -121,7 +116,57 @@ void Player::SwitchMonster()
 		//インデックスリセット
 		selectMonsterIndex = 0;
 
-		DrawString(defDraw, defDraw, (activeMonster->GetName() + "をバトル場に出した!").c_str(), GetColor(255, 255, 255));
+		DrawString(defDraw, defDraw, (activeMonster->GetName() + "をバトル場に出した!\n").c_str(), GetColor(255, 255, 255));
 		WaitTimer(500);
 	}
 }
+
+void Player::SkillSelect()
+{
+	if (activeMonster != nullptr)
+	{
+		//バトル場のモンスターが使用できる技を表示
+		std::vector<Skill> skills = activeMonster->GetSkills();
+		for (int i = 0; skills.size(); i++)
+		{
+			const Skill& activeMonsterSkills = skills[i];
+			if (i == selectSkillIndex)
+			{
+				DrawString(monsterDrawX, monsterDrawY + i * yOffset, "→", GetColor(255, 255, 0));
+				DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, activeMonsterSkills.GetName().c_str(), GetColor(255, 255, 0));
+			}
+			else
+			{
+				DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, activeMonsterSkills.GetName().c_str(), GetColor(255, 255, 255));
+			}
+		}
+
+		//キー入力の判定
+		if (CheckHitKey(KEY_INPUT_UP) == 1)
+		{
+			selectSkillIndex--;
+			if (selectSkillIndex < 0) selectSkillIndex = skills.size() - 1;
+			WaitTimer(150);
+		}
+		if (CheckHitKey(KEY_INPUT_DOWN) == 1)
+		{
+			selectSkillIndex++;
+			if (selectSkillIndex >= skills.size()) selectSkillIndex = 0;
+			WaitTimer(150);
+		}
+
+		//決定の処理
+		if (CheckHitKey(KEY_INPUT_RETURN) == 1)
+		{
+			selectedSkill = &skills[selectSkillIndex];
+			DrawString(defDraw, defDraw, (selectedSkill->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
+			WaitTimer(500);
+		}
+	}
+	else
+	{
+		DrawString(10, 10, "バトル場のモンスターが設定されていません。\n", GetColor(255, 255, 255));
+	}
+}
+
+

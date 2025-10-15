@@ -1,3 +1,2 @@
-﻿  Player.cpp
-C:\Users\student\Documents\Project1\project\Source\Player.cpp(92,75): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+﻿  PlayerTurn.cpp
   project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe
