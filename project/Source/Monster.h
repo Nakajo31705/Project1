@@ -5,11 +5,12 @@
 #include <string>
 #include <vector>
 #include "Skill.h"
+#include "MonsterDataBase.h"
 
 class Monster : public GameObject
 {
 public:
-	Monster(std::string _name, int _maxHP);
+	Monster(std::string _name, int _maxHP, MonsterType _type);
 	~Monster();
 	void Update() override;
 	void Draw() override;
@@ -32,10 +33,13 @@ public:
 	//スキルをセット
 	void SetSkills(const std::vector<Skill>& _skills);
 
+	MonsterType GetType() const;
+
 private:
 	std::string name;
 	int maxHP;
 	int currentHP;
+	MonsterType type;
 
 	std::vector<Skill> skills;
 

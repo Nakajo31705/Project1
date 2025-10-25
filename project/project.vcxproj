@@ -166,6 +166,7 @@
     <ClInclude Include="Source\Skill.h" />
     <ClInclude Include="Source\TitleScene.h" />
     <ClInclude Include="Source\TurnState.h" />
+    <ClInclude Include="Source\TypeEffective.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImGui\imgui.cpp" />

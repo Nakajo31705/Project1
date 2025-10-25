@@ -8,22 +8,22 @@ Player::Player(MonsterDataBase& db)
 
 	for (const auto& name : monsterNames)
 	{
-		Monster monster(name, db.GetMonsterHP(name));
+		Monster monster(name, db.GetMonsterHP(name),db.GetMonsterType(name));
 
 		//ƒ‚ƒ“ƒXƒ^[‚²‚Æ‚É‹Z‚ğİ’è
 		if (name == "‰Š‚Ì¸—ì")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("‰ŠUŒ‚", db.GetSkillPower("‰ŠUŒ‚")));
-			skills.push_back(Skill("ŒõUŒ‚", db.GetSkillPower("ŒõUŒ‚")));
+			skills.push_back(Skill("‰ŠUŒ‚", db.GetSkillPower("‰ŠUŒ‚"), MonsterType::Fire));
+			skills.push_back(Skill("ŒõUŒ‚", db.GetSkillPower("ŒõUŒ‚"), MonsterType::Light));
 			monster.SetSkills(skills);
 		}
 
 		else if (name == "…‚Ì¸—ì")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("…UŒ‚", db.GetSkillPower("…UŒ‚")));
-			skills.push_back(Skill("ˆÅUŒ‚", db.GetSkillPower("ˆÅUŒ‚")));
+			skills.push_back(Skill("…UŒ‚", db.GetSkillPower("…UŒ‚"), MonsterType::Water));
+			skills.push_back(Skill("ˆÅUŒ‚", db.GetSkillPower("ˆÅUŒ‚"), MonsterType::Dark));
 			monster.SetSkills(skills);
 		}
 
@@ -44,7 +44,6 @@ Player::~Player()
 
 void Player::Update()
 {
-	
 }
 
 void Player::Draw()
@@ -58,6 +57,7 @@ void Player::Draw()
 	}
 }
 
+// ƒoƒgƒ‹ê‚Ìƒ‚ƒ“ƒXƒ^[‚ğæ“¾
 Monster* Player::GetActiveMonster()
 {
 	return activeMonster;

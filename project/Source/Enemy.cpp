@@ -26,7 +26,14 @@ Enemy::Enemy(MonsterDataBase& db)
 			monster.SetSkills(skills);
 		}
 
-		monsters.push_back(monster);
+		//控えのリストにモンスターを追加
+		reserveMonsters.push_back(monster);
+	}
+
+	//控えリストの最初のモンスターをバトル場に設定
+	if (!reserveMonsters.empty())
+	{
+		activeMonster = &reserveMonsters[0];
 	}
 }
 
@@ -40,5 +47,25 @@ void Enemy::Update()
 }
 
 void Enemy::Draw()
+{
+	if (activeMonster) {
+		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
+		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));
+	}
+	else {
+		DrawString(defDraw, defDraw, "activeMonsterがNullです。", GetColor(255, 255, 255));
+	}
+}
+
+Monster* Enemy::GetActiveMonster()
+{
+	return activeMonster;
+}
+
+void Enemy::SwichMonster()
+{
+}
+
+void Enemy::SkillSelect()
 {
 }

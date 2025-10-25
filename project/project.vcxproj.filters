@@ -165,6 +165,9 @@
     <ClInclude Include="Source\EnemyTurn.h">
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
+    <ClInclude Include="Source\TypeEffective.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

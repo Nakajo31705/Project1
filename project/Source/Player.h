@@ -26,6 +26,10 @@ private:
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
 
+
+
+
+	//描画用
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;

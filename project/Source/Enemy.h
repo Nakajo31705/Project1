@@ -12,6 +12,20 @@ public:
 	~Enemy();
 	void Update() override;
 	void Draw() override;
+
+	Monster* GetActiveMonster();
+	void SwichMonster();
+	void SkillSelect();
 private:
-	std::vector<Monster> monsters;
+	Monster* activeMonster;					//バトル場のモンスター
+	std::vector<Monster> reserveMonsters;	//控えのモンスター
+
+
+
+
+	//描画用
+	int yOffset = 30;
+	int monsterDrawX = 1000;
+	int monsterDrawY = 500;
+	int defDraw = 100;
 };

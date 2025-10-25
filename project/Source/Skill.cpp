@@ -1,7 +1,8 @@
 #include "Skill.h"
 #include "Monster.h"
 
-Skill::Skill(const std::string& _name, int _power)
+Skill::Skill(const std::string& _name, int _power, MonsterType _type)
+   : name(_name), power(_power), type(_type)
 {
 }
 

@@ -1,7 +1,7 @@
 #include "Monster.h"
 
-Monster::Monster(std::string _name, int _maxHP)
-	:name(_name), maxHP(_maxHP), currentHP(_maxHP) {}
+Monster::Monster(std::string _name, int _maxHP,MonsterType _type)
+	:name(_name), maxHP(_maxHP), currentHP(_maxHP) , type(_type){}
 
 Monster::~Monster()
 {
@@ -46,6 +46,11 @@ const std::vector<Skill>& Monster::GetSkills() const
 void Monster::SetSkills(const std::vector<Skill>& _skills)
 {
 	skills = _skills;
+}
+
+MonsterType Monster::GetType() const
+{
+	return type;
 }
 
 
