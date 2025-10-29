@@ -111,9 +111,9 @@ void MonsterDataBase::InitializeSkills()
 	skillPower["ˆÅUŒ‚"] = 20;
 
 	//‹Z‚ğƒŠƒXƒg‚É’Ç‰Á
-	skillList.push_back(Skill("‰ŠUŒ‚", skillPower["‰ŠUŒ‚"]));
-	skillList.push_back(Skill("…UŒ‚", skillPower["…UŒ‚"]));
-	skillList.push_back(Skill("‘UŒ‚", skillPower["‘UŒ‚"]));
-	skillList.push_back(Skill("ŒõUŒ‚", skillPower["ŒõUŒ‚"]));
-	skillList.push_back(Skill("ˆÅUŒ‚", skillPower["ˆÅUŒ‚"]));
+	skillList.push_back(Skill("‰ŠUŒ‚", skillPower["‰ŠUŒ‚"], MonsterType::Fire));
+	skillList.push_back(Skill("…UŒ‚", skillPower["…UŒ‚"], MonsterType::Water));
+	skillList.push_back(Skill("‘UŒ‚", skillPower["‘UŒ‚"], MonsterType::Grass));
+	skillList.push_back(Skill("ŒõUŒ‚", skillPower["ŒõUŒ‚"], MonsterType::Light));
+	skillList.push_back(Skill("ˆÅUŒ‚", skillPower["ˆÅUŒ‚"], MonsterType::Dark));
 }
