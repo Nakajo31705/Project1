@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 #include "MonsterDataBase.h"
+#include "TypeEffective.h"
+#include "Player.h"
 
 
 class Enemy : public GameObject
@@ -15,8 +17,9 @@ public:
 
 	Monster* GetActiveMonster();
 	void SwichMonster();
-	void SkillSelect();
+	void SkillSelect(Monster* player, Monster* enemy);
 private:
+	Player* playerMonster;					//プレイヤーのバトル場のモンスター
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> reserveMonsters;	//控えのモンスター
 

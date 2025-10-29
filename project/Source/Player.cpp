@@ -48,6 +48,8 @@ void Player::Update()
 
 void Player::Draw()
 {
+
+	//バトル場に出すモンスターの表示
 	if (activeMonster) {
 		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
 		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));

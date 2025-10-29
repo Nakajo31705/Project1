@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 #include "Skill.h"
-#include "MonsterDataBase.h"
+
+enum class MonsterType;
 
 class Monster : public GameObject
 {
@@ -33,6 +34,7 @@ public:
 	//スキルをセット
 	void SetSkills(const std::vector<Skill>& _skills);
 
+	//タイプを取得
 	MonsterType GetType() const;
 
 private:

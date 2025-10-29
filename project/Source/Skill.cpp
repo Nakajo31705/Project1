@@ -16,4 +16,9 @@ std::string Skill::GetName() const
     return std::string();
 }
 
+MonsterType Skill::GetType() const
+{
+    return type;
+}
+
 
