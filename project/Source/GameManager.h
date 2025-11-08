@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Enemy.h"
 
-
 class GameManager : public GameObject
 {
 public:
@@ -14,6 +13,9 @@ public:
 	void Draw() override;
 
 	void ChangeState(TurnState* newState);
+	void ChangeTurn();
 private:
 	TurnState* currentState = nullptr;
+	TurnState* playerTurn;
+	TurnState* enemyTurn;
 };

@@ -12,6 +12,10 @@ void EnemyTurn::Enter()
 
 void EnemyTurn::Update()
 {
+	if (myTurn) {
+		DrawString(defDraw, defDraw + 100, "エネミーのターン", GetColor(255, 255, 255));
+	}
+	
 }
 
 void EnemyTurn::Exit()

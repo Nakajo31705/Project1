@@ -1,10 +1,14 @@
 #pragma once
+#include "../Library/GameObject.h"
 
-class TurnState
+class TurnState : public GameObject
 {
 public:
 	virtual void Enter() = 0;
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
 	virtual ~TurnState() = default;
+	bool GetTurn() { return myTurn; }
+protected:
+	bool myTurn = false;
 };

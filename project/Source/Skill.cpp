@@ -13,7 +13,7 @@ int Skill::GetPower() const
 
 std::string Skill::GetName() const
 {
-    return std::string();
+    return name;
 }
 
 MonsterType Skill::GetType() const

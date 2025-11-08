@@ -2,6 +2,7 @@
 #include "../Library/GameObject.h"
 #include <vector>
 #include "MonsterDataBase.h"
+#include "Enemy.h"
 
 
 class Player : public GameObject
@@ -25,9 +26,6 @@ private:
 	std::vector<Skill> activeMonsterSKills;	//バトル場のモンスターのスキル
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
-
-
-
 
 	//描画用
 	int yOffset = 30;

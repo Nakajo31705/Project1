@@ -168,6 +168,9 @@
     <ClInclude Include="Source\TypeEffective.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
+    <ClInclude Include="Source\LogManager.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

@@ -123,13 +123,13 @@ void Player::SwitchMonster()
 	}
 }
 
-void Player::SkillSelect()
+void Player::SkillSelect(/*PlayerSubState &state*/)
 {
 	if (activeMonster != nullptr)
 	{
 		//バトル場のモンスターが使用できる技を表示
 		std::vector<Skill> skills = activeMonster->GetSkills();
-		for (int i = 0; skills.size(); i++)
+		for (int i = 0; i < skills.size(); i++)
 		{
 			const Skill& activeMonsterSkills = skills[i];
 			if (i == selectSkillIndex)
@@ -162,7 +162,15 @@ void Player::SkillSelect()
 		{
 			selectedSkill = &skills[selectSkillIndex];
 			DrawString(defDraw, defDraw, (selectedSkill->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
+			
+			
+			Enemy* enemy = FindGameObject<Enemy>();
+			Monster* currentEnemyMonster = enemy->GetActiveMonster();
+			int typeValue = GetTypeEffective(selectedSkill->GetType(), currentEnemyMonster->GetType());
+			currentEnemyMonster->TakeDamage(typeValue * selectedSkill->GetPower());
+
 			WaitTimer(500);
+			//state = PlayerSubState::Done;
 		}
 	}
 	else

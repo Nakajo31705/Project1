@@ -6,7 +6,6 @@
 #include "TypeEffective.h"
 #include "Player.h"
 
-
 class Enemy : public GameObject
 {
 public:
@@ -19,11 +18,10 @@ public:
 	void SwichMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 private:
-	Player* playerMonster;					//プレイヤーのバトル場のモンスター
+	//Player* playerMonster;					//プレイヤーのバトル場のモンスター
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> reserveMonsters;	//控えのモンスター
-
-
+	std::vector<int> skillScore;			//技のスコア値を管理するための配列
 
 
 	//描画用

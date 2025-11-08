@@ -1,7 +1,10 @@
 #include "GameManager.h"
-
+#include "PlayerTurn.h"
 GameManager::GameManager()
 {
+	playerTurn = new PlayerTurn(this);
+	enemyTurn = new EnemyTurn(this);
+	playerTurn->Enter();
 }
 
 GameManager::~GameManager()
@@ -29,4 +32,12 @@ void GameManager::ChangeState(TurnState* newState)
 	currentState = newState;
 	if (currentState)
 		currentState->Enter();
+}
+void GameManager::ChangeTurn() {
+	if (playerTurn->GetTurn()) {
+		enemyTurn->Enter();
+	}
+	else {
+		playerTurn->Enter();
+	}
 }

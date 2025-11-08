@@ -24,6 +24,8 @@ public:
 	//ƒƒjƒ…[
 	void Menu();
 
+	bool GetTurn(){return myTurn;}
+
 private:
 	GameManager* gameManager;
 	Player* player;
@@ -31,7 +33,7 @@ private:
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 
 	int defDraw = 100;
-	int menuDrawX = 1300;
+	int menuDrawX = 1100;
 	int menuDrawY = 500;
 };
 

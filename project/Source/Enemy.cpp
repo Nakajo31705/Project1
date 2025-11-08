@@ -35,6 +35,7 @@ Enemy::Enemy(MonsterDataBase& db)
 	{
 		activeMonster = &reserveMonsters[0];
 	}
+	//SkillSelect(playerMonster->GetActiveMonster(), GetActiveMonster());
 }
 
 Enemy::~Enemy()
@@ -69,12 +70,26 @@ void Enemy::SwichMonster()
 void Enemy::SkillSelect(Monster* player, Monster* enemy)
 {
 	//エネミーのスキル取得
-	std::vector<Skill> enemySkills = GetActiveMonster()->GetSkills();
+	std::vector<Skill> enemySkills = enemy->GetSkills();
 
 	//プレイヤーのバトル場のモンスターのタイプを取得
-	auto playerActiveMonster = playerMonster->GetActiveMonster()->GetType();
+	auto playerActiveMonster = player->GetType();
 
+	//技の数の分だけスコアを格納するサイズを代入
+	skillScore.resize(enemySkills.size());
+	double max = 0;
+	int maxSkillIndex = 0;
 
+	for (int i = 0; i < enemySkills.size(); i++) {
+		double value = GetTypeEffective(enemySkills[i].GetType(), playerActiveMonster);
+		value *= enemySkills[i].GetPower();
+		if (max < value) {
+			max = value;
+			maxSkillIndex = i;
+		}
+	}
+
+	//enemySkills[maxSkillIndex];
 }
 
 /*

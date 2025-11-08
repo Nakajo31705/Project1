@@ -3,16 +3,18 @@
 PlayerTurn::PlayerTurn(GameManager* gm)
 	:gameManager(gm)
 {
-	
+	player = FindGameObject<Player>();
 }
 
 void PlayerTurn::Enter()
 {
+	myTurn = true;
 	DrawString(defDraw, defDraw, "プレイヤーのターン", GetColor(255, 255, 255));
 }
 
 void PlayerTurn::Update()
 {
+	if (!myTurn) return;
 	switch (subState)
 	{
 	case PlayerSubState::MenuSelect:
@@ -25,7 +27,8 @@ void PlayerTurn::Update()
 		player->SwitchMonster();
 		break;
 	case PlayerSubState::Done:
-		gameManager->ChangeState(new EnemyTurn(gameManager));
+		gameManager->ChangeTurn();
+		myTurn = false;
 		break;
 	}
 }
