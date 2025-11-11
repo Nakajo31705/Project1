@@ -74,6 +74,9 @@
     <ClCompile Include="Source\EnemyTurn.cpp">
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
+    <ClCompile Include="Source\LogManager.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -169,7 +172,7 @@
       <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\LogManager.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\h</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
