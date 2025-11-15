@@ -13,16 +13,16 @@ Enemy::Enemy(MonsterDataBase& db)
 		if (name == "‘‚Ì¸—ì")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("‘UŒ‚", db.GetSkillPower("‘UŒ‚"),MonsterType::Grass));
-			skills.push_back(Skill("…UŒ‚", db.GetSkillPower("…UŒ‚"),MonsterType::Water));
+			skills.push_back(Skill("‘UŒ‚", db.GetSkillPower("‘UŒ‚"),MonsterType::Physical));
+			skills.push_back(Skill("…UŒ‚", db.GetSkillPower("…UŒ‚"),MonsterType::Magic));
 			monster.SetSkills(skills);
 		}
 
 		else if (name == "Œõ‚Ì¸—ì")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("ŒõUŒ‚", db.GetSkillPower("ŒõUŒ‚"),MonsterType::Light));
-			skills.push_back(Skill("‰ŠUŒ‚", db.GetSkillPower("‰ŠUŒ‚"),MonsterType::Fire));
+			skills.push_back(Skill("ŒõUŒ‚", db.GetSkillPower("ŒõUŒ‚"),MonsterType::Physical));
+			skills.push_back(Skill("‰ŠUŒ‚", db.GetSkillPower("‰ŠUŒ‚"),MonsterType::Magic));
 			monster.SetSkills(skills);
 		}
 

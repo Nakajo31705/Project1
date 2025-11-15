@@ -17,6 +17,10 @@ public:
 	void SwitchMonster();
 	void SkillSelect();
 
+	//変数の受け取り用
+	void SetSelected(int value) { selected = value; }
+	int GetSelected() const { return selected; }
+
 private:
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> reserveMonsters;	//控えのモンスター
@@ -26,6 +30,8 @@ private:
 	std::vector<Skill> activeMonsterSKills;	//バトル場のモンスターのスキル
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
+
+	int selected = 0;
 
 	//描画用
 	int yOffset = 30;

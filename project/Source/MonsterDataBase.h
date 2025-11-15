@@ -5,11 +5,9 @@
 
 enum class MonsterType
 {
-	Fire,
-	Water,
-	Grass,
-	Light,
-	Dark,
+
+	Physical,
+	Magic,
 	None
 };
 

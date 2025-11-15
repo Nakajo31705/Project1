@@ -26,6 +26,8 @@ public:
 
 	bool GetTurn(){return myTurn;}
 
+	bool monsterChanged;
+
 private:
 	GameManager* gameManager;
 	Player* player;

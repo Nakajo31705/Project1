@@ -1,6 +1,6 @@
 #include "LogManager.h"
 
-void LogManager::AddMessage()
+void LogManager::AddMessage(std::string& text)
 {
 }
 

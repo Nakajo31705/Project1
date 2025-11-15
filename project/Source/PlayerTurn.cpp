@@ -84,6 +84,7 @@ void PlayerTurn::Menu()
 		}
 		else if (selected == 1)
 		{
+			player->SetSelected(selected);
 			DrawString(defDraw, defDraw*2, "ƒ‚ƒ“ƒXƒ^[‚ğŒğŠ·", GetColor(255, 255, 255));
 			subState = PlayerSubState::MonsterSelect;
 		}

@@ -4,26 +4,24 @@
 Player::Player(MonsterDataBase& db)
 {
 	//プレイヤーが使用するモンスターを指定
-	std::vector<std::string> monsterNames = { "炎の精霊", "水の精霊" };
+	std::vector<std::string> monsterNames = { "剣士", "魔法使い" };
 
 	for (const auto& name : monsterNames)
 	{
 		Monster monster(name, db.GetMonsterHP(name),db.GetMonsterType(name));
 
 		//モンスターごとに技を設定
-		if (name == "炎の精霊")
+		if (name == "剣士")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("炎攻撃", db.GetSkillPower("炎攻撃"), MonsterType::Fire));
-			skills.push_back(Skill("光攻撃", db.GetSkillPower("光攻撃"), MonsterType::Light));
+			skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), MonsterType::Physical));
 			monster.SetSkills(skills);
 		}
 
-		else if (name == "水の精霊")
+		else if (name == "魔法使い")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("水攻撃", db.GetSkillPower("水攻撃"), MonsterType::Water));
-			skills.push_back(Skill("闇攻撃", db.GetSkillPower("闇攻撃"), MonsterType::Dark));
+			skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), MonsterType::Magic));
 			monster.SetSkills(skills);
 		}
 
@@ -67,44 +65,8 @@ Monster* Player::GetActiveMonster()
 
 void Player::SwitchMonster()
 {
-	//控えのモンスターの表示
-	for (int i = 0; i < reserveMonsters.size(); i++)
-	{
-		const Monster& monster = reserveMonsters[i];
-		if (i == selectMonsterIndex)
-		{
-			DrawString(monsterDrawX, monsterDrawY + i * yOffset, "→", GetColor(255, 255, 0));
-			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, monster.GetName().c_str(), GetColor(255, 255, 0));
-		}
-		else
-		{
-			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, monster.GetName().c_str(), GetColor(255, 255, 255));
-		}
-	}
-
-	//キー入力の判定
-	if (CheckHitKey(KEY_INPUT_UP) == 1)
-	{
-		selectMonsterIndex--;
-		if (selectMonsterIndex < 0) selectMonsterIndex = reserveMonsters.size() - 1;
-		WaitTimer(150);
-	}
-	if (CheckHitKey(KEY_INPUT_DOWN) == 1)
-	{
-		selectMonsterIndex++;
-		if (selectMonsterIndex >= reserveMonsters.size()) selectMonsterIndex = 0;
-		WaitTimer(150);
-	}
-
-	//決定の処理
-	if (CheckHitKey(KEY_INPUT_RETURN) == 1)
-	{
-		selectedMonster = &reserveMonsters[selectMonsterIndex];
-		DrawString(defDraw, defDraw, (selectedMonster->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
-		WaitTimer(500);
-	}
-
-	if (selectedMonster != nullptr && activeMonster != nullptr)
+	//選んだモンスターじゃなくてreserveの先頭をactiveになるように変更する
+	if (selected == 1 && activeMonster != nullptr)
 	{
 		//バトル場のモンスターを控えに戻す
 		reserveMonsters.push_back(*activeMonster);
