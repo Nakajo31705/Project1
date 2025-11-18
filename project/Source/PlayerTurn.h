@@ -9,6 +9,7 @@ enum class PlayerSubState
 	MenuSelect,		//メニュー選択
 	SkillSelect,	//技選択
 	MonsterSelect,	//モンスター選択
+	CardSelect,		//カード選択
 	Done			//ターン終了
 };
 
@@ -34,7 +35,8 @@ private:
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 
-	int defDraw = 100;
+	int defDrawX = 100;
+	int defDrawY = 100;
 	int menuDrawX = 1100;
 	int menuDrawY = 500;
 };

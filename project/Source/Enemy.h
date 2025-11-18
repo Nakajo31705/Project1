@@ -28,5 +28,6 @@ private:
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;
-	int defDraw = 100;
+	int defDrawX = 100;
+	int defDrawY = 150;
 };

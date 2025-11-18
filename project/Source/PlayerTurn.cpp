@@ -9,7 +9,7 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 void PlayerTurn::Enter()
 {
 	myTurn = true;
-	DrawString(defDraw, defDraw, "プレイヤーのターン", GetColor(255, 255, 255));
+	DrawString(defDrawX, defDrawY, "プレイヤーのターン", GetColor(255, 255, 255));
 }
 
 void PlayerTurn::Update()
@@ -35,13 +35,13 @@ void PlayerTurn::Update()
 
 void PlayerTurn::Exit()
 {
-	DrawString(defDraw, defDraw, "プレイヤーのターン終了", GetColor(255, 255, 255));
+	DrawString(defDrawX, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
 }
 
 void PlayerTurn::Menu()
 {
-	const int MENU_NUM = 2;
-	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" };
+	const int MENU_NUM = 3;
+	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" ,"カードの選択"};
 	int yOffset = 30;
 
 	//メニューの表示
@@ -76,17 +76,21 @@ void PlayerTurn::Menu()
 	//コマンド決定の処理(メニュー)
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1)
 	{
+		player->SetSelected(selected);
 		if (selected == 0)
 		{
-			DrawString(defDraw, defDraw*2, "技を選択", GetColor(255, 255, 255));
+			DrawString(defDrawX, defDrawY*2, "技を選択", GetColor(255, 255, 255));
 			subState = PlayerSubState::SkillSelect;
-			
 		}
 		else if (selected == 1)
 		{
-			player->SetSelected(selected);
-			DrawString(defDraw, defDraw*2, "モンスターを交換", GetColor(255, 255, 255));
+			DrawString(defDrawX, defDrawY*2, "モンスターを交換", GetColor(255, 255, 255));
 			subState = PlayerSubState::MonsterSelect;
+		}
+		else if (selected == 2)
+		{
+			DrawString(defDrawX, defDrawY * 2, "カードの選択", GetColor(255, 255, 255));
+			subState = PlayerSubState::CardSelect;
 		}
 		WaitTimer(500);
 	}

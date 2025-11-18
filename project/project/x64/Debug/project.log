@@ -1,4 +1,10 @@
 ﻿  Enemy.cpp
+  EnemyTurn.cpp
+  GameManager.cpp
   PlayScene.cpp
+  Player.cpp
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(113,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(132,18): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+  PlayerTurn.cpp
   コードを生成中...
   project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe

@@ -51,10 +51,10 @@ void Enemy::Draw()
 {
 	if (activeMonster) {
 		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
-		DrawString(defDraw, defDraw, msg.c_str(), GetColor(255, 255, 255));
+		DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
 	}
 	else {
-		DrawString(defDraw, defDraw, "activeMonsterがNullです。", GetColor(255, 255, 255));
+		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
 	}
 }
 
