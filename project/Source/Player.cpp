@@ -8,7 +8,7 @@ Player::Player(MonsterDataBase& db)
 
 	for (const auto& name : monsterNames)
 	{
-		Monster monster(name, db.GetMonsterHP(name),db.GetMonsterType(name));
+		Monster monster(name, db.GetMonsterHP(name),db.GetType(name));
 
 		//ƒ‚ƒ“ƒXƒ^[‚²‚Æ‚É‹Z‚ğİ’è
 		if (name == "Œ•m")

@@ -2,27 +2,19 @@
 
 Enemy::Enemy(MonsterDataBase& db)
 {
-	//プレイヤーが使用するモンスターを指定
-	std::vector<std::string> monsterNames = { "草の精霊", "光の精霊" };
+	//エネミーが使用するモンスターを指定
+	std::vector<std::string> monsterNames = { "魔王"};
 
 	for (const auto& name : monsterNames)
 	{
-		Monster monster(name, db.GetMonsterHP(name),db.GetMonsterType(name));
+		Monster monster(name, db.GetMonsterHP(name),db.GetType(name));
 
 		//技を設定
-		if (name == "草の精霊")
+		if (name == "魔王")
 		{
 			std::vector<Skill> skills;
-			skills.push_back(Skill("草攻撃", db.GetSkillPower("草攻撃"),MonsterType::Physical));
-			skills.push_back(Skill("水攻撃", db.GetSkillPower("水攻撃"),MonsterType::Magic));
-			monster.SetSkills(skills);
-		}
-
-		else if (name == "光の精霊")
-		{
-			std::vector<Skill> skills;
-			skills.push_back(Skill("光攻撃", db.GetSkillPower("光攻撃"),MonsterType::Physical));
-			skills.push_back(Skill("炎攻撃", db.GetSkillPower("炎攻撃"),MonsterType::Magic));
+			skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"),db.GetType("物理")));
+			skills.push_back(Skill("魔法", db.GetSkillPower("魔法"),db.GetType("魔法")));
 			monster.SetSkills(skills);
 		}
 

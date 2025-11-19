@@ -19,7 +19,7 @@ public:
 	int GetSkillPower(const std::string& skillName) const;
 	std::vector<Monster> GetMonsters() const;
 	std::vector<Skill> GetSkills() const;
-	MonsterType GetMonsterType(const std::string& monsterName) const;
+	MonsterType GetType(const std::string& monsterName) const;
 
 	inline std::string MonsterTypeToString(MonsterType type) const;
 	inline MonsterType StringToMonsterType(const std::string& typeStr) const;

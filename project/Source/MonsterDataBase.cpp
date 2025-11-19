@@ -62,7 +62,7 @@ std::vector<Skill> MonsterDataBase::GetSkills() const
 /// </summary>
 /// <param name="monsterName"></param>
 /// <returns>モンスターの名前を書いてタイプを取得</returns>
-MonsterType MonsterDataBase::GetMonsterType(const std::string& monsterName) const
+MonsterType MonsterDataBase::GetType(const std::string& monsterName) const
 {
 	auto it = type.find(monsterName);
 	if (it != type.end())
@@ -95,15 +95,17 @@ void MonsterDataBase::InitializeMonsters()
 	//モンスターのHPを設定
 	monsterHP["剣士"] = 100;
 	monsterHP["魔法使い"] = 100;
+	monsterHP["魔王"] = 300;
 
 	//モンスターのタイプを設定
-	type["剣士"] = MonsterType::Physical;
-	type["魔法使い"] = MonsterType::Magic;
+	type["物理"] = MonsterType::Physical;
+	type["魔法"] = MonsterType::Magic;
 
 
 	//モンスターをリストに追加
-	monsterList.push_back(Monster("剣士", monsterHP["剣士"], MonsterType::Physical));
-	monsterList.push_back(Monster("魔法使い", monsterHP["魔法使い"], MonsterType::Magic));
+	monsterList.push_back(Monster("剣士", monsterHP["剣士"], type["物理"]));
+	monsterList.push_back(Monster("魔法使い", monsterHP["魔法使い"], type["魔法"]));
+	monsterList.push_back(Monster("魔王", monsterHP["魔王"], type["物理"]));
 }
 
 void MonsterDataBase::InitializeSkills()
@@ -113,6 +115,6 @@ void MonsterDataBase::InitializeSkills()
 	skillPower["魔法"] = 20;
 
 	//技をリストに追加
-	skillList.push_back(Skill("斬撃", skillPower["斬撃"], MonsterType::Physical));
-	skillList.push_back(Skill("魔法", skillPower["魔法"], MonsterType::Magic));
+	skillList.push_back(Skill("斬撃", skillPower["斬撃"], type["物理"]));
+	skillList.push_back(Skill("魔法", skillPower["魔法"], type["魔法"]));
 }
