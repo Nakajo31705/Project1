@@ -81,6 +81,7 @@ void Player::SwitchMonster()
 			reserveMonsters.erase(reserveMonsters.begin());
 		}
 
+		SelectFinished();
 		DrawString(defDrawX, defDrawY, (activeMonster->GetName() + "をバトル場に出した!\n").c_str(), GetColor(255, 255, 255));
 		WaitTimer(500);
 	}
@@ -132,13 +133,35 @@ void Player::SkillSelect(/*PlayerSubState &state*/)
 			int typeValue = GetTypeEffective(selectedSkill->GetType(), currentEnemyMonster->GetType());
 			currentEnemyMonster->TakeDamage(typeValue * selectedSkill->GetPower());
 
+			SelectFinished();
 			WaitTimer(500);
-			//state = PlayerSubState::Done;
 		}
 	}
 	else
 	{
 		DrawString(10, 10, "バトル場のモンスターが設定されていません。\n", GetColor(255, 255, 255));
+	}
+}
+
+/// <summary>
+/// listenerコンテナに追加する関数:
+/// 追加されたlistenerはプレイヤーの処理終了の通知を受け取れるようになる
+/// </summary>
+/// <param name="listener"></param>
+void Player::AddListener(PlayerObserver* listener)
+{
+	listeners.push_back(listener);
+}
+
+
+/// <summary>
+/// プレイヤーの選択が終了したことを通知する
+/// </summary>
+void Player::SelectFinished()
+{
+	for (auto* l : listeners)
+	{
+		l->SelectEnd();
 	}
 }
 

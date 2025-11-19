@@ -3,6 +3,7 @@
 #include <vector>
 #include "MonsterDataBase.h"
 #include "Enemy.h"
+#include "PlayerObserver.h"
 
 
 class Player : public GameObject
@@ -16,6 +17,7 @@ public:
 	Monster* GetActiveMonster();
 	void SwitchMonster();
 	void SkillSelect();
+	void AddListener(PlayerObserver* listener);
 
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
@@ -26,12 +28,14 @@ private:
 	std::vector<Monster> reserveMonsters;	//控えのモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
 	Monster* selectedMonster = nullptr;		//選択したモンスター
+	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
 	std::vector<Skill> activeMonsterSKills;	//バトル場のモンスターのスキル
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
+	std::vector<PlayerObserver*> listeners;
 
-	int selected = 0;
+	void SelectFinished();					//選択終了の通知
 
 	//描画用
 	int yOffset = 30;

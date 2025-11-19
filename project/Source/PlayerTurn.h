@@ -14,26 +14,25 @@ enum class PlayerSubState
 };
 
 
-class PlayerTurn : public TurnState
+class PlayerTurn : public TurnState,public PlayerObserver
 {
 public:
 	PlayerTurn(GameManager* gm);
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
+	void SelectEnd() override;
 
 	//ƒƒjƒ…[
 	void Menu();
-
-	bool GetTurn(){return myTurn;}
-
-	bool monsterChanged;
+	//bool GetTurn(){return myTurn;}
 
 private:
 	GameManager* gameManager;
 	Player* player;
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
+	int playCount = 0;
 
 	int defDrawX = 100;
 	int defDrawY = 100;

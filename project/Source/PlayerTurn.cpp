@@ -4,6 +4,7 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 	:gameManager(gm)
 {
 	player = FindGameObject<Player>();
+	player->AddListener(this);
 }
 
 void PlayerTurn::Enter()
@@ -35,7 +36,22 @@ void PlayerTurn::Update()
 
 void PlayerTurn::Exit()
 {
-	DrawString(defDrawX, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
+	DrawString(defDrawX + 100, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
+}
+
+void PlayerTurn::SelectEnd()
+{
+	if (playCount < 2)
+	{
+		subState = PlayerSubState::MenuSelect;
+		playCount++;
+	}
+	if (playCount > 2)
+	{
+		subState = PlayerSubState::Done;
+		playCount = 0;
+	}
+		
 }
 
 void PlayerTurn::Menu()

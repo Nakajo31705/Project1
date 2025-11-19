@@ -160,6 +160,7 @@
     <ClInclude Include="Source\Monster.h" />
     <ClInclude Include="Source\MonsterDataBase.h" />
     <ClInclude Include="Source\Player.h" />
+    <ClInclude Include="Source\PlayerObserver.h" />
     <ClInclude Include="Source\PlayerTurn.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\PlayScene.h" />

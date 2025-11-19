@@ -63,10 +63,6 @@ Monster* Enemy::GetActiveMonster()
 	return activeMonster;
 }
 
-void Enemy::SwichMonster()
-{
-}
-
 void Enemy::SkillSelect(Monster* player, Monster* enemy)
 {
 	//エネミーのスキル取得
@@ -91,15 +87,3 @@ void Enemy::SkillSelect(Monster* player, Monster* enemy)
 
 	//enemySkills[maxSkillIndex];
 }
-
-/*
-	攻撃面
-	TypeEffectiveのタイプ相性表を使ってスコアが高い行動をさせる
-	技のタイプと相手のモンスターのタイプで比較
-	※余裕があれば常に最高値のスコアの攻撃ではなくたまに違う技をするようにランダム制を持たせたい
-
-	モンスター交換
-	同じくタイプ相性表を使ってスコアが高い行動をさせる
-	相手のモンスターのタイプをみて攻撃をする
-	※交換は場のモンスターが死んだときのみ
-*/
