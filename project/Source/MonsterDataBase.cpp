@@ -100,12 +100,6 @@ void MonsterDataBase::InitializeMonsters()
 	//モンスターのタイプを設定
 	type["物理"] = MonsterType::Physical;
 	type["魔法"] = MonsterType::Magic;
-
-
-	//モンスターをリストに追加
-	monsterList.push_back(Monster("剣士", monsterHP["剣士"], type["物理"]));
-	monsterList.push_back(Monster("魔法使い", monsterHP["魔法使い"], type["魔法"]));
-	monsterList.push_back(Monster("魔王", monsterHP["魔王"], type["物理"]));
 }
 
 void MonsterDataBase::InitializeSkills()

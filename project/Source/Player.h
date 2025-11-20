@@ -25,7 +25,7 @@ public:
 
 private:
 	Monster* activeMonster;					//バトル場のモンスター
-	std::vector<Monster> reserveMonsters;	//控えのモンスター
+	std::vector<Monster> monsters;			//自分のモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
 	Monster* selectedMonster = nullptr;		//選択したモンスター
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持

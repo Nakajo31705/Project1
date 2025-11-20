@@ -3,6 +3,10 @@
 
 Player::Player(MonsterDataBase& db)
 {
+	//モンスターをチームに設定
+	monsters.push_back(Monster("剣士", db.GetMonsterHP("剣士"), db.GetType("物理")));
+	monsters.push_back(Monster("魔法使い", db.GetMonsterHP("魔法使い"), db.GetType("魔法")));
+
 	//プレイヤーが使用するモンスターを指定
 	std::vector<std::string> monsterNames = { "剣士", "魔法使い" };
 
@@ -26,13 +30,13 @@ Player::Player(MonsterDataBase& db)
 		}
 
 		//控えのリストにモンスターを追加
-		reserveMonsters.push_back(monster);
+		monsters.push_back(monster);
 	}
 
 	//控えリストの最初のモンスターをバトル場に設定
-	if (!reserveMonsters.empty())
+	if (!monsters.empty())
 	{
-		activeMonster = &reserveMonsters[0];
+		activeMonster = &monsters[0];
 	}
 }
 
@@ -69,16 +73,16 @@ void Player::SwitchMonster()
 	if (selected == 1 && activeMonster != nullptr)
 	{
 		//バトル場のモンスターを控えに戻す
-		reserveMonsters.push_back(*activeMonster);
+		monsters.push_back(*activeMonster);
 
 		//控えのモンスターをバトル場に設定
-		if (!reserveMonsters.empty())
+		if (!monsters.empty())
 		{
 			//控えの先頭をバトル場に設定
-			activeMonster = &reserveMonsters.front();
+			activeMonster = &monsters.front();
 
 			//控えの先頭を削除
-			reserveMonsters.erase(reserveMonsters.begin());
+			monsters.erase(monsters.begin());
 		}
 
 		SelectFinished();
