@@ -39,11 +39,13 @@ void Player::Update()
 
 void Player::Draw()
 {
+	logManager.DrawLogs();
 
 	//バトル場に出すモンスターの表示
 	if (activeMonster) {
 		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
-		DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
+		//DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
+		logManager.AddLog(msg.c_str(), 3000, 100, 100);
 	}
 	else {
 		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
@@ -82,7 +84,6 @@ void Player::SwitchMonster()
 
 		//ログ表示
 		DrawString(defDrawX, defDrawY, (activeMonster->GetName() + "をバトル場に出した!\n").c_str(), GetColor(255, 255, 255));
-		WaitTimer(500);
 	}
 }
 
@@ -128,7 +129,7 @@ void Player::SkillSelect()
 		if (CheckHitKey(KEY_INPUT_RETURN) == 1)
 		{
 			selectedSkill = &skills[selectSkillIndex];
-			DrawString(defDrawX, defDrawY, (selectedSkill->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
+			DrawString(defDrawX, defDrawY + 200, (selectedSkill->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
 			
 			//攻撃対象の取得
 			Enemy* enemy = FindGameObject<Enemy>();
@@ -139,7 +140,6 @@ void Player::SkillSelect()
 
 			//技選択終了
 			SelectFinished();
-			WaitTimer(500);
 		}
 	}
 	else

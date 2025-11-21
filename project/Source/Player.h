@@ -4,6 +4,7 @@
 #include "MonsterDataBase.h"
 #include "Enemy.h"
 #include "PlayerObserver.h"
+#include "LogManager.h"
 
 
 class Player : public GameObject
@@ -38,6 +39,7 @@ private:
 	void SelectFinished();					//選択終了の通知
 
 	//描画用
+	LogManager logManager;
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;

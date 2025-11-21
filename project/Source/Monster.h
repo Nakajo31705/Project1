@@ -25,9 +25,6 @@ public:
 	//モンスター名を取得
 	std::string GetName() const;
 	
-	//モンスターの名前をセット
-	std::string SetName(const std::string& monster);
-
 	//現在のHPを取得
 	int GetCurrentHP() const;
 

@@ -61,6 +61,7 @@ void PlayerTurn::SelectEnd()
 	{
 		subState = PlayerSubState::MenuSelect;
 		playCount++;
+		WaitTimer(1000);
 	}
 	if (playCount > 2)
 	{
@@ -127,6 +128,5 @@ void PlayerTurn::Menu()
 			DrawString(defDrawX, defDrawY * 2, "カードの選択", GetColor(255, 255, 255));
 			subState = PlayerSubState::CardSelect;
 		}
-		WaitTimer(500);
 	}
 }
