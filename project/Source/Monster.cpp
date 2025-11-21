@@ -33,6 +33,11 @@ std::string  Monster::GetName() const
 	return name;
 }
 
+std::string Monster::SetName(const std::string& monster)
+{
+	return name = monster;
+}
+
 int Monster::GetCurrentHP() const
 {
 	return currentHP;

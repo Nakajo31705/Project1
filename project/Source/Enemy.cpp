@@ -2,32 +2,21 @@
 
 Enemy::Enemy(MonsterDataBase& db)
 {
-	//エネミーが使用するモンスターを指定
-	std::vector<std::string> monsterNames = { "魔王"};
-
-	for (const auto& name : monsterNames)
+	Monster demonKing("魔王", db.GetMonsterHP("魔王"), db.GetType("物理"));
 	{
-		Monster monster(name, db.GetMonsterHP(name),db.GetType(name));
-
-		//技を設定
-		if (name == "魔王")
-		{
-			std::vector<Skill> skills;
-			skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"),db.GetType("物理")));
-			skills.push_back(Skill("魔法", db.GetSkillPower("魔法"),db.GetType("魔法")));
-			monster.SetSkills(skills);
-		}
-
-		//控えのリストにモンスターを追加
-		reserveMonsters.push_back(monster);
+		std::vector<Skill> skills;
+		skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
+		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));
+		demonKing.SetSkills(skills);
 	}
+
+	monsters.push_back(demonKing);
 
 	//控えリストの最初のモンスターをバトル場に設定
-	if (!reserveMonsters.empty())
+	if (!monsters.empty() && activeMonster == nullptr)
 	{
-		activeMonster = &reserveMonsters[0];
+		activeMonster = &monsters[0];
 	}
-	//SkillSelect(playerMonster->GetActiveMonster(), GetActiveMonster());
 }
 
 Enemy::~Enemy()
@@ -58,24 +47,15 @@ Monster* Enemy::GetActiveMonster()
 void Enemy::SkillSelect(Monster* player, Monster* enemy)
 {
 	//エネミーのスキル取得
-	std::vector<Skill> enemySkills = enemy->GetSkills();
-
-	//プレイヤーのバトル場のモンスターのタイプを取得
-	auto playerActiveMonster = player->GetType();
-
-	//技の数の分だけスコアを格納するサイズを代入
-	skillScore.resize(enemySkills.size());
-	double max = 0;
-	int maxSkillIndex = 0;
-
-	for (int i = 0; i < enemySkills.size(); i++) {
-		double value = GetTypeEffective(enemySkills[i].GetType(), playerActiveMonster);
-		value *= enemySkills[i].GetPower();
-		if (max < value) {
-			max = value;
-			maxSkillIndex = i;
-		}
-	}
-
-	//enemySkills[maxSkillIndex];
+	std::vector<Skill> skills = enemy->GetSkills();
+	
+	//乱数生成器
+	std::random_device rd;
+	//ランダムエンジン
+	static std::mt19937 gen(rd());
+	//インデックス用
+	std::uniform_int_distribution<> dis(0, skills.size() - 1);
+	
+	//ランダムに選択
+	Skill selectedSkill = skills[dis(gen)];
 }

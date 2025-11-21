@@ -2,6 +2,7 @@
 #include "../Library/GameObject.h"
 #include <vector>
 #include <iostream>
+#include <random>
 #include "MonsterDataBase.h"
 #include "TypeEffective.h"
 #include "Player.h"
@@ -15,12 +16,11 @@ public:
 	void Draw() override;
 
 	Monster* GetActiveMonster();
-	void SwichMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 private:
 	//Player* playerMonster;					//プレイヤーのバトル場のモンスター
 	Monster* activeMonster;					//バトル場のモンスター
-	std::vector<Monster> reserveMonsters;	//控えのモンスター
+	std::vector<Monster> monsters;	//控えのモンスター
 	std::vector<int> skillScore;			//技のスコア値を管理するための配列
 
 

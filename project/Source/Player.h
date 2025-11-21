@@ -17,6 +17,7 @@ public:
 	Monster* GetActiveMonster();
 	void SwitchMonster();
 	void SkillSelect();
+	void CardSelect();
 	void AddListener(PlayerObserver* listener);
 
 	//変数の受け取り用
@@ -30,7 +31,6 @@ private:
 	Monster* selectedMonster = nullptr;		//選択したモンスター
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
-	std::vector<Skill> activeMonsterSKills;	//バトル場のモンスターのスキル
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
 	std::vector<PlayerObserver*> listeners;

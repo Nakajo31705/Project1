@@ -7,6 +7,9 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 	player->AddListener(this);
 }
 
+/// <summary>
+/// プレイヤーのターンが開始したときに呼ぶ
+/// </summary>
 void PlayerTurn::Enter()
 {
 	myTurn = true;
@@ -15,6 +18,7 @@ void PlayerTurn::Enter()
 
 void PlayerTurn::Update()
 {
+	//ターンの切り替え
 	if (!myTurn) return;
 	switch (subState)
 	{
@@ -27,18 +31,30 @@ void PlayerTurn::Update()
 	case PlayerSubState::MonsterSelect:
 		player->SwitchMonster();
 		break;
+	case PlayerSubState::CardSelect:
+		player->CardSelect();
+		break;
 	case PlayerSubState::Done:
-		gameManager->ChangeTurn();
-		myTurn = false;
+		Exit();
 		break;
 	}
 }
 
+/// <summary>
+/// プレイヤーのターンが終了するときに呼ぶ
+/// </summary>
 void PlayerTurn::Exit()
 {
+	//ターン終了にエネミーのターンにする
 	DrawString(defDrawX + 100, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
+	gameManager->ChangeTurn();
+	myTurn = false;
 }
 
+/// <summary>
+/// 自分のターンで何回行動したかカウントする関数
+/// 2回行動したらターン終了
+/// </summary>
 void PlayerTurn::SelectEnd()
 {
 	if (playCount < 2)
@@ -54,6 +70,9 @@ void PlayerTurn::SelectEnd()
 		
 }
 
+/// <summary>
+/// メニューの選択画面
+/// </summary>
 void PlayerTurn::Menu()
 {
 	const int MENU_NUM = 3;
