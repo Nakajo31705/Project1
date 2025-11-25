@@ -1,22 +1,23 @@
 #pragma once
+#include "../Library/GameObject.h"
 #include "DxLib.h"
 #include <string>
 #include <vector>
-#include <algorithm>
 
-struct LogEntry
+struct LogMessage
 {
 	std::string text;
-	int expireCount;	//GetNowCount()の終了タイム
 	int x, y;			//描画する座標
+	int duration;		//表示時間
+	int startTime;		//開始時間(GetNowCount)
 };
 
-class LogManager
+class LogManager : public GameObject
 {
 public:
-	void AddLog(const std::string& text, int displayMs, int x = 100, int y = 100);
-	void DrawLogs();
-
+	void AddLog(const std::string& text, int x, int y, int duration);
+	void Update() override;
+	void Draw() override;
 private:
-	std::vector<LogEntry> logs;
+	std::vector<LogMessage> logs;
 };

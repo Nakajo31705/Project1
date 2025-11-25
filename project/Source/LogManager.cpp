@@ -1,20 +1,36 @@
 #include "LogManager.h"
 
-void LogManager::AddLog(const std::string& text, int displayMs, int x, int y)
+void LogManager::AddLog(const std::string& text, int x, int y, int duration)
 {
-	int now = GetNowCount();
-	logs.push_back({ text, now + displayMs, x, y });
+	LogMessage msg;
+	msg.text = text;
+	msg.x = x;
+	msg.y = y;
+	msg.duration = duration;
+	msg.startTime = GetNowCount();
+
+	logs.push_back(msg);
 }
 
-void LogManager::DrawLogs()
+void LogManager::Update()
 {
 	int now = GetNowCount();
 
-	logs.erase(std::remove_if(logs.begin(), logs.end(), [&](const LogEntry& entry)
-		{return entry.expireCount < now;}), logs.end());
+	//—LŒøŠúŒÀ‚ð‰ß‚¬‚½‚çƒƒO‚ðíœ
+	logs.erase(std::remove_if(logs.begin(), logs.end(),
+		[&](const LogMessage& msg)
+		{
+			return now - msg.startTime > msg.duration;
+		}
+	),
+		logs.end()
+	);
+}
 
-	for (const auto& log : logs)
+void LogManager::Draw()
+{
+	for (const auto& msg : logs)
 	{
-		DrawString(log.x, log.y, log.text.c_str(), GetColor(255, 255, 255));
+		DrawString(msg.x, msg.y, msg.text.c_str(), GetColor(255, 255, 255));
 	}
 }

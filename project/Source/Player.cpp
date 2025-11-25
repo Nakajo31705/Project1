@@ -27,6 +27,16 @@ Player::Player(MonsterDataBase& db)
 	{
 		activeMonster = &monsters[0];
 	}
+
+	//バトル場に出すモンスターの表示
+	if (activeMonster) {
+		std::string logFirstMonster = activeMonster->GetName() + std::string("をバトル場にだした\n");
+		//DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
+		logManager.AddLog(logFirstMonster.c_str(), defDrawX, defDrawY, 1000);
+	}
+	else {
+		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
+	}
 }
 
 Player::~Player()
@@ -39,17 +49,6 @@ void Player::Update()
 
 void Player::Draw()
 {
-	logManager.DrawLogs();
-
-	//バトル場に出すモンスターの表示
-	if (activeMonster) {
-		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
-		//DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
-		logManager.AddLog(msg.c_str(), 3000, 100, 100);
-	}
-	else {
-		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
-	}
 }
 
 // バトル場のモンスターを取得
@@ -83,7 +82,8 @@ void Player::SwitchMonster()
 		SelectFinished();
 
 		//ログ表示
-		DrawString(defDrawX, defDrawY, (activeMonster->GetName() + "をバトル場に出した!\n").c_str(), GetColor(255, 255, 255));
+		std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
+		logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 	}
 }
 
@@ -129,7 +129,8 @@ void Player::SkillSelect()
 		if (CheckHitKey(KEY_INPUT_RETURN) == 1)
 		{
 			selectedSkill = &skills[selectSkillIndex];
-			DrawString(defDrawX, defDrawY + 200, (selectedSkill->GetName() + "を選択\n").c_str(), GetColor(255, 255, 255));
+			std::string logSkillSelected = selectedSkill->GetName() + "を選択\n";
+			logManager.AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 			
 			//攻撃対象の取得
 			Enemy* enemy = FindGameObject<Enemy>();
@@ -144,7 +145,7 @@ void Player::SkillSelect()
 	}
 	else
 	{
-		DrawString(10, 10, "バトル場のモンスターが設定されていません。\n", GetColor(255, 255, 255));
+		DrawString(100, 100, "バトル場のモンスターが設定されていません。\n", GetColor(255, 255, 255));
 	}
 }
 

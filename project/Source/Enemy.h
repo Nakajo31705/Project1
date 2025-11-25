@@ -6,6 +6,7 @@
 #include "MonsterDataBase.h"
 #include "TypeEffective.h"
 #include "Player.h"
+#include "LogManager.h"
 
 class Enemy : public GameObject
 {
@@ -18,13 +19,14 @@ public:
 	Monster* GetActiveMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 private:
-	//Player* playerMonster;					//プレイヤーのバトル場のモンスター
+	//Player* playerMonster;				//プレイヤーのバトル場のモンスター
 	Monster* activeMonster;					//バトル場のモンスター
-	std::vector<Monster> monsters;	//控えのモンスター
+	std::vector<Monster> monsters;			//控えのモンスター
 	std::vector<int> skillScore;			//技のスコア値を管理するための配列
 
 
 	//描画用
+	LogManager logManager;					//ログ表示用
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;

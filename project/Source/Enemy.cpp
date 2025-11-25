@@ -17,6 +17,15 @@ Enemy::Enemy(MonsterDataBase& db)
 	{
 		activeMonster = &monsters[0];
 	}
+
+	//バトル場のモンスターを表示
+	if (activeMonster) {
+		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
+		logManager.AddLog(msg.c_str(), defDrawX, defDrawY, 1000);
+	}
+	else {
+		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
+	}
 }
 
 Enemy::~Enemy()
@@ -30,13 +39,6 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	if (activeMonster) {
-		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
-		DrawString(defDrawX, defDrawY, msg.c_str(), GetColor(255, 255, 255));
-	}
-	else {
-		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
-	}
 }
 
 Monster* Enemy::GetActiveMonster()
