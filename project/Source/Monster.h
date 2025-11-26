@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "Skill.h"
+#include "LogManager.h"
 
 enum class MonsterType;
 
@@ -42,6 +43,7 @@ private:
 	int maxHP;
 	int currentHP;
 	MonsterType type;
+	LogManager log;
 
 	std::string monster;
 	std::vector<Skill> skills;

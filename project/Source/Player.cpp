@@ -51,7 +51,10 @@ void Player::Draw()
 {
 }
 
-// バトル場のモンスターを取得
+/// <summary>
+/// バトル場のモンスターを取得
+/// </summary>
+/// <returns></returns>
 Monster* Player::GetActiveMonster()
 {
 	return activeMonster;
@@ -62,7 +65,7 @@ Monster* Player::GetActiveMonster()
 /// </summary>
 void Player::SwitchMonster()
 {
-	//選んだモンスターじゃなくてreserveの先頭をactiveになるように変更する
+	//reserveの先頭をactiveにする
 	if (selected == 1 && activeMonster != nullptr)
 	{
 		//バトル場のモンスターを控えに戻す

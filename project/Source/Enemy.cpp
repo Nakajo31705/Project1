@@ -41,11 +41,21 @@ void Enemy::Draw()
 {
 }
 
+/// <summary>
+/// エネミーのバトル場のモンスターを取得
+/// </summary>
+/// <returns></returns>
 Monster* Enemy::GetActiveMonster()
 {
 	return activeMonster;
 }
 
+/// <summary>
+/// エネミーのスキル選択の処理
+/// (現在はランダムでやっている後で修正予定)
+/// </summary>
+/// <param name="player"></param>
+/// <param name="enemy"></param>
 void Enemy::SkillSelect(Monster* player, Monster* enemy)
 {
 	//エネミーのスキル取得
@@ -60,4 +70,11 @@ void Enemy::SkillSelect(Monster* player, Monster* enemy)
 	
 	//ランダムに選択
 	Skill selectedSkill = skills[dis(gen)];
+}
+
+/// <summary>
+/// エネミーのカードの選択
+/// </summary>
+void Enemy::CardSelect()
+{
 }

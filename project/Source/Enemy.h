@@ -18,6 +18,7 @@ public:
 
 	Monster* GetActiveMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
+	void CardSelect();
 private:
 	//Player* playerMonster;				//プレイヤーのバトル場のモンスター
 	Monster* activeMonster;					//バトル場のモンスター
