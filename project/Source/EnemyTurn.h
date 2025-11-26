@@ -1,6 +1,9 @@
 #pragma once
 #include "TurnState.h"
-#include "GameManager.h"
+#include "Player.h"
+#include "Enemy.h"
+
+class GameManager;
 
 enum class EnemySubState
 {

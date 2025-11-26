@@ -1,5 +1,8 @@
 #include "GameManager.h"
 #include "PlayerTurn.h"
+#include "EnemyTurn.h"
+#include "TurnState.h"
+
 GameManager::GameManager()
 {
 	playerTurn = new PlayerTurn(this);
@@ -26,18 +29,10 @@ void GameManager::ChangeState(TurnState* newState)
 	if (currentState)
 	{
 		currentState->Exit();
-		delete currentState;
 	}
 		
 	currentState = newState;
+
 	if (currentState)
 		currentState->Enter();
-}
-void GameManager::ChangeTurn() {
-	if (playerTurn->GetTurn()) {
-		enemyTurn->Enter();
-	}
-	else {
-		playerTurn->Enter();
-	}
 }

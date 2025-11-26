@@ -1,4 +1,5 @@
 #include "EnemyTurn.h"
+#include "GameManager.h"
 
 EnemyTurn::EnemyTurn(GameManager* gm)
 	:gameManager(gm) {

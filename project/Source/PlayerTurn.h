@@ -1,8 +1,9 @@
 #pragma once
-#include "GameManager.h"
 #include "TurnState.h"
-#include "EnemyTurn.h"
 #include "Player.h"
+#include "Enemy.h"
+
+class GameManager;
 
 enum class PlayerSubState
 {
@@ -25,7 +26,7 @@ public:
 
 	//ƒƒjƒ…[
 	void Menu();
-	//bool GetTurn(){return myTurn;}
+	bool GetTurn(){return myTurn;}
 
 private:
 	GameManager* gameManager;

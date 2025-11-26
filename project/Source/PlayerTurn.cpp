@@ -1,4 +1,7 @@
 #include "PlayerTurn.h"
+#include "GameManager.h"
+#include "EnemyTurn.h"
+#include "TurnState.h"
 
 PlayerTurn::PlayerTurn(GameManager* gm)
 	:gameManager(gm)
@@ -47,7 +50,7 @@ void PlayerTurn::Exit()
 {
 	//ターン終了にエネミーのターンにする
 	DrawString(defDrawX + 100, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
-	gameManager->ChangeTurn();
+	gameManager->ChangeState(gameManager->GetEnemyTurn());
 	myTurn = false;
 }
 
@@ -57,16 +60,17 @@ void PlayerTurn::Exit()
 /// </summary>
 void PlayerTurn::SelectEnd()
 {
-	if (playCount < 2)
-	{
-		subState = PlayerSubState::MenuSelect;
-		playCount++;
-		WaitTimer(1000);
-	}
-	if (playCount > 2)
+	playCount++;
+
+	if (playCount >= 2)
 	{
 		subState = PlayerSubState::Done;
 		playCount = 0;
+	}
+	else
+	{
+		subState = PlayerSubState::MenuSelect;
+		WaitTimer(1000);
 	}
 		
 }

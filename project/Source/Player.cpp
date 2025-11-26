@@ -138,9 +138,10 @@ void Player::SkillSelect()
 			//UŒ‚‘ÎÛ‚Ìæ“¾
 			Enemy* enemy = FindGameObject<Enemy>();
 			Monster* activeEnemyMonster = enemy->GetActiveMonster();
+			int index = selectSkillIndex;
 
 			//UŒ‚‘ÎÛ‚ÆUŒ‚‚µ‚½‹Z‚ğˆø”‚Æ‚µ‚Ä•Ô‚µUŒ‚‚·‚é
-			activeMonster->Attack(*activeEnemyMonster, *selectedSkill);
+			activeMonster->Attack(*activeEnemyMonster, skills[index]);
 
 			//‹Z‘I‘ğI—¹
 			SelectFinished();
