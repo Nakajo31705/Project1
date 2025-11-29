@@ -4,22 +4,23 @@
 Player::Player(MonsterDataBase& db)
 {
 	//モンスターに技を設定＆monstersリストに追加
+
+	//剣士の設定
 	Monster swordMan("剣士", db.GetMonsterHP("剣士"), db.GetType("物理"));
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
 		swordMan.SetSkills(skills);
 	}
-
 	monsters.push_back(swordMan);
 
+	//魔法使いの設定
 	Monster wizard("魔法使い", db.GetMonsterHP("魔法使い"), db.GetType("魔法"));
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));
 		wizard.SetSkills(skills);
 	}
-
 	monsters.push_back(wizard);
 
 	//控えリストの最初のモンスターをバトル場に設定
@@ -97,7 +98,6 @@ void Player::SkillSelect()
 {
 	if (activeMonster != nullptr)
 	{
-
 		//バトル場のモンスターが使用できる技を表示
 		std::vector<Skill> skills = activeMonster->GetSkills();
 		for (int i = 0; i < skills.size(); i++)

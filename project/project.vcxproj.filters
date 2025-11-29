@@ -177,6 +177,9 @@
     <ClInclude Include="Source\PlayerObserver.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
+    <ClInclude Include="Source\KeyInput.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

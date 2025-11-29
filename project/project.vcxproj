@@ -156,6 +156,7 @@
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyTurn.h" />
     <ClInclude Include="Source\GameManager.h" />
+    <ClInclude Include="Source\KeyInput.h" />
     <ClInclude Include="Source\LogManager.h" />
     <ClInclude Include="Source\Monster.h" />
     <ClInclude Include="Source\MonsterDataBase.h" />

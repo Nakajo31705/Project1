@@ -114,22 +114,25 @@ void PlayerTurn::Menu()
 	}
 
 	//コマンド決定の処理(メニュー)
-	if (CheckHitKey(KEY_INPUT_RETURN) == 1)
+	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 	{
 		player->SetSelected(selected);
 		if (selected == 0)
 		{
 			DrawString(defDrawX, defDrawY*2, "技を選択", GetColor(255, 255, 255));
+			WaitTimer(150);
 			subState = PlayerSubState::SkillSelect;
 		}
 		else if (selected == 1)
 		{
 			DrawString(defDrawX, defDrawY*2, "モンスターを交換", GetColor(255, 255, 255));
+			WaitTimer(150);
 			subState = PlayerSubState::MonsterSelect;
 		}
 		else if (selected == 2)
 		{
 			DrawString(defDrawX, defDrawY * 2, "カードの選択", GetColor(255, 255, 255));
+			WaitTimer(150);
 			subState = PlayerSubState::CardSelect;
 		}
 	}

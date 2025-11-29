@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "LogManager.h"
+#include "KeyInput.h"
 
 PlayScene::PlayScene()
 {
@@ -10,6 +11,7 @@ PlayScene::PlayScene()
 	new Enemy(MDB);
 	new GameManager();
 	new LogManager();
+	new KeyInput();
 }
 
 PlayScene::~PlayScene()

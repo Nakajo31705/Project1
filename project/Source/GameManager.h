@@ -2,6 +2,7 @@
 #include "../Library/GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "KeyInput.h"
 
 class PlayerTurn;
 class EnemyTurn;
@@ -22,4 +23,5 @@ private:
 	EnemyTurn* enemyTurn = nullptr;
 	PlayerTurn* playerTurn = nullptr;
 	TurnState* currentState = nullptr;
+	KeyInput input;
 };
