@@ -2,6 +2,7 @@
 #include "TurnState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "LogManager.h"
 #include "KeyInput.h"
 
 class GameManager;
@@ -35,6 +36,7 @@ private:
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 	int playCount = 0;
+	LogManager log;
 	KeyInput input;
 
 	int defDrawX = 100;

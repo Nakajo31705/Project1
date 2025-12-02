@@ -10,7 +10,8 @@ EnemyTurn::EnemyTurn(GameManager* gm)
 /// </summary>
 void EnemyTurn::Enter()
 {
-	DrawString(defDraw, defDraw, "エネミーのターン", GetColor(255, 255, 255));
+	log.AddLog("エネミーのターン", 100, 200, 1000);
+	myTurn = true;
 }
 
 void EnemyTurn::Update()
@@ -40,6 +41,8 @@ void EnemyTurn::Update()
 void EnemyTurn::Exit()
 {
 	DrawString(defDraw, defDraw, "エネミーのターン終了", GetColor(255, 255, 255));
+	//gameManager->ChangeState(gameManager->GetPlayerTurn());
+	myTurn = false;
 }
 
 /// <summary>

@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "PlayerObserver.h"
 #include "LogManager.h"
+#include "KeyInput.h"
 
 
 class Player : public GameObject
@@ -34,7 +35,8 @@ private:
 
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
-	std::vector<PlayerObserver*> listeners;
+	std::vector<PlayerObserver*> listeners;	//オブザーバーリスト
+	KeyInput input;							//キーボード入力管理
 
 	void SelectFinished();					//選択終了の通知
 

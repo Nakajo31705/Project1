@@ -2,6 +2,7 @@
 #include "TurnState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "LogManager.h"
 
 class GameManager;
 
@@ -28,6 +29,7 @@ private:
 	Player* player;
 	Enemy* enemy;
 	EnemySubState subState = EnemySubState::MenuSelect;
+	LogManager log;
 
 	int defDraw = 100;
 };

@@ -16,7 +16,7 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 void PlayerTurn::Enter()
 {
 	myTurn = true;
-	DrawString(defDrawX, defDrawY, "プレイヤーのターン", GetColor(255, 255, 255));
+	log.AddLog("プレイヤーのターン", 100, 200, 1000);
 }
 
 void PlayerTurn::Update()
@@ -49,7 +49,7 @@ void PlayerTurn::Update()
 void PlayerTurn::Exit()
 {
 	//ターン終了にエネミーのターンにする
-	DrawString(defDrawX + 100, defDrawY, "プレイヤーのターン終了", GetColor(255, 255, 255));
+	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
 	gameManager->ChangeState(gameManager->GetEnemyTurn());
 	myTurn = false;
 }

@@ -115,13 +115,13 @@ void Player::SkillSelect()
 		}
 
 		//ƒL[“ü—Í‚Ì”»’è
-		if (CheckHitKey(KEY_INPUT_UP) == 1)
+		if (input.isJustReleased(KEY_INPUT_UP) == 1)
 		{
 			selectSkillIndex--;
 			if (selectSkillIndex < 0) selectSkillIndex = skills.size() - 1;
 			WaitTimer(150);
 		}
-		if (CheckHitKey(KEY_INPUT_DOWN) == 1)
+		if (input.isJustReleased(KEY_INPUT_DOWN) == 1)
 		{
 			selectSkillIndex++;
 			if (selectSkillIndex >= skills.size()) selectSkillIndex = 0;
@@ -129,7 +129,7 @@ void Player::SkillSelect()
 		}
 
 		//Œˆ’è‚Ìˆ—
-		if (CheckHitKey(KEY_INPUT_RETURN) == 1)
+		if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 		{
 			selectedSkill = &skills[selectSkillIndex];
 			std::string logSkillSelected = selectedSkill->GetName() + "‚ğ‘I‘ğ\n";
