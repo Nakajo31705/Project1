@@ -174,10 +174,13 @@
     <ClInclude Include="Source\LogManager.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PlayerObserver.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="Source\KeyInput.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerObserver.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CardDataBase.h">
       <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>

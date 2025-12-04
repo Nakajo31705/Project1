@@ -24,7 +24,7 @@ public:
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
-	void SelectEnd() override;
+	void SelectEnd();
 
 	//ƒƒjƒ…[
 	void Menu();

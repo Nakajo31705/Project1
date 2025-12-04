@@ -21,6 +21,7 @@ public:
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
+	void SelectEnd();
 
 	void Menu();
 
@@ -31,5 +32,7 @@ private:
 	EnemySubState subState = EnemySubState::MenuSelect;
 	LogManager log;
 
+	int playCount = 0;
+	int selected;
 	int defDraw = 100;
 };

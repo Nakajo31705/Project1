@@ -1,7 +1,6 @@
 #include "PlayerTurn.h"
 #include "GameManager.h"
 #include "EnemyTurn.h"
-#include "TurnState.h"
 
 PlayerTurn::PlayerTurn(GameManager* gm)
 	:gameManager(gm)

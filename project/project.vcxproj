@@ -153,6 +153,7 @@
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\Time.h" />
     <ClInclude Include="Source\BootScene.h" />
+    <ClInclude Include="Source\CardDataBase.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyTurn.h" />
     <ClInclude Include="Source\GameManager.h" />
