@@ -154,6 +154,7 @@
     <ClInclude Include="Library\Time.h" />
     <ClInclude Include="Source\BootScene.h" />
     <ClInclude Include="Source\CardDataBase.h" />
+    <ClInclude Include="Source\CardManager.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyTurn.h" />
     <ClInclude Include="Source\GameManager.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\Time.cpp" />
     <ClCompile Include="Source\BootScene.cpp" />
+    <ClCompile Include="Source\CardDataBase.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemyTurn.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />

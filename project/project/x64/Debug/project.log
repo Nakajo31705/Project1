@@ -1,17 +1,5 @@
-﻿  imgui.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_dx9.cpp
-  imgui_impl_win32.cpp
-  imgui_ja_gryph_ranges.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  App.cpp
-  main.cpp
-  ObjectManager.cpp
-  SceneManager.cpp
-  Time.cpp
-  BootScene.cpp
+﻿  main.cpp
+  CardDataBase.cpp
   Enemy.cpp
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         with
@@ -23,14 +11,11 @@ C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C42
   LogManager.cpp
   Monster.cpp
   MonsterDataBase.cpp
-  コードを生成中...
-  コンパイル中...
   Player.cpp
-C:\Users\student\Documents\Project1\project\Source\Player.cpp(121,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(120,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
   PlayerTurn.cpp
   PlayScene.cpp
   SceneFactory.cpp
   Skill.cpp
-  TitleScene.cpp
   コードを生成中...
   project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe
