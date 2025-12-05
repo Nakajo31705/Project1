@@ -1,11 +1,11 @@
 #pragma once
 #include "CardDataBase.h"
+#include "Character.h"
 
 class CardManager
 {
 public:
-	//void UseCard(int id, );
-	//ˆø”‚ª‚Ü‚¾‚«‚Ü‚Á‚Ä‚È‚¢‚©‚çŒˆ‚ß‚é
+	void UseCard(int id, Character& user, Character* target);
 private:
-	CardDataBase cradDB;
+	CardDataBase cardDB;
 };

@@ -1,11 +1,7 @@
 #include "Monster.h"
 
-Monster::Monster(std::string _name, int _maxHP,MonsterType _type)
-	:name(_name), maxHP(_maxHP), currentHP(_maxHP) , type(_type){}
-
-Monster::~Monster()
-{
-}
+Monster::Monster(std::string name, int maxHP, MonsterType type)
+	:Character(name, maxHP), type(type) {}
 
 void Monster::Update()
 {
@@ -20,41 +16,31 @@ void Monster::Draw()
 /// </summary>
 /// <param name="target"></param>
 /// <param name="_skill"></param>
-void Monster::Attack(Monster& target, const Skill& _skill)
+void Monster::Attack(Monster& target, const Skill& skill)
 {
-	std::string logAttack = name + "は" + target.GetName() + "に" + _skill.GetName() + "を使った";
+	OnAttackLog(skill.GetName(), target.GetName());
+	target.TakeDamage(skill.GetPower());
+}
+
+/// <summary>
+/// ダメージを受けたときのログ
+/// </summary>
+/// <param name="damage"></param>
+void Monster::OnDamageLog(int damage)
+{
+	std::string logDamage = GetName() + "は" + std::to_string(damage) + "のダメージを受けた！";
+	log.AddLog(logDamage.c_str(), 100, 100, 1000);
+}
+
+/// <summary>
+/// 攻撃をした時のログ
+/// </summary>
+/// <param name="skillName"></param>
+/// <param name="targetName"></param>
+void Monster::OnAttackLog(const std::string& skillName, const std::string& targetName)
+{
+	std::string logAttack = GetName() + "は" + targetName + "に" + skillName + "の攻撃をした！";
 	log.AddLog(logAttack.c_str(), 100, 100, 1000);
-	target.TakeDamage(_skill.GetPower());
-}
-
-/// <summary>
-/// ダメージを受ける処理
-/// </summary>
-/// <param name="_damage"></param>
-void Monster::TakeDamage(int _damage)
-{
-	currentHP -= _damage;
-	if (currentHP < 0) currentHP = 0;
-	std::string logTakeDamage = name + "は" + std::to_string(_damage) + "のダメージを受けた";
-	log.AddLog(logTakeDamage.c_str(), 100, 100, 1000);
-}
-
-/// <summary>
-/// モンスターの名前を取得
-/// </summary>
-/// <returns></returns>
-std::string  Monster::GetName() const
-{
-	return name;
-}
-
-/// <summary>
-/// モンスターの現在のHPを取得
-/// </summary>
-/// <returns></returns>
-int Monster::GetCurrentHP() const
-{
-	return currentHP;
 }
 
 /// <summary>

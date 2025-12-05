@@ -6,46 +6,37 @@
 #include <vector>
 #include "Skill.h"
 #include "LogManager.h"
+#include "Character.h"
 
 enum class MonsterType;
 
-class Monster : public GameObject
+class Monster : public GameObject, public Character
 {
 public:
-	Monster(std::string _name, int _maxHP, MonsterType _type);
-	~Monster();
+	Monster(std::string name, int maxHP, MonsterType type);
 	void Update() override;
 	void Draw() override;
 
 	//攻撃の処理
-	void Attack(Monster& target, const Skill& _skill);
+	void Attack(Monster& target, const Skill& skill);
 
-	//攻撃を受ける処理
-	void TakeDamage(int _damage);
+	//ダメージのログ
+	void OnDamageLog(int damage) override;
 
-	//モンスター名を取得
-	std::string GetName() const;
-	
-	//現在のHPを取得
-	int GetCurrentHP() const;
+	//攻撃のログ
+	void OnAttackLog(const std::string& skillName, const std::string& targetName) override;
 
 	//スキルを取得
 	const std::vector<Skill>& GetSkills() const;
 
 	//スキルをセット
-	void SetSkills(const std::vector<Skill>& _skills);
+	void SetSkills(const std::vector<Skill>& skills);
 
 	//タイプを取得
 	MonsterType GetType() const;
 
 private:
-	std::string name;
-	int maxHP;
-	int currentHP;
 	MonsterType type;
 	LogManager log;
-
-	std::string monster;
 	std::vector<Skill> skills;
-
 };

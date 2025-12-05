@@ -37,7 +37,7 @@ struct CardData
 	std::string name;				//カードの名前
 	CardType cardType;				//カードの種類
 	int type;						//属性
-	std::vector<EffectInfo> info;	//効果の情報
+	std::vector<EffectInfo> effects;//効果の情報
 	std::string description;		//説明文
 
 };
