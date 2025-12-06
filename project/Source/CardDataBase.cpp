@@ -5,6 +5,9 @@ CardDataBase::CardDataBase()
 	Initialize();
 }
 
+/// <summary>
+/// カードを初期化してm_cardsに保存
+/// </summary>
 void CardDataBase::Initialize()
 {
 	/*
@@ -72,6 +75,11 @@ void CardDataBase::Initialize()
 		});
 }
 
+/// <summary>
+/// カードのIDを取得
+/// </summary>
+/// <param name="id"></param>
+/// <returns></returns>
 const CardData* CardDataBase::GetCardID(int id) const
 {
 	for (const auto& card : m_cards)
@@ -82,6 +90,10 @@ const CardData* CardDataBase::GetCardID(int id) const
 	return nullptr;
 }
 
+/// <summary>
+/// カードをすべて取得
+/// </summary>
+/// <returns></returns>
 const std::vector<CardData>& CardDataBase::GetAllCards() const
 {
 	return m_cards;

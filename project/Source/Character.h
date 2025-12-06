@@ -19,8 +19,17 @@ public:
 	//UŒ‚‚ğó‚¯‚éˆ—
 	virtual void TakeDamage(int damage);
 
+	//UŒ‚—Í‚ğ‚ ‚°‚éˆ—
+	virtual void AddBuff(float value, int duration);
+
+	//UŒ‚—Í‚ğ‰º‚°‚éˆ—
+	virtual void AddDebuff(float value, int duration);
+
 	//‰ñ•œ‚·‚éˆ—
-	virtual void Heal(int amount);
+	virtual void AddHeal(float amount);
+
+	//‘®«‚ğ•t—^‚·‚éˆ—
+	virtual void AddEmchant(int duration, int type);
 
 	//ƒ_ƒ[ƒWƒƒO
 	virtual void OnDamageLog(int damage) = 0;

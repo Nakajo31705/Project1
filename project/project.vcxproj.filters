@@ -81,9 +81,11 @@
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
     <ClCompile Include="Source\Character.cpp">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CardManager.cpp" />
+    <ClCompile Include="Source\CardManager.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -190,11 +192,11 @@
     <ClInclude Include="Source\CardDataBase.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CardManager.h">
-      <Filter>PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Character.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CardManager.h">
+      <Filter>PlayScene\h</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

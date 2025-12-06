@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "KeyInput.h"
+#include "CardManager.h"
 
 class PlayerTurn;
 class EnemyTurn;
@@ -23,5 +24,6 @@ private:
 	EnemyTurn* enemyTurn = nullptr;
 	PlayerTurn* playerTurn = nullptr;
 	TurnState* currentState = nullptr;
+	CardManager* cardManager;
 	KeyInput input;
 };

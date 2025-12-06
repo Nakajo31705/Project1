@@ -5,7 +5,7 @@
 class CardManager
 {
 public:
-	void UseCard(int id, Character& user, Character* target);
+	void UseCard(int id, Character* user, Character* target);
 private:
-	CardDataBase cardDB;
+	CardDataBase& cardDB;
 };

@@ -1,19 +1,15 @@
-﻿  imgui.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_dx9.cpp
-  imgui_impl_win32.cpp
-  imgui_ja_gryph_ranges.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  App.cpp
-  main.cpp
-  ObjectManager.cpp
-  SceneManager.cpp
-  Time.cpp
-  BootScene.cpp
-  CardDataBase.cpp
+﻿  CardDataBase.cpp
+  CardManager.cpp
   Character.cpp
+C:\Users\student\Documents\Project1\project\Source\CardManager.cpp(16,11): error C2228: '.AddDebuff' の左側はクラス、構造体、共用体でなければなりません
+      C:\Users\student\Documents\Project1\project\Source\CardManager.cpp(16,11):
+      型は 'Character *' です
+      C:\Users\student\Documents\Project1\project\Source\CardManager.cpp(16,11):
+      代わりに '->' を使用しますか?
+  
+C:\Users\student\Documents\Project1\project\Source\CardManager.cpp(20,2): error C2143: 構文エラー: ';' が '}' の前にありません。
+C:\Users\student\Documents\Project1\project\Source\CardManager.cpp(4,1): error C1075: '{': 一致するトークンが見つかりませんでした
+C:\Users\student\Documents\Project1\project\Source\Character.cpp(14,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
   Enemy.cpp
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         with
@@ -22,9 +18,6 @@ C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C42
 C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         ]
   EnemyTurn.cpp
   GameManager.cpp
-  LogManager.cpp
-  コードを生成中...
-  コンパイル中...
   Monster.cpp
   MonsterDataBase.cpp
   Player.cpp
@@ -33,6 +26,4 @@ C:\Users\student\Documents\Project1\project\Source\Player.cpp(120,63): warning C
   PlayScene.cpp
   SceneFactory.cpp
   Skill.cpp
-  TitleScene.cpp
   コードを生成中...
-  project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe

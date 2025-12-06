@@ -2,13 +2,18 @@
 #include <string>
 #include <vector>
 
-//カードの効果
+/// <summary>
+/// カードの効果
+/// 1.効果量
+/// 2.効果時間
+/// 3.タイプ
+/// </summary>
 enum class CardEffect
 {
 	AttackUP,			//攻撃力UP
 	AttackDowm,			//攻撃力Down
 	Heal,				//回復
-	AddType,			//属性付与
+	AddEnchant,			//属性付与
 	None				//無し
 };
 
