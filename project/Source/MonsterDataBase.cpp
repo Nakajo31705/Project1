@@ -10,8 +10,8 @@ MonsterDataBase::MonsterDataBase()
 /// <summary>
 /// モンスターのHPを取得する関数
 /// </summary>
-/// <param name="monsterName"></param>
-/// <returns>モンスターの名前を書いてHPを取得</returns>
+/// <param name="monsterName">モンスターの名前を書いてHPを取得</param>
+/// <returns></returns>
 int MonsterDataBase::GetMonsterHP(const std::string& monsterName) const
 {
 	auto it = monsterHP.find(monsterName);
@@ -20,6 +20,21 @@ int MonsterDataBase::GetMonsterHP(const std::string& monsterName) const
 		return it->second;
 	}
 	//名前が見つからない場合は0を返す
+	return 0;
+}
+
+/// <summary>
+/// モンスターの初期攻撃力を取得する関数
+/// </summary>
+/// <param name="monsterName">モンスターの名前を書いて攻撃力を取得</param>
+/// <returns></returns>
+int MonsterDataBase::GetMonsterPower(const std::string& monsterName) const
+{
+	auto it = monsterPower.find(monsterName);
+	if (it != monsterPower.end())
+	{
+		return it->second;
+	}
 	return 0;
 }
 
@@ -96,6 +111,10 @@ void MonsterDataBase::InitializeMonsters()
 	monsterHP["剣士"] = 100;
 	monsterHP["魔法使い"] = 100;
 	monsterHP["魔王"] = 300;
+
+	monsterPower["剣士"] = 0;
+	monsterPower["魔法使い"] = 0;
+	monsterPower["魔王"] = 0;
 
 	//モンスターのタイプを設定
 	type["物理"] = MonsterType::Physical;

@@ -2,7 +2,7 @@
 
 Enemy::Enemy(MonsterDataBase& db)
 {
-	Monster demonKing("–‚‰¤", db.GetMonsterHP("–‚‰¤"), db.GetType("•¨—"));
+	Monster demonKing("–‚‰¤", db.GetMonsterHP("–‚‰¤"), db.GetMonsterPower("–‚‰¤"), db.GetType("•¨—"));
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("aŒ‚", db.GetSkillPower("aŒ‚"), db.GetType("•¨—")));

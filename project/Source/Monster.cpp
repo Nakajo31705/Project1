@@ -1,7 +1,7 @@
 #include "Monster.h"
 
-Monster::Monster(std::string name, int maxHP, MonsterType type)
-	:Character(name, maxHP), type(type) {}
+Monster::Monster(std::string name, int maxHP, int power, MonsterType type)
+	:Character(name, maxHP, power), type(type) {}
 
 void Monster::Update()
 {

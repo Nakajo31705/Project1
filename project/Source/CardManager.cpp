@@ -7,7 +7,7 @@ void CardManager::UseCard(int id, Character* user, Character* target)
 
 	for (const auto& effect : card->effects)
 	{
-		switch(CardEffect::None)
+		switch(effect.effect)
 		{
 		case CardEffect::AttackUP:
 			user->AddBuff(effect.value, effect.duration);
@@ -19,6 +19,10 @@ void CardManager::UseCard(int id, Character* user, Character* target)
 			user->AddHeal(effect.value);
 			break;
 		case CardEffect::AddEnchant:
-			user->AddEmchant(effect.duration, effect.type);
+			user->AddEnchant(effect.duration, effect.type);
+			break;
+		default:
+			log.AddLog("そのカードは使えません", 100, 100, 1000);
+			break;
 	}
 }

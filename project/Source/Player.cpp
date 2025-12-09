@@ -5,7 +5,7 @@ Player::Player(MonsterDataBase& db)
 	//モンスターに技を設定＆monstersリストに追加
 
 	//剣士の設定
-	Monster swordMan("剣士", db.GetMonsterHP("剣士"), db.GetType("物理"));
+	Monster swordMan("剣士", db.GetMonsterHP("剣士"),db.GetMonsterPower("剣士"), db.GetType("物理"));
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
@@ -14,7 +14,7 @@ Player::Player(MonsterDataBase& db)
 	monsters.push_back(swordMan);
 
 	//魔法使いの設定
-	Monster wizard("魔法使い", db.GetMonsterHP("魔法使い"), db.GetType("魔法"));
+	Monster wizard("魔法使い", db.GetMonsterHP("魔法使い"), db.GetMonsterPower("魔法使い"), db.GetType("魔法"));
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));
@@ -65,7 +65,7 @@ Monster* Player::GetActiveMonster()
 /// </summary>
 void Player::SwitchMonster()
 {
-	//reserveの先頭をactiveにする
+	//reserveの先頭activeにする
 	if (selected == 1 && activeMonster != nullptr)
 	{
 		//バトル場のモンスターを控えに戻す
@@ -161,7 +161,7 @@ void Player::CardSelect()
 
 /// <summary>
 /// listenerコンテナに追加する関数:
-/// 追加されたlistenerはプレイヤーの処理終了の通知を受け取れるようになる
+/// 追加されlistenerはプレイヤーの処理終了の通知を受け取れるようになる
 /// </summary>
 /// <param name="listener"></param>
 void Player::AddListener(PlayerObserver* listener)

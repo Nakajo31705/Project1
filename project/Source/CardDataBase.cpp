@@ -57,9 +57,9 @@ void CardDataBase::Initialize()
 	({
 		4,
 		"‰Š‘®«•t—^",
-		CardType::Emchant,
+		CardType::Enchant,
 		1,
-		{{CardEffect::AddType,0, 1, 1}},
+		{{CardEffect::AddEnchant,0, 1, 1}},
 		"‹Z‚É‰Š‘®«‚ğ•t—^‚·‚é(1ƒ^[ƒ“Œp‘±)"
 	});
 
@@ -68,9 +68,9 @@ void CardDataBase::Initialize()
 	({
 		5,
 		"—‹‘®«•t—^",
-		CardType::Emchant,
+		CardType::Enchant,
 		2,
-		{{CardEffect::AddType,0, 1, 2}},
+		{{CardEffect::AddEnchant,0, 1, 2}},
 		"‹Z‚É—‹‘®«‚ğ•t—^‚·‚é(‚Pƒ^[ƒ“Œp‘±)"
 		});
 }

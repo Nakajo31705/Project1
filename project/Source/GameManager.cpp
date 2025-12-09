@@ -24,15 +24,23 @@ void GameManager::Draw()
 {
 }
 
+/// <summary>
+/// ターンをチェンジする関数
+/// </summary>
+/// <param name="newState">変更したいステートを入力</param>
 void GameManager::ChangeState(TurnState* newState)
 {
 	if (currentState)
 	{
 		currentState->Exit();
+		turnEnd = true;
 	}
 		
 	currentState = newState;
 
 	if (currentState)
+	{
 		currentState->Enter();
+		turnEnd = false;
+	}	
 }

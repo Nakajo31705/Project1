@@ -16,6 +16,7 @@ class MonsterDataBase
 public:
 	MonsterDataBase();
 	int GetMonsterHP(const std::string& monsterName) const;
+	int GetMonsterPower(const std::string& monsterName) const;
 	int GetSkillPower(const std::string& skillName) const;
 	std::vector<Monster> GetMonsters() const;
 	std::vector<Skill> GetSkills() const;
@@ -28,6 +29,7 @@ private:
 	std::vector<Monster> monsterList;							//モンスターのリスト
 	std::vector<Skill> skillList;								//スキルのリスト
 	std::unordered_map<std::string, int> monsterHP;				//モンスターごとのHP
+	std::unordered_map < std::string, int> monsterPower;		//モンスターの初期攻撃力
 	std::unordered_map<std::string, int> skillPower;			//技ごとの威力
 	std::unordered_map<std::string, MonsterType> type;			//モンスターごとのタイプ
 

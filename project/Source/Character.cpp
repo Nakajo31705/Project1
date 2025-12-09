@@ -1,7 +1,12 @@
 #include "Character.h"
 
-Character::Character(const std::string& name, int maxHP)
-	: name(name), maxHP(maxHP), currentHP(maxHP) {}
+Character::Character(const std::string& name, int maxHP, int power)
+	: name(name), maxHP(maxHP), currentHP(maxHP), power(power) {}
+
+void Character::Update()
+{
+	turnEnd = gameManager->GetTurnEnded();
+}
 
 /// <summary>
 /// ダメージを受ける処理
@@ -20,7 +25,7 @@ void Character::TakeDamage(int damage)
 /// <param name="duration">効果時間</param>
 void Character::AddBuff(float value, int duration)
 {
-
+	int buffSkill = skill->GetPower()* value;
 }
 
 /// <summary>
@@ -47,6 +52,6 @@ void Character::AddHeal(float amount)
 /// </summary>
 /// <param name="duration">効果時間</param>
 /// <param name="type">タイプ</param>
-void Character::AddEmchant(int duration, int type)
+void Character::AddEnchant(int duration, int type)
 {
 }

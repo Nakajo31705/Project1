@@ -13,7 +13,7 @@ enum class MonsterType;
 class Monster : public GameObject, public Character
 {
 public:
-	Monster(std::string name, int maxHP, MonsterType type);
+	Monster(std::string name, int maxHP, int power, MonsterType type);
 	void Update() override;
 	void Draw() override;
 

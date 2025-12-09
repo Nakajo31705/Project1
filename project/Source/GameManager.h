@@ -20,10 +20,12 @@ public:
 	void ChangeState(TurnState* newState);
 	EnemyTurn* GetEnemyTurn() const { return enemyTurn; }
 	PlayerTurn* GetPlayerTurn() const { return playerTurn; }
+	bool GetTurnEnded() const { return turnEnd; }
 private:
 	EnemyTurn* enemyTurn = nullptr;
 	PlayerTurn* playerTurn = nullptr;
 	TurnState* currentState = nullptr;
 	CardManager* cardManager;
 	KeyInput input;
+	bool turnEnd = false;
 };

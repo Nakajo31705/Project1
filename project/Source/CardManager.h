@@ -1,4 +1,5 @@
 #pragma once
+#include "LogManager.h"
 #include "CardDataBase.h"
 #include "Character.h"
 
@@ -8,4 +9,5 @@ public:
 	void UseCard(int id, Character* user, Character* target);
 private:
 	CardDataBase& cardDB;
+	LogManager log;
 };

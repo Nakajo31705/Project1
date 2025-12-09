@@ -1,11 +1,14 @@
 #pragma once
 #include <string>
+#include "GameManager.h"
+#include "Skill.h"
 
 class Character
 {
 public:
-	Character(const std::string& name, int maxHP);
+	Character(const std::string& name, int maxHP,int power);
 	virtual ~Character() = default;
+	void Update();
 
 	//–¼‘O‚Ìæ“¾
 	const std::string& GetName() const { return name; }
@@ -15,6 +18,9 @@ public:
 
 	//Œ»İ‚ÌHP‚Ìæ“¾
 	int GetCurrentHP() const { return currentHP; }
+
+	//Œ»İ‚ÌUŒ‚—Í‚ğæ“¾
+	int GetCurrentPower() const { return power; }
 
 	//UŒ‚‚ğó‚¯‚éˆ—
 	virtual void TakeDamage(int damage);
@@ -29,7 +35,7 @@ public:
 	virtual void AddHeal(float amount);
 
 	//‘®«‚ğ•t—^‚·‚éˆ—
-	virtual void AddEmchant(int duration, int type);
+	virtual void AddEnchant(int duration, int type);
 
 	//ƒ_ƒ[ƒWƒƒO
 	virtual void OnDamageLog(int damage) = 0;
@@ -37,7 +43,12 @@ public:
 	//UŒ‚ƒƒO
 	virtual void OnAttackLog(const std::string& skillName, const std::string& targetName) = 0;
 private:
+	GameManager* gameManager;
+	Skill* skill;
 	std::string name;
 	int maxHP;
 	int currentHP;
+	int power;
+	
+	bool turnEnd = false;
 };

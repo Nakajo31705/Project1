@@ -20,7 +20,7 @@ enum class CardEffect
 //効果の情報
 struct EffectInfo
 {
-	CardEffect efect;	//効果の種類
+	CardEffect effect;	//効果の種類
 	float value;		//効果量(攻撃力や回復力)
 	int duration;		//効果時間(何ターンなど)
 	int type;			//タイプ(数値でタイプを設定)
@@ -32,7 +32,7 @@ enum class CardType
 	Buff,				//バフ
 	Debuff,				//デバフ
 	Heal,				//回復
-	Emchant				//属性付与
+	Enchant				//属性付与
 };
 
 //カードのデータ
