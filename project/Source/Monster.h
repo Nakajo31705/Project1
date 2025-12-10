@@ -17,9 +17,6 @@ public:
 	void Update() override;
 	void Draw() override;
 
-	//攻撃の処理
-	void Attack(Monster& target, const Skill& skill);
-
 	//ダメージのログ
 	void OnDamageLog(int damage) override;
 

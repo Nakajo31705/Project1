@@ -1,8 +1,8 @@
 #pragma once
 #include "LogManager.h"
 #include "CardDataBase.h"
-#include "Character.h"
-
+//#include "Character.h"
+class Character;
 class CardManager
 {
 public:

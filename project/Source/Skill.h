@@ -11,6 +11,9 @@ public:
 	//ˆĞ—Í‚ğæ“¾
 	int GetPower() const;
 
+	//‹Z‚ÌˆĞ—Í‚ğ•ÏX
+	void SetPower(int chnagedPower);
+
 	//–¼‘O‚ğæ“¾
 	std::string GetName() const;
 

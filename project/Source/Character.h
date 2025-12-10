@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-#include "GameManager.h"
+class GameManager;
 #include "Skill.h"
+#include "CardManager.h"
 
 class Character
 {
@@ -25,14 +26,17 @@ public:
 	//UŒ‚‚ğó‚¯‚éˆ—
 	virtual void TakeDamage(int damage);
 
+	//UŒ‚‚Ìˆ—
+	virtual void Attack(Character& target, const Skill& skill);
+
 	//UŒ‚—Í‚ğ‚ ‚°‚éˆ—
-	virtual void AddBuff(float value, int duration);
+	virtual void AddBuff(float value);
 
 	//UŒ‚—Í‚ğ‰º‚°‚éˆ—
-	virtual void AddDebuff(float value, int duration);
+	virtual void AddDebuff(float value);
 
 	//‰ñ•œ‚·‚éˆ—
-	virtual void AddHeal(float amount);
+	virtual void AddHeal(float value);
 
 	//‘®«‚ğ•t—^‚·‚éˆ—
 	virtual void AddEnchant(int duration, int type);
@@ -44,11 +48,15 @@ public:
 	virtual void OnAttackLog(const std::string& skillName, const std::string& targetName) = 0;
 private:
 	GameManager* gameManager;
+	
 	Skill* skill;
 	std::string name;
 	int maxHP;
 	int currentHP;
 	int power;
+
+	float value;
+	int duration;
 	
 	bool turnEnd = false;
 };

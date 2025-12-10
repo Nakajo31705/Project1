@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "GameManager.h"
 
 Character::Character(const std::string& name, int maxHP, int power)
 	: name(name), maxHP(maxHP), currentHP(maxHP), power(power) {}
@@ -19,13 +20,33 @@ void Character::TakeDamage(int damage)
 }
 
 /// <summary>
+/// UŒ‚‚Ìˆ—
+/// </summary>
+/// <param name="target"></param>
+/// <param name="_skill"></param>
+void Character::Attack(Character& target, const Skill& skill)
+{
+	OnAttackLog(skill.GetName(), target.GetName());
+	power = skill.GetPower();
+	//auto eff = CardDataBase::GetCardID(1)->effects;
+	//for (auto e : eff) 
+	//{
+	//	e.value;
+	//	e.duration;
+	//	AddBuff(e.value, e.duration);
+	//}
+	target.TakeDamage(power);
+}
+
+/// <summary>
 /// UŒ‚—Í‚ğ‚ ‚°‚éŠÖ”
 /// </summary>
 /// <param name="value">Œø‰Ê—Ê</param>
 /// <param name="duration">Œø‰ÊŠÔ</param>
-void Character::AddBuff(float value, int duration)
+void Character::AddBuff(float value)
 {
 	int buffSkill = skill->GetPower()* value;
+	power  = buffSkill;
 }
 
 /// <summary>
@@ -33,7 +54,7 @@ void Character::AddBuff(float value, int duration)
 /// </summary>
 /// <param name="value">Œø‰Ê—Ê</param>
 /// <param name="duration">Œø‰ÊŠÔ</param>
-void Character::AddDebuff(float value, int duration)
+void Character::AddDebuff(float value)
 {
 }
 

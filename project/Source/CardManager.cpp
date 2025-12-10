@@ -1,4 +1,5 @@
 #include "CardManager.h"
+#include "Character.h"
 
 void CardManager::UseCard(int id, Character* user, Character* target)
 {
@@ -7,22 +8,28 @@ void CardManager::UseCard(int id, Character* user, Character* target)
 
 	for (const auto& effect : card->effects)
 	{
-		switch(effect.effect)
+		switch (effect.effect)
 		{
 		case CardEffect::AttackUP:
-			user->AddBuff(effect.value, effect.duration);
+			float val = effect.value;
+			user->AddBuff(val);
 			break;
-		case CardEffect::AttackDowm:
-				target->AddDebuff(effect.value, effect.duration);
+		case CardEffect::AttackDown:
+			float val = effect.value;
+			target->AddDebuff(val);
 			break;
 		case CardEffect::Heal:
-			user->AddHeal(effect.value);
+			float val = effect.value;
+			user->AddHeal(val);
 			break;
 		case CardEffect::AddEnchant:
-			user->AddEnchant(effect.duration, effect.type);
+			int dura = effect.duration;
+			int type = effect.type;
+			user->AddEnchant(dura, type);
 			break;
 		default:
 			log.AddLog("そのカードは使えません", 100, 100, 1000);
 			break;
+		}
 	}
 }

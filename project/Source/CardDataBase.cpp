@@ -37,7 +37,7 @@ void CardDataBase::Initialize()
 		"攻撃力Down",
 		CardType::Debuff,
 		0,
-		{{CardEffect::AttackDowm,1.2f, 1, 0}},
+		{{CardEffect::AttackDown,1.2f, 1, 0}},
 		"相手の攻撃力が1ターン20%ダウンする"
 	});
 
@@ -80,7 +80,7 @@ void CardDataBase::Initialize()
 /// </summary>
 /// <param name="id"></param>
 /// <returns></returns>
-const CardData* CardDataBase::GetCardID(int id) const
+const CardData* CardDataBase::GetCardID(int id)
 {
 	for (const auto& card : m_cards)
 	{
@@ -94,7 +94,7 @@ const CardData* CardDataBase::GetCardID(int id) const
 /// カードをすべて取得
 /// </summary>
 /// <returns></returns>
-const std::vector<CardData>& CardDataBase::GetAllCards() const
+const std::vector<CardData>& CardDataBase::GetAllCards()
 {
 	return m_cards;
 }

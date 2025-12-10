@@ -12,17 +12,6 @@ void Monster::Draw()
 }
 
 /// <summary>
-/// 攻撃の処理
-/// </summary>
-/// <param name="target"></param>
-/// <param name="_skill"></param>
-void Monster::Attack(Monster& target, const Skill& skill)
-{
-	OnAttackLog(skill.GetName(), target.GetName());
-	target.TakeDamage(skill.GetPower());
-}
-
-/// <summary>
 /// ダメージを受けたときのログ
 /// </summary>
 /// <param name="damage"></param>

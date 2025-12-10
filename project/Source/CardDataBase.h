@@ -11,7 +11,7 @@
 enum class CardEffect
 {
 	AttackUP,			//攻撃力UP
-	AttackDowm,			//攻撃力Down
+	AttackDown,			//攻撃力Down
 	Heal,				//回復
 	AddEnchant,			//属性付与
 	None				//無し
@@ -53,14 +53,14 @@ public:
 	CardDataBase();
 
 	//初期化用
-	void Initialize();
+	static void Initialize();
 
 	//指定したIDのカードデータを取得
-	const CardData* GetCardID(int id) const;
+	static const CardData* GetCardID(int id);
 
 	//データベースに登録しているカードを全て取得
-	const std::vector<CardData>& GetAllCards() const;
+	static const std::vector<CardData>& GetAllCards();
 
 private:
-	std::vector<CardData> m_cards;
+	static std::vector<CardData> m_cards;
 };
