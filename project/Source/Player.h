@@ -1,10 +1,12 @@
 #pragma once
 #include "../Library/GameObject.h"
 #include <vector>
+#include "LogManager.h"
+#include "CardManager.h"
 #include "MonsterDataBase.h"
+#include "CardDataBase.h"
 #include "Enemy.h"
 #include "PlayerObserver.h"
-#include "LogManager.h"
 #include "KeyInput.h"
 
 
@@ -21,12 +23,14 @@ public:
 	void SkillSelect();
 	void CardSelect();
 	void AddListener(PlayerObserver* listener);
+	void SelectedCard();
 
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
 	int GetSelected() const { return selected; }
 
 private:
+	Enemy enemy;
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
@@ -39,6 +43,13 @@ private:
 	KeyInput input;							//キーボード入力管理
 
 	void SelectFinished();					//選択終了の通知
+
+	//カード系
+	CardManager* cardManager;
+	CardDataBase* cardDB;
+	int selectCardIndex = 0;
+	CardData* selectedCard = nullptr;
+
 
 	//描画用
 	LogManager logManager;

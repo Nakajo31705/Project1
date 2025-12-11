@@ -27,14 +27,6 @@ void Character::TakeDamage(int damage)
 void Character::Attack(Character& target, const Skill& skill)
 {
 	OnAttackLog(skill.GetName(), target.GetName());
-	power = skill.GetPower();
-	//auto eff = CardDataBase::GetCardID(1)->effects;
-	//for (auto e : eff) 
-	//{
-	//	e.value;
-	//	e.duration;
-	//	AddBuff(e.value, e.duration);
-	//}
 	target.TakeDamage(power);
 }
 
@@ -45,8 +37,8 @@ void Character::Attack(Character& target, const Skill& skill)
 /// <param name="duration">Œø‰ÊŠÔ</param>
 void Character::AddBuff(float value)
 {
-	int buffSkill = skill->GetPower()* value;
-	power  = buffSkill;
+	int buffSkill = skill->GetPower();
+	power  = buffSkill * value;
 }
 
 /// <summary>
@@ -62,9 +54,9 @@ void Character::AddDebuff(float value)
 /// ‰ñ•œ‚ğ‚·‚éŠÖ”
 /// </summary>
 /// <param name="amount">Œø‰Ê—Ê</param>
-void Character::AddHeal(float amount)
+void Character::AddHeal(float value)
 {
-	currentHP += amount;
+	currentHP += value;
 	if (currentHP > maxHP) currentHP = maxHP;
 }
 
@@ -73,6 +65,6 @@ void Character::AddHeal(float amount)
 /// </summary>
 /// <param name="duration">Œø‰ÊŠÔ</param>
 /// <param name="type">ƒ^ƒCƒv</param>
-void Character::AddEnchant(int duration, int type)
+void Character::AddEnchant(int type)
 {
 }

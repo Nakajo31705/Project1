@@ -11,21 +11,16 @@ void CardManager::UseCard(int id, Character* user, Character* target)
 		switch (effect.effect)
 		{
 		case CardEffect::AttackUP:
-			float val = effect.value;
-			user->AddBuff(val);
+			user->AddBuff(effect.value);
 			break;
 		case CardEffect::AttackDown:
-			float val = effect.value;
-			target->AddDebuff(val);
+			target->AddDebuff(effect.value);
 			break;
 		case CardEffect::Heal:
-			float val = effect.value;
-			user->AddHeal(val);
+			user->AddHeal(effect.value);
 			break;
 		case CardEffect::AddEnchant:
-			int dura = effect.duration;
-			int type = effect.type;
-			user->AddEnchant(dura, type);
+			user->AddEnchant(effect.type);
 			break;
 		default:
 			log.AddLog("そのカードは使えません", 100, 100, 1000);

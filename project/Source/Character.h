@@ -39,7 +39,7 @@ public:
 	virtual void AddHeal(float value);
 
 	//属性を付与する処理
-	virtual void AddEnchant(int duration, int type);
+	virtual void AddEnchant( int type);
 
 	//ダメージログ
 	virtual void OnDamageLog(int damage) = 0;

@@ -157,6 +157,53 @@ void Player::SkillSelect()
 /// </summary>
 void Player::CardSelect()
 {
+	//カードリストの表示
+	std::vector<CardData> cards = cardDB->GetAllCards();
+	for (int i = 0; i < cards.size(); i++)
+	{
+		const CardData& cardList = cards[i];
+		if (i == selectCardIndex)
+		{
+			DrawString(monsterDrawX, monsterDrawY + i * yOffset, "→", GetColor(255, 255, 0));
+			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, cardList.name.c_str(), GetColor(255, 255, 0));
+		}
+		else
+		{
+			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, cardList.name.c_str(), GetColor(255, 255, 255));
+		}
+	}
+
+	//キー入力の判定
+	if (input.isJustReleased(KEY_INPUT_UP) == 1)
+	{
+		selectCardIndex--;
+		if (selectCardIndex < 0) selectCardIndex = cards.size() - 1;
+		WaitTimer(150);
+	}
+	if (input.isJustReleased(KEY_INPUT_DOWN) == 1)
+	{
+		selectCardIndex--;
+		if (selectCardIndex >= cards.size()) selectCardIndex = 0;
+		WaitTimer(150);
+	}
+
+	//決定の処理
+	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
+	{
+		selectedCard = &cards[selectCardIndex];
+		std::string logCardSelected = selectedCard->name + "を選択\n";
+		logManager.AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
+
+		//選択したカードを実行
+		SelectedCard();
+
+		//カード選択終了
+		SelectFinished();
+	}
+	else
+	{
+		DrawString(100, 100, "バトル場のモンスターが設定されていません。\n", GetColor(255, 255, 255));
+	}
 }
 
 /// <summary>
@@ -169,7 +216,6 @@ void Player::AddListener(PlayerObserver* listener)
 	listeners.push_back(listener);
 }
 
-
 /// <summary>
 /// プレイヤーの選択が終了したことを通知する
 /// </summary>
@@ -179,6 +225,31 @@ void Player::SelectFinished()
 	{
 		l->SelectEnd();
 	}
+}
+
+/// <summary>
+/// カードの選択処理
+/// </summary>
+void Player::SelectedCard()
+{
+	switch (selectCardIndex)
+	{
+	case 0:
+		cardManager->UseCard(1, activeMonster, enemy.GetActiveMonster());
+		break;
+	case 1:
+		cardManager->UseCard(2, activeMonster, enemy.GetActiveMonster());
+		break;
+	case 2:
+		cardManager->UseCard(3, activeMonster, enemy.GetActiveMonster());
+		break;
+	case 3:
+		cardManager->UseCard(4, activeMonster, enemy.GetActiveMonster());
+		break;
+	case 4:
+		cardManager->UseCard(5, activeMonster, enemy.GetActiveMonster());
+		break;
+	}	
 }
 
 
