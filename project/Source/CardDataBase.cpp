@@ -1,5 +1,7 @@
 #include "CardDataBase.h"
 
+std::vector<CardData> CardDataBase::m_cards;
+
 CardDataBase::CardDataBase()
 {
 	Initialize();
@@ -10,6 +12,9 @@ CardDataBase::CardDataBase()
 /// </summary>
 void CardDataBase::Initialize()
 {
+	// 2d‰Šú‰»‘Îô
+	if(!m_cards.empty()) return;
+
 	/*
 	ID
 	–¼‘O

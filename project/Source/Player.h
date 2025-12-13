@@ -18,19 +18,28 @@ public:
 	void Update() override;
 	void Draw() override;
 
+	//バトル場のモンスターを取得
 	Monster* GetActiveMonster();
+
+	//モンスターのチェンジ処理
 	void SwitchMonster();
+
+	//スキルの選択処理
 	void SkillSelect();
+
+	//カードの選択処理
 	void CardSelect();
+
+	//プレイヤーの行動処理を観測する
 	void AddListener(PlayerObserver* listener);
-	void SelectedCard();
+
+	void SelectedCard(int index);
 
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
 	int GetSelected() const { return selected; }
 
 private:
-	Enemy enemy;
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
@@ -46,9 +55,8 @@ private:
 
 	//カード系
 	CardManager* cardManager;
-	CardDataBase* cardDB;
 	int selectCardIndex = 0;
-	CardData* selectedCard = nullptr;
+	const CardData* selectedCard;
 
 
 	//描画用

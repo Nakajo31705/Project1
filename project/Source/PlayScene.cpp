@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "LogManager.h"
 #include "KeyInput.h"
+#include "CardDataBase.h"
 
 PlayScene::PlayScene()
 {
@@ -12,6 +13,8 @@ PlayScene::PlayScene()
 	new GameManager();
 	new LogManager();
 	new KeyInput();
+
+	CardDataBase::Initialize();
 }
 
 PlayScene::~PlayScene()

@@ -44,3 +44,12 @@ void GameManager::ChangeState(TurnState* newState)
 		turnEnd = false;
 	}	
 }
+
+/// <summary>
+/// 選択されたカードを使用する関数
+/// </summary>
+/// <param name="index">選択された番号を使用</param>
+void GameManager::CardSelect(int index)
+{
+	cardManager->UseCard(index, player->GetActiveMonster(), enemy->GetActiveMonster());
+}
