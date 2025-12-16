@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "LogManager.h"
 #include "KeyInput.h"
+#include "Observer.h"
 
 class GameManager;
 
@@ -17,7 +18,7 @@ enum class PlayerSubState
 };
 
 
-class PlayerTurn : public TurnState,public PlayerObserver
+class PlayerTurn : public TurnState,public Observer
 {
 public:
 	PlayerTurn(GameManager* gm);

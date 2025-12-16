@@ -186,9 +186,6 @@
     <ClInclude Include="Source\KeyInput.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PlayerObserver.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\CardDataBase.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
@@ -197,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="Source\CardManager.h">
       <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Observer.h">
+      <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

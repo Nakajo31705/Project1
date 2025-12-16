@@ -2,12 +2,19 @@
 #include "PlayerTurn.h"
 #include "EnemyTurn.h"
 #include "TurnState.h"
-
 GameManager::GameManager()
 {
 	playerTurn = new PlayerTurn(this);
 	enemyTurn = new EnemyTurn(this);
 	playerTurn->Enter();
+
+	player->SetUseCardFunction(
+		[this](int index)
+		{
+			this->CardSelect(index);
+		}
+	);
+
 }
 
 GameManager::~GameManager()

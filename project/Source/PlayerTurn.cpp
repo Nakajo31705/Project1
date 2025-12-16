@@ -6,7 +6,7 @@ PlayerTurn::PlayerTurn(GameManager* gm)
 	:gameManager(gm)
 {
 	player = FindGameObject<Player>();
-	player->AddListener(this);
+	player->AddObs(this);
 }
 
 /// <summary>

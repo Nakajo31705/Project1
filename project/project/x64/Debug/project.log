@@ -3,10 +3,15 @@ C:\Users\student\Documents\Project1\project\Source\Character.cpp(41,21): warning
 C:\Users\student\Documents\Project1\project\Source\Character.cpp(59,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
   EnemyTurn.cpp
   GameManager.cpp
+  Monster.cpp
   Player.cpp
 C:\Users\student\Documents\Project1\project\Source\Player.cpp(120,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 C:\Users\student\Documents\Project1\project\Source\Player.cpp(186,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
   PlayerTurn.cpp
   PlayScene.cpp
+  SceneFactory.cpp
+  Skill.cpp
   コードを生成中...
-  project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe
+Player.obj : error LNK2019: 未解決の外部シンボル "private: void __cdecl Player::SelectFinished(void)" (?SelectFinished@Player@@AEAAXXZ) が関数 "public: void __cdecl Player::CardSelect(void)" (?CardSelect@Player@@QEAAXXZ) で参照されました
+PlayerTurn.obj : error LNK2019: 未解決の外部シンボル "public: void __cdecl Player::AddObs(class Observer *)" (?AddObs@Player@@QEAAXPEAVObserver@@@Z) が関数 "public: __cdecl PlayerTurn::PlayerTurn(class GameManager *)" (??0PlayerTurn@@QEAA@PEAVGameManager@@@Z) で参照されました
+C:\Users\student\Documents\Project1\project\x64\Debug\project.exe : fatal error LNK1120: 2 件の未解決の外部参照

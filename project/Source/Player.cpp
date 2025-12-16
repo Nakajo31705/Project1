@@ -205,27 +205,15 @@ void Player::CardSelect()
 	}
 }
 
-/// <summary>
-/// listenerコンテナに追加する関数:
-/// 追加されlistenerはプレイヤーの処理終了の通知を受け取れるようになる
-/// </summary>
-/// <param name="listener"></param>
-void Player::AddListener(PlayerObserver* listener)
+void Player::AddObs(Observer* obs)
 {
-	listeners.push_back(listener);
+	observers.push_back(obs);
 }
 
 void Player::SelectedCard(int index)
 {
-}
-
-/// <summary>
-/// プレイヤーの選択が終了したことを通知する
-/// </summary>
-void Player::SelectFinished()
-{
-	for (auto* l : listeners)
-	{
-		l->SelectEnd();
+	if (useCard) {
+		useCard(index);
 	}
 }
+
