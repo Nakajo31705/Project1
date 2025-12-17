@@ -170,6 +170,8 @@
     <ClInclude Include="Source\PlayScene.h" />
     <ClInclude Include="Source\SceneFactory.h" />
     <ClInclude Include="Source\Skill.h" />
+    <ClInclude Include="Source\Subject.h" />
+    <ClInclude Include="Source\SubjectBase.h" />
     <ClInclude Include="Source\TitleScene.h" />
     <ClInclude Include="Source\TurnState.h" />
     <ClInclude Include="Source\TypeEffective.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="Source\PlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
     <ClCompile Include="Source\Skill.cpp" />
+    <ClCompile Include="Source\SubjectBase.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

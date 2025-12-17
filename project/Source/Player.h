@@ -5,14 +5,11 @@
 #include "CardManager.h"
 #include "MonsterDataBase.h"
 #include "CardDataBase.h"
-#include "Enemy.h"
-#include "Observer.h"
 #include "KeyInput.h"
-# include <iostream>
-# include <functional>
+#include "SubjectBase.h"
 
 
-class Player : public GameObject
+class Player : public GameObject, public SubjectBase
 {
 public:
 	Player(MonsterDataBase& db);
@@ -32,16 +29,9 @@ public:
 	//カードの選択処理
 	void CardSelect();
 
-	//プレイヤーの行動処理を観測する
-	void AddObs(Observer* obs);
-
-	void SelectedCard(int index);
-
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
 	int GetSelected() const { return selected; }
-
-	void SetUseCardFunction(std::function<void(int)> function) { useCard = function; }
 
 private:
 	Monster* activeMonster;					//バトル場のモンスター
@@ -53,15 +43,12 @@ private:
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
 	KeyInput input;							//キーボード入力管理
-	std::vector<Observer*> observers;
-
-
-	void SelectFinished();					//選択終了の通知
 
 	//カード系
 	CardManager* cardManager;
 	int selectCardIndex = 0;
 	const CardData* selectedCard;
+
 
 
 	//描画用
@@ -71,7 +58,4 @@ private:
 	int monsterDrawY = 500;
 	int defDrawX = 100;
 	int defDrawY = 100;
-
-	std::function<void(int)> useCard;
-
 };

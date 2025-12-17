@@ -200,20 +200,10 @@ void Player::CardSelect()
 		std::string logCardSelected = selectedCard->name + "を選択\n";
 		logManager.AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
 
+		//選択したカードのインデックスをゲームマネージャーに渡す
+		Notify(selectCardIndex);
+
 		//カード選択終了
 		SelectFinished();
 	}
 }
-
-void Player::AddObs(Observer* obs)
-{
-	observers.push_back(obs);
-}
-
-void Player::SelectedCard(int index)
-{
-	if (useCard) {
-		useCard(index);
-	}
-}
-

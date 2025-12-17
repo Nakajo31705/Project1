@@ -4,12 +4,13 @@
 #include "Enemy.h"
 #include "KeyInput.h"
 #include "CardManager.h"
+#include "Observer.h"
 
 class PlayerTurn;
 class EnemyTurn;
 class TurnState;
 
-class GameManager : public GameObject
+class GameManager : public GameObject, public Observer
 {
 public:
 	GameManager();
@@ -29,6 +30,11 @@ public:
 	//現在のターンステートの取得
 	bool GetTurnEnded() const { return turnEnd; }
 
+	//CardSelectにindexを渡す
+	void OnNotify(int index) override;
+
+	void OnNotify(const std::string& message) override;
+
 	void CardSelect(int index);
 private:
 	Player* player;
@@ -39,4 +45,6 @@ private:
 	CardManager* cardManager;
 	KeyInput input;
 	bool turnEnd = false;
+
+
 };

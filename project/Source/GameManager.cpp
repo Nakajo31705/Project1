@@ -52,6 +52,11 @@ void GameManager::ChangeState(TurnState* newState)
 	}	
 }
 
+void GameManager::OnNotify(int index)
+{
+	CardSelect(index);
+}
+
 /// <summary>
 /// 選択されたカードを使用する関数
 /// </summary>
