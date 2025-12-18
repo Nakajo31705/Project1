@@ -87,6 +87,7 @@
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
     <ClCompile Include="Source\SubjectBase.cpp" />
+    <ClCompile Include="Source\ActionAttack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -190,20 +191,26 @@
     <ClInclude Include="Source\CardDataBase.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Character.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\CardManager.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Observer.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Subject.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\基底クラス</Filter>
     </ClInclude>
     <ClInclude Include="Source\SubjectBase.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\基底クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Action.h">
+      <Filter>PlayScene\基底クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Character.h">
+      <Filter>PlayScene\基底クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Observer.h">
+      <Filter>PlayScene\基底クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActionAttack.h">
+      <Filter>PlayScene\基底クラス</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +237,9 @@
     </Filter>
     <Filter Include="PlayScene\Turn">
       <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\基底クラス">
+      <UniqueIdentifier>{d22a39ea-fe64-4f93-b9b6-77d81fbe2d15}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

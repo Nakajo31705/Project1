@@ -81,12 +81,11 @@ void Player::SwitchMonster()
 			monsters.erase(monsters.begin());
 		}
 
-		//交換終了
-		SelectFinished();
-
 		//ログ表示
 		std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
 		logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+	
+		selectEnd = true;
 	}
 }
 
@@ -142,8 +141,7 @@ void Player::SkillSelect()
 			//攻撃対象と攻撃した技を引数として返し攻撃する
 			activeMonster->Attack(*activeEnemyMonster, skills[index]);
 
-			//技選択終了
-			SelectFinished();
+			selectEnd = true;
 		}
 	}
 	else
@@ -200,10 +198,22 @@ void Player::CardSelect()
 		std::string logCardSelected = selectedCard->name + "を選択\n";
 		logManager.AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
 
-		//選択したカードのインデックスをゲームマネージャーに渡す
-		Notify(selectCardIndex);
-
-		//カード選択終了
-		SelectFinished();
+		selectEnd = true;
 	}
+}
+
+/// <summary>
+/// 行動が終了したことを通知
+/// </summary>
+void Player::SelectEnd()
+{
+	if (selectEnd)
+	{
+		action->SetSelectEnd(selectEnd);
+	}
+}
+
+ActionAttack* Player::SelectAction(Monster* target)
+{
+	return new ActionAttack(GetActiveMonster(), target);
 }

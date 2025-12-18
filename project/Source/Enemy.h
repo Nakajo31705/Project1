@@ -6,6 +6,7 @@
 #include "MonsterDataBase.h"
 #include "TypeEffective.h"
 #include "LogManager.h"
+#include "ActionAttack.h"
 
 class Enemy : public GameObject
 {
@@ -18,6 +19,8 @@ public:
 	Monster* GetActiveMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 	void CardSelect();
+	ActionAttack* SelectAction(Monster* target);
+
 private:
 	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//控えのモンスター

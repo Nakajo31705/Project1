@@ -7,9 +7,10 @@
 #include "CardDataBase.h"
 #include "KeyInput.h"
 #include "SubjectBase.h"
+#include "ActionAttack.h"
 
 
-class Player : public GameObject, public SubjectBase
+class Player : public GameObject
 {
 public:
 	Player(MonsterDataBase& db);
@@ -29,6 +30,10 @@ public:
 	//カードの選択処理
 	void CardSelect();
 
+	void SelectEnd();
+
+	ActionAttack* SelectAction(Monster* target);
+
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
 	int GetSelected() const { return selected; }
@@ -43,6 +48,8 @@ private:
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
 	KeyInput input;							//キーボード入力管理
+	ActionAttack* action;
+	bool selectEnd = false;
 
 	//カード系
 	CardManager* cardManager;

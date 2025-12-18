@@ -9,6 +9,7 @@
 class PlayerTurn;
 class EnemyTurn;
 class TurnState;
+class Action;
 
 class GameManager : public GameObject, public Observer
 {
@@ -30,12 +31,16 @@ public:
 	//現在のターンステートの取得
 	bool GetTurnEnded() const { return turnEnd; }
 
+	std::vector<Action*> GetAction() const { return actionQueue; }
+
 	//CardSelectにindexを渡す
 	void OnNotify(int index) override;
 
 	void OnNotify(const std::string& message) override;
 
 	void CardSelect(int index);
+
+
 private:
 	Player* player;
 	Enemy* enemy;
@@ -45,6 +50,6 @@ private:
 	CardManager* cardManager;
 	KeyInput input;
 	bool turnEnd = false;
-
+	std::vector<Action*> actionQueue;
 
 };

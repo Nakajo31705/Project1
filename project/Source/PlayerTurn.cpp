@@ -58,7 +58,12 @@ void PlayerTurn::Exit()
 /// </summary>
 void PlayerTurn::SelectEnd()
 {
-	playCount++;
+	//‘I‘ðI—¹‚ðŽó‚¯Žæ‚èplayCount‚ð‘‰Á
+	if (action->GetSelectEnd())
+	{
+		playCount++;
+		action->SetSelectEnd(false);
+	}
 
 	if (playCount >= 2)
 	{

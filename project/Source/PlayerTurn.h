@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "LogManager.h"
 #include "KeyInput.h"
+#include "Action.h"
 
 class GameManager;
 
@@ -38,6 +39,7 @@ private:
 	int playCount = 0;
 	LogManager log;
 	KeyInput input;
+	Action* action;
 
 	int defDrawX = 100;
 	int defDrawY = 100;

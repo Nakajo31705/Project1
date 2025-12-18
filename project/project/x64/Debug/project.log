@@ -1,17 +1,64 @@
-﻿  Character.cpp
+﻿  imgui.cpp
+  imgui_draw.cpp
+  imgui_impl_dx11.cpp
+  imgui_impl_dx9.cpp
+  imgui_impl_win32.cpp
+  imgui_ja_gryph_ranges.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  App.cpp
+  main.cpp
+  ObjectManager.cpp
+  SceneManager.cpp
+  Time.cpp
+  ActionAttack.cpp
+  BootScene.cpp
+  CardDataBase.cpp
+  CardManager.cpp
+  Character.cpp
 C:\Users\student\Documents\Project1\project\Source\Character.cpp(41,21): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
 C:\Users\student\Documents\Project1\project\Source\Character.cpp(59,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Enemy.cpp
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         with
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         [
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:             _Ty=int
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(69,55): warning C4267:         ]
   EnemyTurn.cpp
+C:\Users\student\Documents\Project1\project\Source\EnemyTurn.cpp(41,14): error C2248: 'GameManager::actionQueue': private メンバー (クラス 'GameManager' で宣言されている) にアクセスできません。
+      C:\Users\student\Documents\Project1\project\Source\GameManager.h(53,23):
+      'GameManager::actionQueue' の宣言を確認してください
+      C:\Users\student\Documents\Project1\project\Source\GameManager.h(14,7):
+      'GameManager' の宣言を確認してください
+  
+C:\Users\student\Documents\Project1\project\Source\EnemyTurn.cpp(42,2): error C2143: 構文エラー: ';' が '}' の前にありません。
+C:\Users\student\Documents\Project1\project\Source\EnemyTurn.cpp(41,27): error C3867: 'std::vector<Action *,std::allocator<Action *>>::push_back': 非標準の構文です。メンバーにポインタを作成するには '&' を使用してください
+  コードを生成中...
+  コンパイル中...
   GameManager.cpp
+  LogManager.cpp
   Monster.cpp
+  MonsterDataBase.cpp
   Player.cpp
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(85,3): error C3861: 'SelectFinished': 識別子が見つかりませんでした
 C:\Users\student\Documents\Project1\project\Source\Player.cpp(120,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(138,4): error C2065: 'Enemy': 定義されていない識別子です。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(138,11): error C2065: 'enemy': 定義されていない識別子です。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(138,34): error C2065: 'Enemy': 定義されていない識別子です。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(138,19): error C2672: 'FindGameObject': 一致するオーバーロードされた関数が見つかりませんでした。
+      C:\Users\student\Documents\Project1\project\Library\ObjectManager.h(139,22):
+      'C *FindGameObject(void)' の可能性があります
+          C:\Users\student\Documents\Project1\project\Source\Player.cpp(138,34):
+          'FindGameObject': テンプレート 引数が 'C' に対して無効です。型が必要です
+  
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(139,34): error C2065: 'enemy': 定義されていない識別子です。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(146,4): error C3861: 'SelectFinished': 識別子が見つかりませんでした
 C:\Users\student\Documents\Project1\project\Source\Player.cpp(186,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Player.cpp(204,3): error C3861: 'SelectFinished': 識別子が見つかりませんでした
   PlayerTurn.cpp
   PlayScene.cpp
   SceneFactory.cpp
   Skill.cpp
+  SubjectBase.cpp
+  TitleScene.cpp
   コードを生成中...
-Player.obj : error LNK2019: 未解決の外部シンボル "private: void __cdecl Player::SelectFinished(void)" (?SelectFinished@Player@@AEAAXXZ) が関数 "public: void __cdecl Player::CardSelect(void)" (?CardSelect@Player@@QEAAXXZ) で参照されました
-PlayerTurn.obj : error LNK2019: 未解決の外部シンボル "public: void __cdecl Player::AddObs(class Observer *)" (?AddObs@Player@@QEAAXPEAVObserver@@@Z) が関数 "public: __cdecl PlayerTurn::PlayerTurn(class GameManager *)" (??0PlayerTurn@@QEAA@PEAVGameManager@@@Z) で参照されました
-C:\Users\student\Documents\Project1\project\x64\Debug\project.exe : fatal error LNK1120: 2 件の未解決の外部参照

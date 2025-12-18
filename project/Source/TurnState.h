@@ -1,7 +1,8 @@
 #pragma once
 #include "../Library/GameObject.h"
 
-class TurnState : public GameObject
+class GameManager;
+class TurnState
 {
 public:
 	virtual void Enter() = 0;

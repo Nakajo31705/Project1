@@ -6,25 +6,40 @@ GameManager::GameManager()
 {
 	playerTurn = new PlayerTurn(this);
 	enemyTurn = new EnemyTurn(this);
-	playerTurn->Enter();
-
-	player->SetUseCardFunction(
-		[this](int index)
-		{
-			this->CardSelect(index);
-		}
-	);
-
+	ChangeState(playerTurn);
 }
 
 GameManager::~GameManager()
 {
+	delete playerTurn;
+	delete enemyTurn;
+
+	for (auto action : actionQueue)
+		delete action;
 }
 
 void GameManager::Update()
 {
 	if (currentState)
 		currentState->Update();
+
+	//現在のターンを確認し、アクションをリストに格納
+	if (currentState == playerTurn)
+	{
+		actionQueue.push_back(player->SelectAction(enemy->GetActiveMonster()));
+	}
+	else
+	{
+		actionQueue.push_back(enemy->SelectAction(player->GetActiveMonster()));
+	}
+
+	//リスト内のアクションを実行
+	for (auto action : actionQueue)
+	{
+		action->Execute();
+		delete action;
+	}
+	actionQueue.clear();
 }
 
 void GameManager::Draw()
