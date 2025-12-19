@@ -86,8 +86,15 @@
     <ClCompile Include="Source\CardManager.cpp">
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SubjectBase.cpp" />
-    <ClCompile Include="Source\ActionAttack.cpp" />
+    <ClCompile Include="Source\ActionAttack.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SubjectBase.cpp">
+      <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ActionUseCard.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -210,7 +217,10 @@
       <Filter>PlayScene\基底クラス</Filter>
     </ClInclude>
     <ClInclude Include="Source\ActionAttack.h">
-      <Filter>PlayScene\基底クラス</Filter>
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActionUseCard.h">
+      <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

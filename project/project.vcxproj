@@ -154,6 +154,7 @@
     <ClInclude Include="Library\Time.h" />
     <ClInclude Include="Source\Action.h" />
     <ClInclude Include="Source\ActionAttack.h" />
+    <ClInclude Include="Source\ActionUseCard.h" />
     <ClInclude Include="Source\BootScene.h" />
     <ClInclude Include="Source\CardDataBase.h" />
     <ClInclude Include="Source\CardManager.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\Time.cpp" />
     <ClCompile Include="Source\ActionAttack.cpp" />
+    <ClCompile Include="Source\ActionUseCard.cpp" />
     <ClCompile Include="Source\BootScene.cpp" />
     <ClCompile Include="Source\CardDataBase.cpp" />
     <ClCompile Include="Source\CardManager.cpp" />

@@ -12,16 +12,16 @@ public:
 	void Update();
 
 	//名前の取得
-	const std::string& GetName() const { return name; }
+	virtual const std::string& GetName() const { return name; }
 
 	//最大HPの取得
-	int GetMaxHP() const { return maxHP; }
+	virtual int GetMaxHP() const { return maxHP; }
 
 	//現在のHPの取得
-	int GetCurrentHP() const { return currentHP; }
+	virtual int GetCurrentHP() const { return currentHP; }
 
 	//現在の攻撃力を取得
-	int GetCurrentPower() const { return power; }
+	virtual int GetCurrentPower() const { return power; }
 
 	//攻撃を受ける処理
 	virtual void TakeDamage(int damage);
@@ -46,6 +46,9 @@ public:
 
 	//攻撃ログ
 	virtual void OnAttackLog(const std::string& skillName, const std::string& targetName) = 0;
+
+	//現在のパワーを更新
+	virtual void SetCurrentPower(const int _power) { power = _power; }
 private:
 	GameManager* gameManager;
 	

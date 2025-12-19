@@ -12,4 +12,5 @@ public:
 private:
 	Monster* attacker;
 	Monster* target;
+	double buffValue = 1.0f;
 };

@@ -5,5 +5,5 @@
 /// </summary>
 void ActionAttack::Execute()
 {
-	target->TakeDamage(attacker->GetCurrentPower());
+	target->TakeDamage(attacker->GetCurrentPower() * buffValue);
 }

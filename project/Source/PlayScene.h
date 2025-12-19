@@ -3,6 +3,9 @@
 #include "MonsterDataBase.h"
 #include "LogManager.h"
 
+class Player;
+class Enemy;
+
 /// <summary>
 /// ゲームプレイのシーンを制御する
 /// </summary>
@@ -18,4 +21,6 @@ private:
 	//モンスターデータベース
 	MonsterDataBase MDB;
 	LogManager logManager;
+	Player* player;
+	Enemy* enemy;
 };

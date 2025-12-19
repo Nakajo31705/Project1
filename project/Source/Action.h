@@ -11,7 +11,6 @@ public:
 		selectEnd = end;
 		return selectEnd;
 	}
-
 	bool GetSelectEnd() const { return selectEnd; }
 
 protected:
