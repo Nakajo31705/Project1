@@ -2,15 +2,16 @@
 #include "Action.h"
 #include "Monster.h"
 
+using MonsterID = int;
+
 class ActionAttack : public Action
 {
 public:
-	ActionAttack(Monster* attacker, Monster* target)
-		: attacker(attacker), target(target) {}
-	void Execute() override;
+	ActionAttack(MonsterID attacker, MonsterID target, double value)
+		: attacker(attacker), target(target), buffValue(value) {}
 
 private:
-	Monster* attacker;
-	Monster* target;
+	MonsterID attacker;
+	MonsterID target;
 	double buffValue = 1.0f;
 };

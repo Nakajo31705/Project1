@@ -193,8 +193,6 @@
     <ClCompile Include="Library\ObjectManager.cpp" />
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\Time.cpp" />
-    <ClCompile Include="Source\ActionAttack.cpp" />
-    <ClCompile Include="Source\ActionUseCard.cpp" />
     <ClCompile Include="Source\BootScene.cpp" />
     <ClCompile Include="Source\CardDataBase.cpp" />
     <ClCompile Include="Source\CardManager.cpp" />

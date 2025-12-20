@@ -206,6 +206,8 @@ void Player::SelectEnd()
 	}
 }
 
+
+
 ActionAttack* Player::SelectAction(Monster* target)
 {
 	return new ActionAttack(GetActiveMonster(), target);

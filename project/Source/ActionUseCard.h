@@ -1,15 +1,17 @@
 #pragma once
 #include "Action.h"
 #include "Monster.h"
+#include "CardManager.h"
 
 class ActionUseCard : Action
 {
 public:
-	ActionUseCard(Monster* user, Monster* target)
-		: user(user), target(target){}
-	void Execute() override;
+	ActionUseCard(int index, Monster* user, Monster* target)
+		: index(index),user(user), target(target){}
 
 private:
+	int index;
 	Monster* user;
 	Monster* target;
+	CardManager* cardM;
 };
