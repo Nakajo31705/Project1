@@ -8,6 +8,8 @@
 #include "LogManager.h"
 #include "ActionAttack.h"
 
+class Player;
+
 class Enemy : public GameObject
 {
 public:
@@ -19,7 +21,6 @@ public:
 	Monster* GetActiveMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 	void CardSelect();
-	ActionAttack* SelectAction(Monster* target);
 
 private:
 	Monster* activeMonster;					//バトル場のモンスター

@@ -58,12 +58,6 @@ void PlayerTurn::Exit()
 /// </summary>
 void PlayerTurn::SelectEnd()
 {
-	//‘I‘ğI—¹‚ğó‚¯æ‚èplayCount‚ğ‘‰Á
-	if (action->GetSelectEnd())
-	{
-		playCount++;
-		action->SetSelectEnd(false);
-	}
 
 	if (playCount >= 2)
 	{
@@ -138,5 +132,18 @@ void PlayerTurn::Menu()
 			WaitTimer(150);
 			subState = PlayerSubState::CardSelect;
 		}
+	}
+}
+
+/// <summary>
+/// UŒ‚‚Ìˆ—‚ğÀs‚·‚éŠÖ”
+/// </summary>
+void PlayerTurn::UseSkill(Monster* target)
+{
+	if (!target || !player) return;
+
+	if (player->GetSkillSelectEnd())
+	{
+		monster->Attack(*target, *player->GetSelectedSkill());
 	}
 }

@@ -22,24 +22,6 @@ void GameManager::Update()
 {
 	if (currentState)
 		currentState->Update();
-
-	//現在のターンを確認し、アクションをリストに格納
-	if (currentState == playerTurn)
-	{
-		actionQueue.push_back(player->SelectAction(enemy->GetActiveMonster()));
-	}
-	else
-	{
-		actionQueue.push_back(enemy->SelectAction(player->GetActiveMonster()));
-	}
-
-	//リスト内のアクションを実行
-	for (auto action : actionQueue)
-	{
-		action->Execute();
-		delete action;
-	}
-	actionQueue.clear();
 }
 
 void GameManager::Draw()
@@ -65,18 +47,4 @@ void GameManager::ChangeState(TurnState* newState)
 		currentState->Enter();
 		turnEnd = false;
 	}	
-}
-
-void GameManager::OnNotify(int index)
-{
-	CardSelect(index);
-}
-
-/// <summary>
-/// 選択されたカードを使用する関数
-/// </summary>
-/// <param name="index">選択された番号を使用</param>
-void GameManager::CardSelect(int index)
-{
-	cardManager->UseCard(index, player->GetActiveMonster(), enemy->GetActiveMonster());
 }

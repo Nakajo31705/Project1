@@ -8,8 +8,8 @@
 
 PlayScene::PlayScene()
 {
-	new Player(MDB);
-	new Enemy(MDB);
+	Player::Player(MDB);
+	Enemy::Enemy(MDB);
 	new GameManager();
 	new LogManager();
 	new KeyInput();

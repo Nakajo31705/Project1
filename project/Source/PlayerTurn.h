@@ -2,9 +2,9 @@
 #include "TurnState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Monster.h"
 #include "LogManager.h"
 #include "KeyInput.h"
-#include "Action.h"
 
 class GameManager;
 
@@ -31,15 +31,18 @@ public:
 	void Menu();
 	bool GetTurn(){return myTurn;}
 
+	void UseSkill(Monster* taret);
+
 private:
 	GameManager* gameManager;
 	Player* player;
+	Enemy* enemy;
+	Monster* monster;
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 	int playCount = 0;
 	LogManager log;
 	KeyInput input;
-	Action* action;
 
 	int defDrawX = 100;
 	int defDrawY = 100;

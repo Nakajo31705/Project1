@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Player.h"
 
 Enemy::Enemy(MonsterDataBase& db)
 {
@@ -77,14 +78,4 @@ void Enemy::SkillSelect(Monster* player, Monster* enemy)
 /// </summary>
 void Enemy::CardSelect()
 {
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="target"></param>
-/// <returns></returns>
-ActionAttack* Enemy::SelectAction(Monster* target)
-{
-	return new ActionAttack(GetActiveMonster(), target);
 }

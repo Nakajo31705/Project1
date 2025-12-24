@@ -9,7 +9,6 @@
 #include "SubjectBase.h"
 #include "ActionAttack.h"
 
-
 class Player : public GameObject
 {
 public:
@@ -19,27 +18,39 @@ public:
 	void Draw() override;
 
 	//バトル場のモンスターを取得
-	Monster* GetActiveMonster();
+	int GetActiveMonster();
 
 	//モンスターのチェンジ処理
 	void SwitchMonster();
 
+	//////////////////////////////////
+	/*----------スキル選択----------*/
+	//////////////////////////////////
+	
 	//スキルの選択処理
 	void SkillSelect();
 
+	//スキル選択の終了フラグを取得
+	bool GetSkillSelectEnd() const { return skillSelectEnd; }
+
+	bool SetSkillSelectEnd(bool select) { skillSelectEnd = select; }
+
+	Skill* GetSelectedSkill() const { return selectedSkill; }
+
+	//////////////////////////////////
+	/*----------カード選択----------*/
+	//////////////////////////////////
+	
 	//カードの選択処理
 	void CardSelect();
 
-	void SelectEnd();
-
-	ActionAttack* SelectAction(Monster* target);
 
 	//変数の受け取り用
 	void SetSelected(int value) { selected = value; }
 	int GetSelected() const { return selected; }
 
 private:
-	Monster* activeMonster;					//バトル場のモンスター
+	int activeMonsterIndex = -1;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
 	Monster* selectedMonster = nullptr;		//選択したモンスター
@@ -48,8 +59,8 @@ private:
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	Skill* selectedSkill = nullptr;			//選択したスキル
 	KeyInput input;							//キーボード入力管理
-	ActionAttack* action;
-	bool selectEnd = false;
+
+	bool skillSelectEnd = false;			//スキル選択の終了フラグ
 
 	//カード系
 	CardManager* cardManager;

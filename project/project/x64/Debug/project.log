@@ -1,4 +1,18 @@
-﻿  GameManager.cpp
-GameManager.obj : error LNK2001: 外部シンボル "public: virtual void __cdecl GameManager::OnNotify(int)" (?OnNotify@GameManager@@UEAAXH@Z) は未解決です
-GameManager.obj : error LNK2001: 外部シンボル "public: virtual void __cdecl GameManager::OnNotify(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?OnNotify@GameManager@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) は未解決です
-C:\Users\student\Documents\Project1\project\x64\Debug\project.exe : fatal error LNK1120: 2 件の未解決の外部参照
+﻿  Character.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(41,21): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(59,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Enemy.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         with
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         [
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:             _Ty=int
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         ]
+  EnemyTurn.cpp
+  GameManager.cpp
+  PlayScene.cpp
+  Player.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(119,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(176,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  PlayerTurn.cpp
+  コードを生成中...
+  project.vcxproj -> C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\x64\Debug\project.exe
