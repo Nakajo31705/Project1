@@ -23,9 +23,7 @@ public:
 	//モンスターのチェンジ処理
 	void SwitchMonster();
 
-	//////////////////////////////////
-	/*----------スキル選択----------*/
-	//////////////////////////////////
+	//-----スキル選択-----//
 	
 	//スキルの選択処理
 	void SkillSelect();
@@ -37,9 +35,7 @@ public:
 
 	Skill* GetSelectedSkill() const { return selectedSkill; }
 
-	//////////////////////////////////
-	/*----------カード選択----------*/
-	//////////////////////////////////
+	//-----カード選択-----//
 	
 	//カードの選択処理
 	void CardSelect();
@@ -50,10 +46,9 @@ public:
 	int GetSelected() const { return selected; }
 
 private:
-	int activeMonsterIndex = -1;					//バトル場のモンスター
+	int activeMonsterIndex = -1;			//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
-	Monster* selectedMonster = nullptr;		//選択したモンスター
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
 	int selectSkillIndex = 0;				//選択中のスキル番号

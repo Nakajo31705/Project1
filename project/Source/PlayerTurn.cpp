@@ -3,9 +3,10 @@
 #include "EnemyTurn.h"
 
 PlayerTurn::PlayerTurn(GameManager* gm)
-	:gameManager(gm)
+	:gm(gm)
 {
-	player = FindGameObject<Player>();
+	player = gm->GetPlayer();
+	enemy = gm->GetEnemy();
 }
 
 /// <summary>
@@ -48,7 +49,7 @@ void PlayerTurn::Exit()
 {
 	//ターン終了にエネミーのターンにする
 	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	gameManager->ChangeState(gameManager->GetEnemyTurn());
+	gm->ChangeState(gm->GetEnemyTurn());
 	myTurn = false;
 }
 
@@ -138,12 +139,12 @@ void PlayerTurn::Menu()
 /// <summary>
 /// 攻撃の処理を実行する関数
 /// </summary>
-void PlayerTurn::UseSkill(Monster* target)
+void PlayerTurn::UseSkill(int target)
 {
-	if (!target || !player) return;
+	if (target < 0) return;
 
-	if (player->GetSkillSelectEnd())
+	if (gm->GetPlayer()->GetSkillSelectEnd())
 	{
-		monster->Attack(*target, *player->GetSelectedSkill());
+		gm->GetMonstser()->Attack(target, *player->GetSelectedSkill());
 	}
 }

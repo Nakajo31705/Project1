@@ -18,14 +18,13 @@ public:
 	void Update() override;
 	void Draw() override;
 
-	Monster* GetActiveMonster();
+	int GetActiveMonster();
 	void SkillSelect(Monster* player, Monster* enemy);
 	void CardSelect();
 
 private:
-	Monster* activeMonster;					//バトル場のモンスター
+	int activeMonsterIndex;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//控えのモンスター
-	std::vector<int> skillScore;			//技のスコア値を管理するための配列
 
 
 	//描画用

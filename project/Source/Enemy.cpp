@@ -14,19 +14,17 @@ Enemy::Enemy(MonsterDataBase& db)
 	monsters.push_back(demonKing);
 
 	//控えリストの最初のモンスターをバトル場に設定
-	if (!monsters.empty() && activeMonster == nullptr)
+	if (!monsters.empty())
 	{
-		activeMonster = &monsters[0];
-	}
+		activeMonsterIndex = 0;
 
-	//バトル場のモンスターを表示
-	if (activeMonster) {
-		std::string msg = activeMonster->GetName() + std::string("をバトル場にだした\n");
-		logManager.AddLog(msg.c_str(), defDrawX, defDrawY, 1000);
+		//ログ表示
+		std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
+		logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 	}
 	else {
-		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
-	}
+		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
+	}	
 }
 
 Enemy::~Enemy()
@@ -46,9 +44,9 @@ void Enemy::Draw()
 /// エネミーのバトル場のモンスターを取得
 /// </summary>
 /// <returns></returns>
-Monster* Enemy::GetActiveMonster()
+int Enemy::GetActiveMonster()
 {
-	return activeMonster;
+	return activeMonsterIndex;
 }
 
 /// <summary>

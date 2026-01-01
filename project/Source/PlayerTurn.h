@@ -31,13 +31,16 @@ public:
 	void Menu();
 	bool GetTurn(){return myTurn;}
 
-	void UseSkill(Monster* taret);
+	void UseSkill(int taret);
 
 private:
-	GameManager* gameManager;
+	GameManager* gm;
 	Player* player;
 	Enemy* enemy;
-	Monster* monster;
+	Monster* monsster;
+
+	int activeMonsterIndex = -1;			//バトル場のモンスターインデックス	
+	int targetMonsterIndex = -1;			//ターゲットのモンスターインデックス
 	int selected = 0;
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 	int playCount = 0;

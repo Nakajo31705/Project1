@@ -8,11 +8,22 @@ C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,
 C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:             _Ty=int
 C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         ]
   EnemyTurn.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,10): error C2664: 'void Enemy::SkillSelect(Monster *,Monster *)': 引数 1 を 'int' から 'Monster *' へ変換できません。
+      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,46):
+      整数型からポインター型への変換には reinterpret_cast、C スタイル キャストまたはかっこで囲まれた関数スタイル キャストが必要です。
+      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.h(22,7):
+      'Enemy::SkillSelect' の宣言を確認してください
+      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,10):
+      引数リスト '(int, Monster *)' を一致させようとしているとき
+  
   GameManager.cpp
   PlayScene.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\PlayScene.cpp(33,13): error C2440: '初期化中': 'int' から 'Monster *' に変換できません。
+      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\PlayScene.cpp(33,13):
+      整数型からポインター型への変換には reinterpret_cast、C スタイル キャストまたはかっこで囲まれた関数スタイル キャストが必要です。
+  
   Player.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(119,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(176,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(103,62): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(155,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
   PlayerTurn.cpp
   コードを生成中...
-  project.vcxproj -> C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\x64\Debug\project.exe

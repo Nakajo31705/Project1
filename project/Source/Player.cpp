@@ -30,7 +30,7 @@ Player::Player(MonsterDataBase& db)
 		logManager.AddLog(logFirstMonster, defDrawX, defDrawY, 1000);
 	}
 	else {
-		DrawString(defDrawX, defDrawY, "activeMonsterがNullです。", GetColor(255, 255, 255));
+		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
 	}
 }
 
