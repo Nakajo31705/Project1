@@ -1,22 +1,22 @@
-#include "EnemyTurn.h"
-#include "PlayerTurn.h"
+#include "EnemyManager.h"
+#include "PlayerManager.h"
 #include "GameManager.h"
 
-EnemyTurn::EnemyTurn(GameManager* gm)
-	:gameManager(gm) {
+EnemyManager::EnemyManager()
+{
 }
 
 /// <summary>
 /// エネミーのターンが開始した時に呼ぶ
 /// </summary>
-void EnemyTurn::Enter()
+void EnemyManager::Enter()
 {
 	log.AddLog("エネミーのターン", 100, 200, 1000);
 	selected = 0;
 	myTurn = true;
 }
 
-void EnemyTurn::Update()
+void EnemyManager::Update()
 {
 	//ターンの切り替え
 	if (!myTurn) return;
@@ -40,7 +40,7 @@ void EnemyTurn::Update()
 /// <summary>
 /// エネミーのターンが終了したときに呼ぶ
 /// </summary>
-void EnemyTurn::Exit()
+void EnemyManager::Exit()
 {
 	DrawString(defDraw, defDraw, "エネミーのターン終了", GetColor(255, 255, 255));
 	gameManager->ChangeState(gameManager->GetPlayerTurn());
@@ -51,7 +51,7 @@ void EnemyTurn::Exit()
 /// 自分のターンで何回行動したかカウントする関数
 /// 2回行動したらターン終了
 /// </summary>
-void EnemyTurn::SelectEnd()
+void EnemyManager::SelectEnd()
 {
 	playCount++;
 
@@ -72,7 +72,7 @@ void EnemyTurn::SelectEnd()
 /// <summary>
 /// メニューの選択
 /// </summary>
-void EnemyTurn::Menu()
+void EnemyManager::Menu()
 {
 	if (selected == 0)
 	{
@@ -84,5 +84,18 @@ void EnemyTurn::Menu()
 		log.AddLog("技を選択", 100, 100, 1000);
 		subState = EnemySubState::SkillSelect;
 	}
+}
+
+ActionRequest EnemyManager::RequestAttack()
+{
+	ActionRequest request;
+	request.attacker = enemy->GetActiveMonster();
+	request.skill = enemy->GetSelectedSkill();
+	return request;
+}
+
+Monster* EnemyManager::GetActiveMonster()
+{
+	return enemy->GetActiveMonster();
 }
 

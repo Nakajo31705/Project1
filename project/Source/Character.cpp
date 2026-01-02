@@ -6,7 +6,8 @@ Character::Character(const std::string& name, int maxHP, int power)
 
 void Character::Update()
 {
-	turnEnd = gameManager->GetTurnEnded();
+	//‚ ‚Æ‚Å
+	//turnEnd = gameManager->GetTurnEnded();
 }
 
 /// <summary>

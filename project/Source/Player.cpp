@@ -24,9 +24,9 @@ Player::Player(MonsterDataBase& db)
 	//控えリストの最初のモンスターをバトル場に設定&表示
 	if (!monsters.empty())
 	{
-		activeMonsterIndex = 0;
+		activeMonster = &monsters.front();
 
-		std::string logFirstMonster = monsters[activeMonsterIndex].GetName() + "をバトル場にだした\n";
+		std::string logFirstMonster = activeMonster->GetName() + "をバトル場にだした\n";
 		logManager.AddLog(logFirstMonster, defDrawX, defDrawY, 1000);
 	}
 	else {
@@ -50,9 +50,9 @@ void Player::Draw()
 /// バトル場のモンスターを取得
 /// </summary>
 /// <returns></returns>
-int Player::GetActiveMonster()
+Monster* Player::GetActiveMonster()
 {
-	return activeMonsterIndex;
+	return activeMonster;
 }
 
 /// <summary>
@@ -60,18 +60,15 @@ int Player::GetActiveMonster()
 /// </summary>
 void Player::SwitchMonster()
 {
-	if (monsters.size() < 2) return;
+	if (monsters.empty()) return;
 
-	//バトル場のモンスターを末尾に移動
-	Monster tempMonster = monsters[activeMonsterIndex];
-	monsters.erase(monsters.begin() + activeMonsterIndex);
-	monsters.push_back(tempMonster);
-
-	//新しいバトル場のモンスターを先頭に設定
-	activeMonsterIndex = 0;
+	//バトル場のモンスターを入れ替え
+	Monster tempMonster = *activeMonster;
+	*activeMonster = monsters.back();
+	monsters.back() = tempMonster;
 
 	//ログ表示
-	std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
+	std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
 	logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 }
 
@@ -81,7 +78,7 @@ void Player::SwitchMonster()
 void Player::SkillSelect()
 {
 	//バトル場のモンスターが使用できる技を表示
-	std::vector<Skill> skills = monsters[activeMonsterIndex].GetSkills();
+	std::vector<Skill> skills = activeMonster->GetSkills();
 	for (int i = 0; i < skills.size(); i++)
 	{
 		const Skill& activeMonsterSkills = skills[i];

@@ -1,13 +1,14 @@
 #pragma once
 #include "../Library/GameObject.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "TurnState.h"
 #include "KeyInput.h"
 #include "CardManager.h"
 
-class PlayerTurn;
-class EnemyTurn;
+class PlayerManager;
+class EnemyManager;
+class Monster;
+
+struct ActionRequest;
 
 class GameManager : public GameObject
 {
@@ -17,34 +18,26 @@ public:
 	void Update() override;
 	void Draw() override;
 
+	//情報に合わせてターンを切り替える
+	void ResolveTurn();
+
+	//ターゲットの取得
+	Monster& GetPlayerTarget();
+	Monster& GetEnemyTarget();
+
+	void ActionAttack(ActionRequest& req, Monster& target);
+
 	//ターンの切り替え
 	void ChangeState(TurnState* newState);
 
-	//-----取得系-----//
-
-	//プレイヤーの取得
-	Player* GetPlayer() { return player; }
-
-	//エネミーの取得
-	Enemy* GetEnemy() { return enemy; }
-
-	//モンスターリストの取得
-	Monster* GetMonstser() { return monster; }
-
 private:
-	Player* player;				//プレイヤー
-	Enemy* enemy;				//エネミー
-	Monster* monster;			//モンスターリスト
+	PlayerManager* playerManager;	//プレイヤー
+	EnemyManager* enemyManager;		//エネミー
+	Monster* monster;				//モンスター
 
-	//-----ターン系-----//
-	std::unique_ptr<PlayerTurn> playerTurn;	//プレイヤーターン
-	std::unique_ptr<EnemyTurn> enemyTurn;	//エネミーターン
+
 	TurnState* currentState = nullptr;
-
-
 	CardManager* cardManager;
 	KeyInput input;
 	bool turnEnd = false;
-	std::vector<Action*> actionQueue;
-
 };

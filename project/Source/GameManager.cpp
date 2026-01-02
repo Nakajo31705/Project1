@@ -1,12 +1,12 @@
 #include "GameManager.h"
-#include "PlayerTurn.h"
-#include "EnemyTurn.h"
+#include "PlayerManager.h"
+#include "EnemyManager.h"
+#include "Monster.h"
 
 GameManager::GameManager()
 {
-	playerTurn = std::make_unique<PlayerTurn>(this);
-	enemyTurn = std::make_unique<EnemyTurn>(this);
-	ChangeState(playerTurn.get());
+	//‚ ‚Æ‚ÅŽ¡‚·
+	/*ChangeState(playerManager);*/
 }
 
 GameManager::~GameManager()
@@ -21,6 +21,33 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
+}
+
+void GameManager::ResolveTurn()
+{
+	ActionRequest playerReq = playerManager->RequestAttack();
+	ActionRequest enemyReq = enemyManager->RequestAttack();
+
+	Monster& playerTarget = GetPlayerTarget();
+	Monster& enemyTarget = GetEnemyTarget();
+
+	ActionAttack(playerReq, playerTarget);
+	ActionAttack(enemyReq, enemyTarget);
+}
+
+Monster& GameManager::GetPlayerTarget()
+{
+	return *enemyManager->GetActiveMonster();
+}
+
+Monster& GameManager::GetEnemyTarget()
+{
+	return *playerManager->GetActiveMonster();
+}
+
+void GameManager::ActionAttack(ActionRequest& req, Monster& target)
+{
+	req.attacker->Attack(target, *req.skill);
 }
 
 /// <summary>

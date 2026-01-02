@@ -1,29 +1,14 @@
 ﻿  Character.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(41,21): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(59,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Enemy.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         with
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         [
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:             _Ty=int
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.cpp(70,55): warning C4267:         ]
-  EnemyTurn.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,10): error C2664: 'void Enemy::SkillSelect(Monster *,Monster *)': 引数 1 を 'int' から 'Monster *' へ変換できません。
-      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,46):
-      整数型からポインター型への変換には reinterpret_cast、C スタイル キャストまたはかっこで囲まれた関数スタイル キャストが必要です。
-      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Enemy.h(22,7):
-      'Enemy::SkillSelect' の宣言を確認してください
-      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyTurn.cpp(29,10):
-      引数リスト '(int, Monster *)' を一致させようとしているとき
-  
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(42,21): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Character.cpp(60,15): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  EnemyManager.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyManager.cpp(29,22): error C2065: 'player': 定義されていない識別子です。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyManager.cpp(46,2): error C2065: 'gameManager': 定義されていない識別子です。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\EnemyManager.cpp(46,27): error C2065: 'gameManager': 定義されていない識別子です。
   GameManager.cpp
-  PlayScene.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\PlayScene.cpp(33,13): error C2440: '初期化中': 'int' から 'Monster *' に変換できません。
-      C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\PlayScene.cpp(33,13):
-      整数型からポインター型への変換には reinterpret_cast、C スタイル キャストまたはかっこで囲まれた関数スタイル キャストが必要です。
-  
   Player.cpp
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(103,62): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(155,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  PlayerTurn.cpp
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(100,62): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\Source\Player.cpp(152,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  PlayerManager.cpp
+  Skill.cpp
   コードを生成中...

@@ -1,24 +1,20 @@
-#include "PlayerTurn.h"
+#include "PlayerManager.h"
 #include "GameManager.h"
-#include "EnemyTurn.h"
 
-PlayerTurn::PlayerTurn(GameManager* gm)
-	:gm(gm)
+PlayerManager::PlayerManager()
 {
-	player = gm->GetPlayer();
-	enemy = gm->GetEnemy();
 }
 
 /// <summary>
 /// プレイヤーのターンが開始したときに呼ぶ
 /// </summary>
-void PlayerTurn::Enter()
+void PlayerManager::Enter()
 {
 	myTurn = true;
 	log.AddLog("プレイヤーのターン", 100, 200, 1000);
 }
 
-void PlayerTurn::Update()
+void PlayerManager::Update()
 {
 	//ターンの切り替え
 	if (!myTurn) return;
@@ -45,11 +41,12 @@ void PlayerTurn::Update()
 /// <summary>
 /// プレイヤーのターンが終了するときに呼ぶ
 /// </summary>
-void PlayerTurn::Exit()
+void PlayerManager::Exit()
 {
 	//ターン終了にエネミーのターンにする
 	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	gm->ChangeState(gm->GetEnemyTurn());
+	//あとで
+	/*gm->ChangeState(gm->GetEnemyTurn());*/
 	myTurn = false;
 }
 
@@ -57,7 +54,7 @@ void PlayerTurn::Exit()
 /// 自分のターンで何回行動したかカウントする関数
 /// 2回行動したらターン終了
 /// </summary>
-void PlayerTurn::SelectEnd()
+void PlayerManager::SelectEnd()
 {
 
 	if (playCount >= 2)
@@ -76,7 +73,7 @@ void PlayerTurn::SelectEnd()
 /// <summary>
 /// メニューの選択画面
 /// </summary>
-void PlayerTurn::Menu()
+void PlayerManager::Menu()
 {
 	const int MENU_NUM = 3;
 	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" ,"カードの選択"};
@@ -114,7 +111,8 @@ void PlayerTurn::Menu()
 	//コマンド決定の処理(メニュー)
 	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 	{
-		player->SetSelected(selected);
+		//あとで
+		/*player->SetSelected(selected);*/
 		if (selected == 0)
 		{
 			DrawString(defDrawX, defDrawY*2, "技を選択", GetColor(255, 255, 255));
@@ -136,15 +134,15 @@ void PlayerTurn::Menu()
 	}
 }
 
-/// <summary>
-/// 攻撃の処理を実行する関数
-/// </summary>
-void PlayerTurn::UseSkill(int target)
+ActionRequest PlayerManager::RequestAttack()
 {
-	if (target < 0) return;
+	ActionRequest request;
+	request.attacker = player->GetActiveMonster();
+	request.skill = player->GetSelectedSkill();
+	return request;
+}
 
-	if (gm->GetPlayer()->GetSkillSelectEnd())
-	{
-		gm->GetMonstser()->Attack(target, *player->GetSelectedSkill());
-	}
+Monster* PlayerManager::GetActiveMonster()
+{
+	return player->GetActiveMonster();
 }

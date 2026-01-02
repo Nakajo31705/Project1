@@ -18,13 +18,15 @@ public:
 	void Update() override;
 	void Draw() override;
 
-	int GetActiveMonster();
+	Monster* GetActiveMonster();
+	Skill* GetSelectedSkill();
 	void SkillSelect(Monster* player, Monster* enemy);
 	void CardSelect();
 
 private:
-	int activeMonsterIndex;					//バトル場のモンスター
+	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//控えのモンスター
+	Skill* selectedSkill = nullptr;			//選択したスキル
 
 
 	//描画用

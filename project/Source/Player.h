@@ -6,8 +6,6 @@
 #include "MonsterDataBase.h"
 #include "CardDataBase.h"
 #include "KeyInput.h"
-#include "SubjectBase.h"
-#include "ActionAttack.h"
 
 class Player : public GameObject
 {
@@ -18,7 +16,7 @@ public:
 	void Draw() override;
 
 	//バトル場のモンスターを取得
-	int GetActiveMonster();
+	Monster* GetActiveMonster();
 
 	//モンスターのチェンジ処理
 	void SwitchMonster();
@@ -40,15 +38,9 @@ public:
 	//カードの選択処理
 	void CardSelect();
 
-
-	//変数の受け取り用
-	void SetSelected(int value) { selected = value; }
-	int GetSelected() const { return selected; }
-
 private:
-	int activeMonsterIndex = -1;			//バトル場のモンスター
+	Monster* activeMonster;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
-	int selectMonsterIndex = 0;				//選択中のモンスターインデックス
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
 	int selectSkillIndex = 0;				//選択中のスキル番号

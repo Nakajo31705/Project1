@@ -1,8 +1,8 @@
 #pragma once
-#include "TurnState.h"
-#include "Player.h"
 #include "Enemy.h"
 #include "LogManager.h"
+#include "TurnState.h"
+#include "ActionRequest.h"
 
 class GameManager;
 
@@ -14,10 +14,10 @@ enum class EnemySubState
 	Done
 };
 
-class EnemyTurn : public TurnState
+class EnemyManager : public TurnState
 {
 public:
-	EnemyTurn(GameManager* gm);
+	EnemyManager();
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
@@ -25,14 +25,20 @@ public:
 
 	void Menu();
 
+	//攻撃のリクエスト
+	ActionRequest RequestAttack();
+	//バトル場のモンスターを取得(プレイヤー側のターゲット取得用)
+	Monster* GetActiveMonster();
+
 private:
-	GameManager* gameManager;
-	Player* player;
 	Enemy* enemy;
+	Monster* monsster;
+
 	EnemySubState subState = EnemySubState::MenuSelect;
-	LogManager log;
+
 
 	int playCount = 0;
 	int selected;
+	LogManager log;
 	int defDraw = 100;
 };

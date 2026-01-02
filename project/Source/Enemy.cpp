@@ -16,10 +16,10 @@ Enemy::Enemy(MonsterDataBase& db)
 	//控えリストの最初のモンスターをバトル場に設定
 	if (!monsters.empty())
 	{
-		activeMonsterIndex = 0;
+		activeMonster = &monsters.front();
 
 		//ログ表示
-		std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
+		std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
 		logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 	}
 	else {
@@ -44,9 +44,14 @@ void Enemy::Draw()
 /// エネミーのバトル場のモンスターを取得
 /// </summary>
 /// <returns></returns>
-int Enemy::GetActiveMonster()
+Monster* Enemy::GetActiveMonster()
 {
-	return activeMonsterIndex;
+	return activeMonster;
+}
+
+Skill* Enemy::GetSelectedSkill()
+{
+	return selectedSkill;
 }
 
 /// <summary>
@@ -68,7 +73,7 @@ void Enemy::SkillSelect(Monster* player, Monster* enemy)
 	std::uniform_int_distribution<> dis(0, skills.size() - 1);
 	
 	//ランダムに選択
-	Skill selectedSkill = skills[dis(gen)];
+	selectedSkill = &skills[dis(gen)];
 }
 
 /// <summary>

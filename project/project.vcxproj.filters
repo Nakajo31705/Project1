@@ -68,10 +68,10 @@
     <ClCompile Include="Source\Skill.cpp">
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\PlayerTurn.cpp">
+    <ClCompile Include="Source\PlayerManager.cpp">
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
-    <ClCompile Include="Source\EnemyTurn.cpp">
+    <ClCompile Include="Source\EnemyManager.cpp">
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
     <ClCompile Include="Source\LogManager.cpp">
@@ -171,13 +171,13 @@
     <ClInclude Include="Source\Skill.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\PlayerTurn.h">
+    <ClInclude Include="Source\PlayerManager.h">
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
     <ClInclude Include="Source\TurnState.h">
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EnemyTurn.h">
+    <ClInclude Include="Source\EnemyManager.h">
       <Filter>PlayScene\Turn</Filter>
     </ClInclude>
     <ClInclude Include="Source\TypeEffective.h">
@@ -215,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="Source\ActionAttack.h">
       <Filter>PlayScene\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActionRequest.h">
+      <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
