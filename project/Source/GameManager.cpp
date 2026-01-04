@@ -21,6 +21,14 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
+	if (!playerManager->GetActiveMonster() || !enemyManager->GetActiveMonster()) return;
+
+	//バトル場のモンスターの情報を表示
+	Monster* p = playerManager->GetActiveMonster();
+	Monster* e = enemyManager->GetActiveMonster();
+
+	DrawFormatString(700, 100, GetColor(255, 255, 255), "%s, HP:%d", p->GetName(), p->GetCurrentHP());
+	DrawFormatString(700, 120, GetColor(255, 255, 255), "%s, HP:%d", e->GetName(), e->GetCurrentHP());
 }
 
 void GameManager::ResolveTurn()

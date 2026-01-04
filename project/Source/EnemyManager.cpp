@@ -1,5 +1,4 @@
 #include "EnemyManager.h"
-#include "PlayerManager.h"
 #include "GameManager.h"
 
 EnemyManager::EnemyManager()
@@ -26,7 +25,7 @@ void EnemyManager::Update()
 		Menu();
 		break;
 	case EnemySubState::SkillSelect:
-		enemy->SkillSelect(player->GetActiveMonster(),enemy->GetActiveMonster());
+		enemy->SkillSelect(monster, GetActiveMonster());
 		break;
 	case EnemySubState::CardSelect:
 		enemy->CardSelect();
@@ -43,7 +42,7 @@ void EnemyManager::Update()
 void EnemyManager::Exit()
 {
 	DrawString(defDraw, defDraw, "エネミーのターン終了", GetColor(255, 255, 255));
-	gameManager->ChangeState(gameManager->GetPlayerTurn());
+	//あとでgm->ChangeState(gm->GetPlayerTurn());
 	myTurn = false;
 }
 

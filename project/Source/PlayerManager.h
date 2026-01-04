@@ -26,6 +26,7 @@ public:
 	void Update() override;
 	void Exit() override;
 	void SelectEnd();
+	void SetPlayer(Player* p) { player = p; }
 
 	//メニュー
 	void Menu();
@@ -37,7 +38,7 @@ public:
 	//バトル場のモンスターを取得(エネミー側のターゲット取得用)
 	Monster* GetActiveMonster();
 private:
-	Player* player;
+	Player* player = nullptr;
 	Monster* monsster;
 
 

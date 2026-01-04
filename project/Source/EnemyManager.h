@@ -31,8 +31,9 @@ public:
 	Monster* GetActiveMonster();
 
 private:
+	GameManager* gm;
 	Enemy* enemy;
-	Monster* monsster;
+	Monster* monster;
 
 	EnemySubState subState = EnemySubState::MenuSelect;
 

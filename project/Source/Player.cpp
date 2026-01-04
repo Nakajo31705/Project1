@@ -24,9 +24,9 @@ Player::Player(MonsterDataBase& db)
 	//控えリストの最初のモンスターをバトル場に設定&表示
 	if (!monsters.empty())
 	{
-		activeMonster = &monsters.front();
+		activeMonsterIndex = 0;
 
-		std::string logFirstMonster = activeMonster->GetName() + "をバトル場にだした\n";
+		std::string logFirstMonster = monsters[activeMonsterIndex].GetName() + "をバトル場にだした\n";
 		logManager.AddLog(logFirstMonster, defDrawX, defDrawY, 1000);
 	}
 	else {
@@ -52,7 +52,23 @@ void Player::Draw()
 /// <returns></returns>
 Monster* Player::GetActiveMonster()
 {
-	return activeMonster;
+	return &monsters[activeMonsterIndex];
+}
+
+/// <summary>
+/// 選択した技を取得
+/// </summary>
+/// <returns></returns>
+Skill* Player::GetSelectedSkill()
+{
+	Monster* monster = GetActiveMonster();
+	if (!monster) return nullptr;
+
+	const auto& skills = monster->GetSkills();
+
+	if (selectedSkillIndex < 0 || selectedSkillIndex >= skills.size()) return nullptr;
+
+	return const_cast<Skill*>(&skills[selectedSkillIndex]);
 }
 
 /// <summary>
@@ -60,15 +76,20 @@ Monster* Player::GetActiveMonster()
 /// </summary>
 void Player::SwitchMonster()
 {
-	if (monsters.empty()) return;
+	if (monsters.size() < 2) return;
 
 	//バトル場のモンスターを入れ替え
-	Monster tempMonster = *activeMonster;
-	*activeMonster = monsters.back();
-	monsters.back() = tempMonster;
+	activeMonsterIndex++;
+	if (activeMonsterIndex >= monsters.size()) 
+		activeMonsterIndex = 0;
+
+	//スキルの選択状態をリセット
+	selectSkillIndex = 0;
+	selectedSkillIndex = -1;
+	skillSelectEnd = false;
 
 	//ログ表示
-	std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
+	std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
 	logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 }
 
@@ -77,8 +98,13 @@ void Player::SwitchMonster()
 /// </summary>
 void Player::SkillSelect()
 {
+	Monster* monster = GetActiveMonster();
+	if (!monster) return;
+
 	//バトル場のモンスターが使用できる技を表示
-	std::vector<Skill> skills = activeMonster->GetSkills();
+	const auto& skills = monster->GetSkills();
+	if (skills.empty()) return;
+
 	for (int i = 0; i < skills.size(); i++)
 	{
 		const Skill& activeMonsterSkills = skills[i];
@@ -110,9 +136,9 @@ void Player::SkillSelect()
 	//決定の処理
 	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 	{
-		selectedSkill = &skills[selectSkillIndex];
+		selectedSkillIndex = selectSkillIndex;
 
-		std::string logSkillSelected = selectedSkill->GetName() + "を選択\n";
+		std::string logSkillSelected = skills[selectedSkillIndex].GetName() + "を選択\n";
 		logManager.AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 		skillSelectEnd = true;
 	}

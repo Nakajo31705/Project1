@@ -31,7 +31,7 @@ public:
 
 	bool SetSkillSelectEnd(bool select) { skillSelectEnd = select; }
 
-	Skill* GetSelectedSkill() const { return selectedSkill; }
+	Skill* GetSelectedSkill();
 
 	//-----カード選択-----//
 	
@@ -39,12 +39,12 @@ public:
 	void CardSelect();
 
 private:
-	Monster* activeMonster;					//バトル場のモンスター
+	int activeMonsterIndex = -1;			//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
 	int selectSkillIndex = 0;				//選択中のスキル番号
-	Skill* selectedSkill = nullptr;			//選択したスキル
+	int selectedSkillIndex;					//選択したスキル番号
 	KeyInput input;							//キーボード入力管理
 
 	bool skillSelectEnd = false;			//スキル選択の終了フラグ
