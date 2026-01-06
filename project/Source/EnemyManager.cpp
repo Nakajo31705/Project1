@@ -95,6 +95,7 @@ ActionRequest EnemyManager::RequestAttack()
 
 Monster* EnemyManager::GetActiveMonster()
 {
+	if (!enemy) return nullptr;
 	return enemy->GetActiveMonster();
 }
 

@@ -45,8 +45,7 @@ void PlayerManager::Exit()
 {
 	//ターン終了にエネミーのターンにする
 	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	//あとで
-	/*gm->ChangeState(gm->GetEnemyTurn());*/
+	gm->ChangeState(gm->GetEnemyTurn());
 	myTurn = false;
 }
 
@@ -144,5 +143,6 @@ ActionRequest PlayerManager::RequestAttack()
 
 Monster* PlayerManager::GetActiveMonster()
 {
+	if (!player) return nullptr;
 	return player->GetActiveMonster();
 }

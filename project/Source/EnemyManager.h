@@ -24,6 +24,7 @@ public:
 	void SelectEnd();
 
 	void Menu();
+	bool GetTurn() { return myTurn; }
 
 	//攻撃のリクエスト
 	ActionRequest RequestAttack();
@@ -31,6 +32,9 @@ public:
 	Monster* GetActiveMonster();
 
 private:
+	//初期化
+	LogManager log;
+
 	GameManager* gm;
 	Enemy* enemy;
 	Monster* monster;
@@ -38,8 +42,8 @@ private:
 	EnemySubState subState = EnemySubState::MenuSelect;
 
 
+	bool myTurn = false;
 	int playCount = 0;
 	int selected;
-	LogManager log;
 	int defDraw = 100;
 };

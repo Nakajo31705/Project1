@@ -1,10 +1,8 @@
 #pragma once
 #include "../Library/SceneBase.h"
-#include "MonsterDataBase.h"
-#include "LogManager.h"
-
-class Player;
-class Enemy;
+#include "GameManager.h"
+#include "Player.h"
+#include "Enemy.h"
 
 /// <summary>
 /// ゲームプレイのシーンを制御する
@@ -20,7 +18,7 @@ public:
 private:
 	//モンスターデータベース
 	MonsterDataBase MDB;
-	LogManager logManager;
-	Player* player;
-	Enemy* enemy;
+	GameManager gm;
+	Player player;
+	Enemy enemy;
 };

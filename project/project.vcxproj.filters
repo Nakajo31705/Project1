@@ -50,9 +50,6 @@
     <ClCompile Include="Source\Enemy.cpp">
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameManager.cpp">
-      <Filter>PlayScene\CPP</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Monster.cpp">
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
@@ -69,10 +66,10 @@
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
     <ClCompile Include="Source\PlayerManager.cpp">
-      <Filter>PlayScene\Turn</Filter>
+      <Filter>PlayScene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Source\EnemyManager.cpp">
-      <Filter>PlayScene\Turn</Filter>
+      <Filter>PlayScene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Source\LogManager.cpp">
       <Filter>PlayScene\CPP</Filter>
@@ -83,11 +80,14 @@
     <ClCompile Include="Source\Character.cpp">
       <Filter>PlayScene\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CardManager.cpp">
-      <Filter>PlayScene\CPP</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SubjectBase.cpp">
       <Filter>PlayScene\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CardManager.cpp">
+      <Filter>PlayScene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameManager.cpp">
+      <Filter>PlayScene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +153,6 @@
     <ClInclude Include="Source\Enemy.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GameManager.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Monster.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
@@ -172,13 +169,10 @@
       <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\PlayerManager.h">
-      <Filter>PlayScene\Turn</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\TurnState.h">
-      <Filter>PlayScene\Turn</Filter>
+      <Filter>PlayScene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Source\EnemyManager.h">
-      <Filter>PlayScene\Turn</Filter>
+      <Filter>PlayScene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Source\TypeEffective.h">
       <Filter>PlayScene\h</Filter>
@@ -190,9 +184,6 @@
       <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\CardDataBase.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\CardManager.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\Action.h">
@@ -216,8 +207,17 @@
     <ClInclude Include="Source\ActionAttack.h">
       <Filter>PlayScene\Action</Filter>
     </ClInclude>
+    <ClInclude Include="Source\TurnState.h">
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
     <ClInclude Include="Source\ActionRequest.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CardManager.h">
+      <Filter>PlayScene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameManager.h">
+      <Filter>PlayScene\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -242,14 +242,14 @@
     <Filter Include="PlayScene\CPP">
       <UniqueIdentifier>{82b8d5ac-be0f-4952-9d56-43b8bdc02c9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PlayScene\Turn">
-      <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PlayScene\Observer">
       <UniqueIdentifier>{8a95b1de-e1e4-4e43-8ee9-e9b7c5e6132f}</UniqueIdentifier>
     </Filter>
     <Filter Include="PlayScene\Action">
       <UniqueIdentifier>{d22a39ea-fe64-4f93-b9b6-77d81fbe2d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\Manager">
+      <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,20 +1,9 @@
 #include "PlayScene.h"
-#include "GameManager.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "LogManager.h"
-#include "KeyInput.h"
-#include "CardDataBase.h"
+
 
 PlayScene::PlayScene()
+	:player(MDB), enemy(MDB), gm()
 {
-	Player::Player(MDB);
-	Enemy::Enemy(MDB);
-	new GameManager();
-	new LogManager();
-	new KeyInput();
-
-	CardDataBase::Initialize();
 }
 
 PlayScene::~PlayScene()

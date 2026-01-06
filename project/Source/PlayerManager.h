@@ -38,6 +38,7 @@ public:
 	//バトル場のモンスターを取得(エネミー側のターゲット取得用)
 	Monster* GetActiveMonster();
 private:
+	GameManager* gm;
 	Player* player = nullptr;
 	Monster* monsster;
 
@@ -45,6 +46,7 @@ private:
 	PlayerSubState subState = PlayerSubState::MenuSelect;
 	int playCount = 0;
 	int selected = 0;
+	bool myTurn = false;
 
 
 

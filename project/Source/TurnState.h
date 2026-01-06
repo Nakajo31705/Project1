@@ -9,7 +9,4 @@ public:
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
 	virtual ~TurnState() = default;
-	bool GetTurn() { return myTurn; }
-protected:
-	bool myTurn = false;
 };
