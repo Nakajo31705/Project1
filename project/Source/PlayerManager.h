@@ -6,31 +6,24 @@
 #include "LogManager.h"
 #include "KeyInput.h"
 #include "ActionRequest.h"
+#include "MenuCommand.h"
 
 class GameManager;
 
-enum class PlayerSubState
-{
-	MenuSelect,		//メニュー選択
-	SkillSelect,	//技選択
-	MonsterSelect,	//モンスター選択
-	CardSelect,		//カード選択
-	Done			//ターン終了
-};
-
-class PlayerManager : public TurnState
+class PlayerManager
 {
 public:
 	PlayerManager();
-	void Enter() override;
-	void Update() override;
-	void Exit() override;
-	void SelectEnd();
+	void Update();
 	void SetPlayer(Player* p) { player = p; }
 
+	//-----行動選択関数-----//
+	void SkillSelect() { player->SkillSelect(); }
+	void SwitchMonster() { player->SwitchMonster(); }
+	void CardSelect() { player->CardSelect(); }
+
 	//メニュー
-	void Menu();
-	bool GetTurn(){return myTurn;}
+	MenuCommand Menu();
 
 	//攻撃のリクエスト
 	ActionRequest RequestAttack();
@@ -38,20 +31,17 @@ public:
 	//バトル場のモンスターを取得(エネミー側のターゲット取得用)
 	Monster* GetActiveMonster();
 private:
-	GameManager* gm;
-	Player* player = nullptr;
-	Monster* monsster;
-
-
-	PlayerSubState subState = PlayerSubState::MenuSelect;
-	int playCount = 0;
-	int selected = 0;
-	bool myTurn = false;
-
-
-
+	//初期化
 	LogManager log;
 	KeyInput input;
+
+	//ポインタで保持
+	GameManager* gm;
+	Player* player = nullptr;
+
+	int selected = 0;		//メニュー選択用
+
+	//描画位置
 	int defDrawX = 100;
 	int defDrawY = 100;
 	int menuDrawX = 1100;

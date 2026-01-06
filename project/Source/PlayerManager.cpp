@@ -2,77 +2,19 @@
 #include "GameManager.h"
 
 PlayerManager::PlayerManager()
+	:selected(0)
 {
-}
-
-/// <summary>
-/// プレイヤーのターンが開始したときに呼ぶ
-/// </summary>
-void PlayerManager::Enter()
-{
-	myTurn = true;
-	log.AddLog("プレイヤーのターン", 100, 200, 1000);
 }
 
 void PlayerManager::Update()
 {
-	//ターンの切り替え
-	if (!myTurn) return;
-	switch (subState)
-	{
-	case PlayerSubState::MenuSelect:
-		Menu();
-		break;
-	case PlayerSubState::SkillSelect:
-		player->SkillSelect();
-		break;
-	case PlayerSubState::MonsterSelect:
-		player->SwitchMonster();
-		break;
-	case PlayerSubState::CardSelect:
-		player->CardSelect();
-		break;
-	case PlayerSubState::Done:
-		Exit();
-		break;
-	}
-}
-
-/// <summary>
-/// プレイヤーのターンが終了するときに呼ぶ
-/// </summary>
-void PlayerManager::Exit()
-{
-	//ターン終了にエネミーのターンにする
-	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	gm->ChangeState(gm->GetEnemyTurn());
-	myTurn = false;
-}
-
-/// <summary>
-/// 自分のターンで何回行動したかカウントする関数
-/// 2回行動したらターン終了
-/// </summary>
-void PlayerManager::SelectEnd()
-{
-
-	if (playCount >= 2)
-	{
-		subState = PlayerSubState::Done;
-		playCount = 0;
-	}
-	else
-	{
-		subState = PlayerSubState::MenuSelect;
-		WaitTimer(1000);
-	}
-		
+	input.Update();
 }
 
 /// <summary>
 /// メニューの選択画面
 /// </summary>
-void PlayerManager::Menu()
+MenuCommand PlayerManager::Menu()
 {
 	const int MENU_NUM = 3;
 	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" ,"カードの選択"};
@@ -110,29 +52,32 @@ void PlayerManager::Menu()
 	//コマンド決定の処理(メニュー)
 	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 	{
-		//あとで
-		/*player->SetSelected(selected);*/
 		if (selected == 0)
 		{
 			DrawString(defDrawX, defDrawY*2, "技を選択", GetColor(255, 255, 255));
 			WaitTimer(150);
-			subState = PlayerSubState::SkillSelect;
+			return MenuCommand::SkillSelect;
 		}
 		else if (selected == 1)
 		{
 			DrawString(defDrawX, defDrawY*2, "モンスターを交換", GetColor(255, 255, 255));
 			WaitTimer(150);
-			subState = PlayerSubState::MonsterSelect;
+			return MenuCommand::MonsterSwitch;
 		}
 		else if (selected == 2)
 		{
 			DrawString(defDrawX, defDrawY * 2, "カードの選択", GetColor(255, 255, 255));
 			WaitTimer(150);
-			subState = PlayerSubState::CardSelect;
+			return MenuCommand::CardSelect;
 		}
+		return MenuCommand::None;
 	}
 }
 
+/// <summary>
+/// 攻撃の情報を取得し、リクエストを作成する
+/// </summary>
+/// <returns></returns>
 ActionRequest PlayerManager::RequestAttack()
 {
 	ActionRequest request;
@@ -141,6 +86,10 @@ ActionRequest PlayerManager::RequestAttack()
 	return request;
 }
 
+/// <summary>
+/// バトル場のモンスターを取得する
+/// </summary>
+/// <returns></returns>
 Monster* PlayerManager::GetActiveMonster()
 {
 	if (!player) return nullptr;

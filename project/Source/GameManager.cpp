@@ -2,17 +2,27 @@
 #include "PlayerManager.h"
 #include "EnemyManager.h"
 #include "Monster.h"
+#include "PlayerTurnState.h"
+#include "EnemyTurnState.h"
 
 GameManager::GameManager()
+	:playerManager(new PlayerManager()),
+	enemyManager(new EnemyManager())
 {
-	input = KeyInput();
-	log = LogManager();
-	playerManager = new PlayerManager;
-	enemyManager = new EnemyManager;
+	playerTurn = new PlayerTurnState(this,playerManager);
+	enemyTurn = new EnemyTurnState(this, enemyManager);
+
+	//プレイヤーのターンから開始
+	currentState = nullptr;
+	ChangeState(playerTurn);
 }
 
 GameManager::~GameManager()
 {
+	delete playerManager;
+	delete enemyManager;
+	delete playerTurn;
+	delete enemyTurn;
 }
 
 void GameManager::Update()
@@ -105,4 +115,14 @@ void GameManager::ChangeState(TurnState* newState)
 		currentState->Enter();
 		turnEnd = false;
 	}	
+}
+
+TurnState* GameManager::GetPlayerTurn()
+{
+	return playerTurn;
+}
+
+TurnState* GameManager::GetEnemyTurn()
+{
+	return enemyTurn;
 }

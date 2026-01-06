@@ -3,6 +3,7 @@
 
 EnemyManager::EnemyManager()
 {
+	subState = EnemySubState::MenuSelect;
 }
 
 /// <summary>
@@ -85,6 +86,10 @@ void EnemyManager::Menu()
 	}
 }
 
+/// <summary>
+/// 攻撃の情報を取得し、リクエストを作成する
+/// </summary>
+/// <returns></returns>
 ActionRequest EnemyManager::RequestAttack()
 {
 	ActionRequest request;
@@ -93,6 +98,10 @@ ActionRequest EnemyManager::RequestAttack()
 	return request;
 }
 
+/// <summary>
+/// バトル場のモンスターを取得
+/// </summary>
+/// <returns></returns>
 Monster* EnemyManager::GetActiveMonster()
 {
 	if (!enemy) return nullptr;

@@ -89,6 +89,12 @@
     <ClCompile Include="Source\GameManager.cpp">
       <Filter>PlayScene\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Source\PlayerTurnState.cpp">
+      <Filter>PlayScene\Turn</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EnemyTurnState.cpp">
+      <Filter>PlayScene\Turn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -174,9 +180,6 @@
     <ClInclude Include="Source\EnemyManager.h">
       <Filter>PlayScene\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Source\TypeEffective.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\LogManager.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
@@ -207,9 +210,6 @@
     <ClInclude Include="Source\ActionAttack.h">
       <Filter>PlayScene\Action</Filter>
     </ClInclude>
-    <ClInclude Include="Source\TurnState.h">
-      <Filter>PlayScene\h</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ActionRequest.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
@@ -218,6 +218,18 @@
     </ClInclude>
     <ClInclude Include="Source\GameManager.h">
       <Filter>PlayScene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerTurnState.h">
+      <Filter>PlayScene\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TurnState.h">
+      <Filter>PlayScene\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnemyTurnState.h">
+      <Filter>PlayScene\Turn</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MenuCommand.h">
+      <Filter>PlayScene\h</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +262,9 @@
     </Filter>
     <Filter Include="PlayScene\Manager">
       <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayScene\Turn">
+      <UniqueIdentifier>{71375dd3-4c5a-415a-9a66-3fe274715ace}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

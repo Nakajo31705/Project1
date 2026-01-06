@@ -162,14 +162,17 @@
     <ClInclude Include="Source\Character.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyManager.h" />
+    <ClInclude Include="Source\EnemyTurnState.h" />
     <ClInclude Include="Source\GameManager.h" />
     <ClInclude Include="Source\KeyInput.h" />
     <ClInclude Include="Source\LogManager.h" />
+    <ClInclude Include="Source\MenuCommand.h" />
     <ClInclude Include="Source\Monster.h" />
     <ClInclude Include="Source\MonsterDataBase.h" />
     <ClInclude Include="Source\Observer.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\PlayerManager.h" />
+    <ClInclude Include="Source\PlayerTurnState.h" />
     <ClInclude Include="Source\Screen.h" />
     <ClInclude Include="Source\PlayScene.h" />
     <ClInclude Include="Source\SceneFactory.h" />
@@ -178,7 +181,6 @@
     <ClInclude Include="Source\SubjectBase.h" />
     <ClInclude Include="Source\TitleScene.h" />
     <ClInclude Include="Source\TurnState.h" />
-    <ClInclude Include="Source\TypeEffective.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -200,12 +202,14 @@
     <ClCompile Include="Source\Character.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemyManager.cpp" />
+    <ClCompile Include="Source\EnemyTurnState.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
     <ClCompile Include="Source\LogManager.cpp" />
     <ClCompile Include="Source\Monster.cpp" />
     <ClCompile Include="Source\MonsterDataBase.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\PlayerManager.cpp" />
+    <ClCompile Include="Source\PlayerTurnState.cpp" />
     <ClCompile Include="Source\PlayScene.cpp" />
     <ClCompile Include="Source\SceneFactory.cpp" />
     <ClCompile Include="Source\Skill.cpp" />

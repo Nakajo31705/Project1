@@ -4,7 +4,6 @@
 #include <iostream>
 #include <random>
 #include "MonsterDataBase.h"
-#include "TypeEffective.h"
 #include "LogManager.h"
 #include "ActionAttack.h"
 

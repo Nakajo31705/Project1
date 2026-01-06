@@ -1,12 +1,14 @@
 #pragma once
 #include "../Library/GameObject.h"
 #include "TurnState.h"
-#include "KeyInput.h"
 #include "CardManager.h"
+#include "KeyInput.h"
 
 class PlayerManager;
 class EnemyManager;
 class Monster;
+class PlayerTurnState;
+class EnemyTurnState;
 
 struct ActionRequest;
 
@@ -29,22 +31,24 @@ public:
 
 	//ターンの切り替え
 	void ChangeState(TurnState* newState);
-	//この辺修正する-----------------------------------------
-	TurnState* GetPlayerTurn() { return playerTurn; }
-	TurnState* GetEnemyTurn() { return enemyTurn; }
+	TurnState* GetPlayerTurn();
+	TurnState* GetEnemyTurn();
 
 private:
 	//初期化
 	KeyInput input;
 	LogManager log;
 
+	//ポインタで保持
 	PlayerManager* playerManager;	//プレイヤー
 	EnemyManager* enemyManager;		//エネミー
 	Monster* monster;				//モンスター
 
+	//ターン管理
 	TurnState* currentState = nullptr;
-	TurnState* playerTurn;
-	TurnState* enemyTurn;
+	PlayerTurnState* playerTurn;
+	EnemyTurnState* enemyTurn;
+
 	CardManager* cardManager;
 	bool turnEnd = false;
 };

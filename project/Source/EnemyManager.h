@@ -21,29 +21,35 @@ public:
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
+
 	void SelectEnd();
 
+	//メニュー
 	void Menu();
+
+	//自分のターンかどうか取得
 	bool GetTurn() { return myTurn; }
 
 	//攻撃のリクエスト
 	ActionRequest RequestAttack();
+
 	//バトル場のモンスターを取得(プレイヤー側のターゲット取得用)
 	Monster* GetActiveMonster();
 
 private:
 	//初期化
 	LogManager log;
+	EnemySubState subState;
 
+	//ポインタで保持
 	GameManager* gm;
 	Enemy* enemy;
 	Monster* monster;
 
-	EnemySubState subState = EnemySubState::MenuSelect;
+	bool myTurn = false;	//自分のターンかどうか
+	int playCount = 0;		//自分のターンで何回行動したかカウント
+	int selected;			//メニュー選択用
 
-
-	bool myTurn = false;
-	int playCount = 0;
-	int selected;
-	int defDraw = 100;
+	//描画位置
+	int defDraw = 100;		
 };
