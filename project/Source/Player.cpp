@@ -1,6 +1,13 @@
 #include "Player.h"
+#include "Monster.h"
+#include "MonsterDataBase.h"
+#include "CardDataBase.h"
+#include "CardManager.h"
+#include "Skill.h"
 
-Player::Player(MonsterDataBase& db)
+
+Player::Player(MonsterDataBase& db, LogManager& log)
+	:logManager(log)
 {
 	//モンスターに技を設定＆monstersリストに追加
 	//剣士の設定
@@ -76,8 +83,19 @@ Skill* Player::GetSelectedSkill()
 /// </summary>
 void Player::SwitchMonster()
 {
-	if (monsters.size() < 2) return;
+	logManager.AddLog("SwitchMonster start", defDrawX, defDrawY, 1000);
 
+	if (monsterChangeEnd)
+	{
+		logManager.AddLog("モンスターはすでに交換されています。", defDrawX, defDrawY, 1000);
+		return;
+	}
+	if (monsters.size() < 2)
+	{
+		logManager.AddLog("控えのモンスターがいません。", defDrawX, defDrawY, 1000);
+		return;
+	}
+	
 	//バトル場のモンスターを入れ替え
 	activeMonsterIndex++;
 	if (activeMonsterIndex >= monsters.size()) 
@@ -86,11 +104,12 @@ void Player::SwitchMonster()
 	//スキルの選択状態をリセット
 	selectSkillIndex = 0;
 	selectedSkillIndex = -1;
-	skillSelectEnd = false;
 
 	//ログ表示
 	std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
 	logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+
+	monsterChangeEnd = true;
 }
 
 /// <summary>
@@ -98,6 +117,12 @@ void Player::SwitchMonster()
 /// </summary>
 void Player::SkillSelect()
 {
+	if (skillSelectEnd)
+	{
+		logManager.AddLog("攻撃できるのは1ターンに１度限りです。", defDrawX, defDrawY, 1000);
+		return;
+	}
+
 	Monster* monster = GetActiveMonster();
 	if (!monster) return;
 
@@ -149,8 +174,14 @@ void Player::SkillSelect()
 /// </summary>
 void Player::CardSelect()
 {
+	if (cardSelectEnd)
+	{
+		logManager.AddLog("すでにカードを選択しています。", defDrawX, defDrawY, 1000);
+		return;
+	}
+
 	//カードリストの表示
-	const std::vector<CardData>& cards = CardDataBase::GetAllCards();
+	const auto& cards = CDB->GetAllCards();
 	for (int i = 0; i < cards.size(); i++)
 	{
 		const CardData& cardList = cards[i];
@@ -188,8 +219,8 @@ void Player::CardSelect()
 	//決定の処理
 	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
 	{
-		selectedCard = &cards[selectCardIndex];
-		std::string logCardSelected = selectedCard->name + "を選択\n";
+		selectedCard = selectCardIndex;
+		std::string logCardSelected = cards[selectedCard].name + "を選択\n";
 		logManager.AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
 	}
 }

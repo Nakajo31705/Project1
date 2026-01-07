@@ -54,20 +54,17 @@ MenuCommand PlayerManager::Menu()
 	{
 		if (selected == 0)
 		{
-			DrawString(defDrawX, defDrawY*2, "技を選択", GetColor(255, 255, 255));
-			WaitTimer(150);
+			log.AddLog("技を選択", defDrawX, defDrawY*2, 1000);
 			return MenuCommand::SkillSelect;
 		}
 		else if (selected == 1)
 		{
-			DrawString(defDrawX, defDrawY*2, "モンスターを交換", GetColor(255, 255, 255));
-			WaitTimer(150);
+			log.AddLog("モンスターを交換", defDrawX, defDrawY * 2, 1000);
 			return MenuCommand::MonsterSwitch;
 		}
 		else if (selected == 2)
 		{
-			DrawString(defDrawX, defDrawY * 2, "カードの選択", GetColor(255, 255, 255));
-			WaitTimer(150);
+			log.AddLog("カードの選択", defDrawX, defDrawY * 2, 1000);
 			return MenuCommand::CardSelect;
 		}
 		return MenuCommand::None;

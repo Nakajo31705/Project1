@@ -4,11 +4,14 @@
 #include "Monster.h"
 #include "PlayerTurnState.h"
 #include "EnemyTurnState.h"
+#include "Enemy.h"
 
 GameManager::GameManager()
-	:playerManager(new PlayerManager()),
-	enemyManager(new EnemyManager())
 {
+	playerManager = new PlayerManager();
+	enemyManager = new EnemyManager();
+	playerManager->SetPlayer(FindGameObject<Player>());
+	enemyManager->SetEnemy(FindGameObject<Enemy>());
 	playerTurn = new PlayerTurnState(this,playerManager);
 	enemyTurn = new EnemyTurnState(this, enemyManager);
 
@@ -46,7 +49,7 @@ void GameManager::Draw()
 	else
 	{
 		DrawFormatString(100, 500, GetColor(255, 255, 255), "%s, HP:%d", p->GetName().c_str(), p->GetCurrentHP());
-		DrawFormatString(120, 500, GetColor(255, 255, 255), "%s, HP:%d", e->GetName().c_str(), e->GetCurrentHP());
+		DrawFormatString(100, 520, GetColor(255, 255, 255), "%s, HP:%d", e->GetName().c_str(), e->GetCurrentHP());
 	}
 }
 

@@ -2,8 +2,10 @@
 
 
 PlayScene::PlayScene()
-	:player(MDB), enemy(MDB), gm()
 {
+	player = new Player(MDB,log);
+	enemy = new Enemy(MDB);
+	gm = new GameManager();
 }
 
 PlayScene::~PlayScene()

@@ -18,9 +18,9 @@ public:
 	void SetPlayer(Player* p) { player = p; }
 
 	//-----行動選択関数-----//
-	void SkillSelect() { player->SkillSelect(); }
-	void SwitchMonster() { player->SwitchMonster(); }
-	void CardSelect() { player->CardSelect(); }
+	void SkillSelect() { return player->SkillSelect(); }
+	void SwitchMonster() { return player->SwitchMonster(); }
+	void CardSelect() { return player->CardSelect(); }
 
 	//メニュー
 	MenuCommand Menu();

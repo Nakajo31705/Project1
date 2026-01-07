@@ -1,5 +1,4 @@
 #pragma once
-#include "../Library/GameObject.h"
 #include "DxLib.h"
 #include <string>
 #include <vector>
@@ -12,12 +11,12 @@ struct LogMessage
 	int startTime;		//ŠJŽnŽžŠÔ(GetNowCount)
 };
 
-class LogManager : public GameObject
+class LogManager
 {
 public:
 	void AddLog(const std::string& text, int x, int y, int duration);
-	void Update() override;
-	void Draw() override;
+	void Update();
+	void Draw();
 private:
 	std::vector<LogMessage> logs;
 };

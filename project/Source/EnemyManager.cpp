@@ -1,5 +1,7 @@
 #include "EnemyManager.h"
 #include "GameManager.h"
+#include "Enemy.h"
+#include "ActionRequest.h"
 
 EnemyManager::EnemyManager()
 {

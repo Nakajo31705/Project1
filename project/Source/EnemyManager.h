@@ -1,10 +1,10 @@
 #pragma once
-#include "Enemy.h"
 #include "LogManager.h"
-#include "TurnState.h"
 #include "ActionRequest.h"
+#include "TurnState.h"
 
 class GameManager;
+class Enemy;
 
 enum class EnemySubState
 {
@@ -26,6 +26,7 @@ public:
 
 	//メニュー
 	void Menu();
+	void SetEnemy(Enemy* e) { enemy = e; }
 
 	//自分のターンかどうか取得
 	bool GetTurn() { return myTurn; }

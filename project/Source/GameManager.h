@@ -1,11 +1,12 @@
 #pragma once
 #include "../Library/GameObject.h"
 #include "TurnState.h"
-#include "CardManager.h"
 #include "KeyInput.h"
+#include "LogManager.h"
 
 class PlayerManager;
 class EnemyManager;
+class CardManager;
 class Monster;
 class PlayerTurnState;
 class EnemyTurnState;

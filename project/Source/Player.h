@@ -1,16 +1,20 @@
 #pragma once
 #include "../Library/GameObject.h"
 #include <vector>
-#include "LogManager.h"
-#include "CardManager.h"
-#include "MonsterDataBase.h"
-#include "CardDataBase.h"
 #include "KeyInput.h"
+#include "LogManager.h"
+#include "ActionRequest.h"
+
+class MonsterDataBase;
+class CardDataBase;
+class CardManager;
+class Monster;
+class Skill;
 
 class Player : public GameObject
 {
 public:
-	Player(MonsterDataBase& db);
+	Player(MonsterDataBase& db,LogManager& log);
 	~Player();
 	void Update() override;
 	void Draw() override;
@@ -39,25 +43,34 @@ public:
 	void CardSelect();
 
 private:
+	//モンスター
 	int activeMonsterIndex = -1;			//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
 	int selected = 0;						//PlayerTurnで選択されたメニューインデックスを保持
 
+	//スキル
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	int selectedSkillIndex;					//選択したスキル番号
-	KeyInput input;							//キーボード入力管理
 
-	bool skillSelectEnd = false;			//スキル選択の終了フラグ
+	//行動確認
+	bool skillSelectEnd = false;			//スキル選択終了フラグ
+	bool monsterChangeEnd = false;			//モンスター交換の終了フラグ
+	bool cardSelectEnd = false;				//カードの選択終了フラグ
 
-	//カード系
+	//リクエスト
+	ActionRequest attack;
+	
+	//カード
 	CardManager* cardManager;
+	CardDataBase* CDB;
+	int selectedCard;
 	int selectCardIndex = 0;
-	const CardData* selectedCard;
 
 
 
-	//描画用
-	LogManager logManager;
+	//描画用＆UI操作
+	KeyInput input;							//キーボード入力管理
+	LogManager& logManager;					//ログの出力
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;

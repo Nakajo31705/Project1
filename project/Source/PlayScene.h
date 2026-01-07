@@ -3,6 +3,8 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "MonsterDataBase.h"
+#include "LogManager.h"
 
 /// <summary>
 /// ゲームプレイのシーンを制御する
@@ -18,7 +20,8 @@ public:
 private:
 	//モンスターデータベース
 	MonsterDataBase MDB;
-	GameManager gm;
-	Player player;
-	Enemy enemy;
+	LogManager log;
+	Player* player;
+	Enemy* enemy;
+	GameManager* gm;
 };
