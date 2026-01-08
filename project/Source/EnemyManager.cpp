@@ -2,89 +2,39 @@
 #include "GameManager.h"
 #include "Enemy.h"
 #include "ActionRequest.h"
+#include <cassert>
 
 EnemyManager::EnemyManager()
 {
-	subState = EnemySubState::MenuSelect;
-}
-
-/// <summary>
-/// エネミーのターンが開始した時に呼ぶ
-/// </summary>
-void EnemyManager::Enter()
-{
-	log.AddLog("エネミーのターン", 100, 200, 1000);
-	selected = 0;
-	myTurn = true;
 }
 
 void EnemyManager::Update()
 {
-	//ターンの切り替え
-	if (!myTurn) return;
-	switch (subState)
-	{
-	case EnemySubState::MenuSelect:
-		Menu();
-		break;
-	case EnemySubState::SkillSelect:
-		enemy->SkillSelect(monster, GetActiveMonster());
-		break;
-	case EnemySubState::CardSelect:
-		enemy->CardSelect();
-		break;
-	case EnemySubState::Done:
-		Exit();
-		break;
-	}
 }
 
 /// <summary>
-/// エネミーのターンが終了したときに呼ぶ
+/// ゲームマネージャーのログマネージャーをセット
 /// </summary>
-void EnemyManager::Exit()
+void EnemyManager::SetLogManager(LogManager& logManager)
 {
-	DrawString(defDraw, defDraw, "エネミーのターン終了", GetColor(255, 255, 255));
-	//あとでgm->ChangeState(gm->GetPlayerTurn());
-	myTurn = false;
-}
-
-/// <summary>
-/// 自分のターンで何回行動したかカウントする関数
-/// 2回行動したらターン終了
-/// </summary>
-void EnemyManager::SelectEnd()
-{
-	playCount++;
-
-	if (playCount >= 2)
-	{
-		subState = EnemySubState::Done;
-		playCount = 0;
-	}
-	else
-	{
-		subState = EnemySubState::MenuSelect;
-		selected = 1;
-		WaitTimer(1000);
-	}
-
+	assert(enemy != nullptr);
+	enemy->SetLogManager(logManager);
 }
 
 /// <summary>
 /// メニューの選択
 /// </summary>
-void EnemyManager::Menu()
+MenuCommand EnemyManager::Menu()
 {
 	if (selected == 0)
 	{
-		log.AddLog("カードを選択", 100, 100, 1000);
-		subState = EnemySubState::CardSelect;
+		log->AddLog("カードを選択", 100, 100, 1000);
+		return MenuCommand::CardSelect;
 	}
 	else if (selected == 1)
 	{
-		log.AddLog("技を選択", 100, 100, 1000);
-		subState = EnemySubState::SkillSelect;
+		log->AddLog("技を選択", 100, 100, 1000);
+		return MenuCommand::SkillSelect;
 	}
 }
 

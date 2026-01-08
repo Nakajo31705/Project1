@@ -152,10 +152,7 @@
     <ClInclude Include="Library\SceneBase.h" />
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\Time.h" />
-    <ClInclude Include="Source\Action.h" />
-    <ClInclude Include="Source\ActionAttack.h" />
     <ClInclude Include="Source\ActionRequest.h" />
-    <ClInclude Include="Source\ActionUseCard.h" />
     <ClInclude Include="Source\BootScene.h" />
     <ClInclude Include="Source\CardDataBase.h" />
     <ClInclude Include="Source\CardManager.h" />

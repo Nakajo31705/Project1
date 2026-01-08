@@ -4,10 +4,9 @@
 #include "CardDataBase.h"
 #include "CardManager.h"
 #include "Skill.h"
+#include <cassert>
 
-
-Player::Player(MonsterDataBase& db, LogManager& log)
-	:logManager(log)
+Player::Player(MonsterDataBase& db)
 {
 	//モンスターに技を設定＆monstersリストに追加
 	//剣士の設定
@@ -32,13 +31,8 @@ Player::Player(MonsterDataBase& db, LogManager& log)
 	if (!monsters.empty())
 	{
 		activeMonsterIndex = 0;
-
-		std::string logFirstMonster = monsters[activeMonsterIndex].GetName() + "をバトル場にだした\n";
-		logManager.AddLog(logFirstMonster, defDrawX, defDrawY, 1000);
 	}
-	else {
-		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
-	}
+	
 }
 
 Player::~Player()
@@ -51,6 +45,17 @@ void Player::Update()
 
 void Player::Draw()
 {
+	if (!startMonsterLog)
+	{
+		std::string logFirstMonster = monsters[activeMonsterIndex].GetName() + "をバトル場にだした\n";
+		assert(logManager != nullptr);
+		logManager->AddLog(logFirstMonster, defDrawX, defDrawY, 1000);
+		startMonsterLog = true;
+	}
+	else if(monsters.empty())
+	{
+		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
+	}
 }
 
 /// <summary>
@@ -83,16 +88,16 @@ Skill* Player::GetSelectedSkill()
 /// </summary>
 void Player::SwitchMonster()
 {
-	logManager.AddLog("SwitchMonster start", defDrawX, defDrawY, 1000);
+	logManager->AddLog("SwitchMonster start", defDrawX, defDrawY, 1000);
 
 	if (monsterChangeEnd)
 	{
-		logManager.AddLog("モンスターはすでに交換されています。", defDrawX, defDrawY, 1000);
+		logManager->AddLog("モンスターはすでに交換されています。", defDrawX, defDrawY, 1000);
 		return;
 	}
 	if (monsters.size() < 2)
 	{
-		logManager.AddLog("控えのモンスターがいません。", defDrawX, defDrawY, 1000);
+		logManager->AddLog("控えのモンスターがいません。", defDrawX, defDrawY, 1000);
 		return;
 	}
 	
@@ -107,7 +112,7 @@ void Player::SwitchMonster()
 
 	//ログ表示
 	std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
-	logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+	logManager->AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 
 	monsterChangeEnd = true;
 }
@@ -119,7 +124,7 @@ void Player::SkillSelect()
 {
 	if (skillSelectEnd)
 	{
-		logManager.AddLog("攻撃できるのは1ターンに１度限りです。", defDrawX, defDrawY, 1000);
+		logManager->AddLog("攻撃できるのは1ターンに１度限りです。", defDrawX, defDrawY, 1000);
 		return;
 	}
 
@@ -164,7 +169,7 @@ void Player::SkillSelect()
 		selectedSkillIndex = selectSkillIndex;
 
 		std::string logSkillSelected = skills[selectedSkillIndex].GetName() + "を選択\n";
-		logManager.AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
+		logManager->AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 		skillSelectEnd = true;
 	}
 }
@@ -176,7 +181,7 @@ void Player::CardSelect()
 {
 	if (cardSelectEnd)
 	{
-		logManager.AddLog("すでにカードを選択しています。", defDrawX, defDrawY, 1000);
+		logManager->AddLog("すでにカードを選択しています。", defDrawX, defDrawY, 1000);
 		return;
 	}
 
@@ -221,7 +226,7 @@ void Player::CardSelect()
 	{
 		selectedCard = selectCardIndex;
 		std::string logCardSelected = cards[selectedCard].name + "を選択\n";
-		logManager.AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
+		logManager->AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
 	}
 }
 

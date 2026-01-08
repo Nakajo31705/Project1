@@ -189,9 +189,6 @@
     <ClInclude Include="Source\CardDataBase.h">
       <Filter>PlayScene\h</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Action.h">
-      <Filter>PlayScene\Action</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Observer.h">
       <Filter>PlayScene\Observer</Filter>
     </ClInclude>
@@ -203,12 +200,6 @@
     </ClInclude>
     <ClInclude Include="Source\Character.h">
       <Filter>PlayScene\h</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ActionUseCard.h">
-      <Filter>PlayScene\Action</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ActionAttack.h">
-      <Filter>PlayScene\Action</Filter>
     </ClInclude>
     <ClInclude Include="Source\ActionRequest.h">
       <Filter>PlayScene\h</Filter>
@@ -256,9 +247,6 @@
     </Filter>
     <Filter Include="PlayScene\Observer">
       <UniqueIdentifier>{8a95b1de-e1e4-4e43-8ee9-e9b7c5e6132f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PlayScene\Action">
-      <UniqueIdentifier>{d22a39ea-fe64-4f93-b9b6-77d81fbe2d15}</UniqueIdentifier>
     </Filter>
     <Filter Include="PlayScene\Manager">
       <UniqueIdentifier>{44e4840e-e09b-4778-88b7-5f44ecce1f97}</UniqueIdentifier>

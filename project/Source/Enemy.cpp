@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Player.h"
+#include <cassert>
 
 Enemy::Enemy(MonsterDataBase& db)
 {
@@ -16,15 +17,8 @@ Enemy::Enemy(MonsterDataBase& db)
 	//控えリストの最初のモンスターをバトル場に設定
 	if (!monsters.empty())
 	{
-		activeMonster = &monsters.front();
-
-		//ログ表示
-		std::string logSwitchMonster = activeMonster->GetName() + "をバトル場に出した!\n";
-		logManager.AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+		activeMonsterIndex = 0;
 	}
-	else {
-		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
-	}	
 }
 
 Enemy::~Enemy()
@@ -33,7 +27,18 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-
+	if (!startMonsterLog)
+	{
+		//ログ表示
+		std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
+		assert(logManager != nullptr);
+		logManager->AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+		startMonsterLog = true;
+	}
+	else if(monsters.empty())
+	{
+		DrawString(defDrawX, defDrawY, "控えのモンスターは存在しません。", GetColor(255, 255, 255));
+	}
 }
 
 void Enemy::Draw()
@@ -46,7 +51,7 @@ void Enemy::Draw()
 /// <returns></returns>
 Monster* Enemy::GetActiveMonster()
 {
-	return activeMonster;
+	return &monsters[activeMonsterIndex];
 }
 
 Skill* Enemy::GetSelectedSkill()
@@ -60,10 +65,10 @@ Skill* Enemy::GetSelectedSkill()
 /// </summary>
 /// <param name="player"></param>
 /// <param name="enemy"></param>
-void Enemy::SkillSelect(Monster* player, Monster* enemy)
+void Enemy::SkillSelect()
 {
 	//エネミーのスキル取得
-	std::vector<Skill> skills = enemy->GetSkills();
+	std::vector<Skill> skills = monsters[activeMonsterIndex].GetSkills();
 	
 	//乱数生成器
 	std::random_device rd;

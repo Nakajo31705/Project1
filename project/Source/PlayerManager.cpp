@@ -1,5 +1,6 @@
 #include "PlayerManager.h"
 #include "GameManager.h"
+#include <cassert>
 
 PlayerManager::PlayerManager()
 	:selected(0)
@@ -69,6 +70,12 @@ MenuCommand PlayerManager::Menu()
 		}
 		return MenuCommand::None;
 	}
+}
+
+void PlayerManager::SetLogManager(LogManager& logManager)
+{
+	assert(player != nullptr);
+	player->SetLogManager(logManager);
 }
 
 /// <summary>

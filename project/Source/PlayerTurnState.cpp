@@ -1,5 +1,4 @@
 #include "PlayerTurnState.h"
-#include "MenuCommand.h"
 
 PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm)
 	:gm(gm), pm(pm)

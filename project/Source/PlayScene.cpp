@@ -3,7 +3,7 @@
 
 PlayScene::PlayScene()
 {
-	player = new Player(MDB,log);
+	player = new Player(MDB);
 	enemy = new Enemy(MDB);
 	gm = new GameManager();
 }

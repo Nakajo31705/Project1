@@ -1,32 +1,26 @@
 #pragma once
 #include "LogManager.h"
 #include "ActionRequest.h"
-#include "TurnState.h"
+#include "MenuCommand.h"
+#include "Enemy.h"
 
 class GameManager;
-class Enemy;
 
-enum class EnemySubState
-{
-	MenuSelect,
-	SkillSelect,
-	CardSelect,
-	Done
-};
-
-class EnemyManager : public TurnState
+class EnemyManager
 {
 public:
 	EnemyManager();
-	void Enter() override;
-	void Update() override;
-	void Exit() override;
-
+	void Update();
 	void SelectEnd();
+	void SetLogManager(LogManager& logManager);
 
 	//メニュー
-	void Menu();
+	MenuCommand Menu();
 	void SetEnemy(Enemy* e) { enemy = e; }
+
+	//-----行動選択関数-----//
+	void SkillSelect() { return enemy->SkillSelect(); }
+	void CardSelect() { return enemy->CardSelect(); }
 
 	//自分のターンかどうか取得
 	bool GetTurn() { return myTurn; }
@@ -36,16 +30,12 @@ public:
 
 	//バトル場のモンスターを取得(プレイヤー側のターゲット取得用)
 	Monster* GetActiveMonster();
-
 private:
-	//初期化
-	LogManager log;
-	EnemySubState subState;
-
 	//ポインタで保持
 	GameManager* gm;
 	Enemy* enemy;
 	Monster* monster;
+	LogManager* log;
 
 	bool myTurn = false;	//自分のターンかどうか
 	int playCount = 0;		//自分のターンで何回行動したかカウント

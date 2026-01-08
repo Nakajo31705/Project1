@@ -1,4 +1,14 @@
-﻿  PlayScene.cpp
+﻿  Enemy.cpp
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(78,55): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(78,55): warning C4267:         with
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(78,55): warning C4267:         [
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(78,55): warning C4267:             _Ty=int
+C:\Users\student\Documents\Project1\project\Source\Enemy.cpp(78,55): warning C4267:         ]
+  EnemyManager.cpp
+  EnemyTurnState.cpp
+  GameManager.cpp
+  PlayScene.cpp
   SceneFactory.cpp
   コードを生成中...
+C:\Users\student\Documents\Project1\project\Source\EnemyManager.cpp(39,1): warning C4715: 'EnemyManager::Menu': 値を返さないコントロール パスがあります。
   project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe

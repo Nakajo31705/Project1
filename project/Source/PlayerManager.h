@@ -24,6 +24,7 @@ public:
 
 	//メニュー
 	MenuCommand Menu();
+	void SetLogManager(LogManager& logManager);
 
 	//攻撃のリクエスト
 	ActionRequest RequestAttack();

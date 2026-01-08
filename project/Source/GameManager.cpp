@@ -15,6 +15,10 @@ GameManager::GameManager()
 	playerTurn = new PlayerTurnState(this,playerManager);
 	enemyTurn = new EnemyTurnState(this, enemyManager);
 
+	//ログ表示用
+	playerManager->SetLogManager(log);
+	enemyManager->SetLogManager(log);
+
 	//プレイヤーのターンから開始
 	currentState = nullptr;
 	ChangeState(playerTurn);
@@ -30,6 +34,8 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
+	log.Update();
+
 	if (currentState)
 		currentState->Update();
 }
@@ -51,6 +57,13 @@ void GameManager::Draw()
 		DrawFormatString(100, 500, GetColor(255, 255, 255), "%s, HP:%d", p->GetName().c_str(), p->GetCurrentHP());
 		DrawFormatString(100, 520, GetColor(255, 255, 255), "%s, HP:%d", e->GetName().c_str(), e->GetCurrentHP());
 	}
+
+	log.Draw();
+}
+
+LogManager& GameManager::GetLogManager()
+{
+	return log;
 }
 
 /// <summary>

@@ -14,7 +14,7 @@ class Skill;
 class Player : public GameObject
 {
 public:
-	Player(MonsterDataBase& db,LogManager& log);
+	Player(MonsterDataBase& db);
 	~Player();
 	void Update() override;
 	void Draw() override;
@@ -41,6 +41,9 @@ public:
 	
 	//カードの選択処理
 	void CardSelect();
+
+	//-----描画系-----//
+	void SetLogManager(LogManager& log) { logManager = &log; }
 
 private:
 	//モンスター
@@ -70,7 +73,8 @@ private:
 
 	//描画用＆UI操作
 	KeyInput input;							//キーボード入力管理
-	LogManager& logManager;					//ログの出力
+	LogManager* logManager;					//ログの出力
+	bool startMonsterLog = false;
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;

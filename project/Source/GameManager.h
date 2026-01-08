@@ -20,6 +20,7 @@ public:
 	~GameManager();
 	void Update() override;
 	void Draw() override;
+	LogManager& GetLogManager();
 
 	//î•ñ‚É‡‚í‚¹‚Äƒ^[ƒ“‚ğØ‚è‘Ö‚¦‚é
 	void ResolveTurn();
@@ -34,7 +35,6 @@ public:
 	void ChangeState(TurnState* newState);
 	TurnState* GetPlayerTurn();
 	TurnState* GetEnemyTurn();
-
 private:
 	//‰Šú‰»
 	KeyInput input;
