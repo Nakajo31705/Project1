@@ -3,6 +3,7 @@
 PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm)
 	:gm(gm), pm(pm)
 {
+	cmd = pm->Menu();
 	subState = PlayerSubState::MenuSelect;
 }
 

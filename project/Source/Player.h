@@ -8,8 +8,10 @@
 class MonsterDataBase;
 class CardDataBase;
 class CardManager;
+class PlayerManager;
 class Monster;
 class Skill;
+class PlayerTurnState;
 
 class Player : public GameObject
 {
@@ -59,6 +61,8 @@ private:
 	bool skillSelectEnd = false;			//スキル選択終了フラグ
 	bool monsterChangeEnd = false;			//モンスター交換の終了フラグ
 	bool cardSelectEnd = false;				//カードの選択終了フラグ
+	PlayerTurnState* turnState;
+	PlayerManager* pm;
 
 	//リクエスト
 	ActionRequest attack;

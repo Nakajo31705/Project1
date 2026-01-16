@@ -1,5 +1,7 @@
 #include "PlayerManager.h"
-#include "GameManager.h"
+#include "Player.h"
+#include "Monster.h"
+#include "Skill.h"
 #include <cassert>
 
 PlayerManager::PlayerManager()
@@ -9,6 +11,10 @@ PlayerManager::PlayerManager()
 
 void PlayerManager::Update()
 {
+	if (player->GetSkillSelectEnd())
+	{
+
+	}
 	input.Update();
 }
 

@@ -1,14 +1,13 @@
 #pragma once
-#include "Player.h"
-#include "Monster.h"
-#include "Skill.h"
 #include "TurnState.h"
 #include "LogManager.h"
 #include "KeyInput.h"
 #include "ActionRequest.h"
 #include "MenuCommand.h"
 
-class GameManager;
+class Player;
+class Monster;
+class Skill;
 
 class PlayerManager
 {
@@ -37,7 +36,6 @@ private:
 	KeyInput input;
 
 	//ポインタで保持
-	GameManager* gm;
 	Player* player = nullptr;
 
 	int selected = 0;		//メニュー選択用

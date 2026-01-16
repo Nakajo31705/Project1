@@ -4,6 +4,7 @@
 #include "CardDataBase.h"
 #include "CardManager.h"
 #include "Skill.h"
+#include "PlayerTurnState.h"
 #include <cassert>
 
 Player::Player(MonsterDataBase& db)
@@ -93,11 +94,13 @@ void Player::SwitchMonster()
 	if (monsterChangeEnd)
 	{
 		logManager->AddLog("モンスターはすでに交換されています。", defDrawX, defDrawY, 1000);
+		pm->Menu();
 		return;
 	}
 	if (monsters.size() < 2)
 	{
 		logManager->AddLog("控えのモンスターがいません。", defDrawX, defDrawY, 1000);
+		pm->Menu();
 		return;
 	}
 	
@@ -125,6 +128,7 @@ void Player::SkillSelect()
 	if (skillSelectEnd)
 	{
 		logManager->AddLog("攻撃できるのは1ターンに１度限りです。", defDrawX, defDrawY, 1000);
+		pm->Menu();
 		return;
 	}
 
@@ -171,6 +175,7 @@ void Player::SkillSelect()
 		std::string logSkillSelected = skills[selectedSkillIndex].GetName() + "を選択\n";
 		logManager->AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 		skillSelectEnd = true;
+		turnState->SelectEnd();
 	}
 }
 
@@ -182,6 +187,7 @@ void Player::CardSelect()
 	if (cardSelectEnd)
 	{
 		logManager->AddLog("すでにカードを選択しています。", defDrawX, defDrawY, 1000);
+		pm->Menu();
 		return;
 	}
 
@@ -205,6 +211,7 @@ void Player::CardSelect()
 	if (cards.empty())
 	{
 		DrawString(100, 100, "カードがありません。\n", GetColor(255, 255, 255));
+		pm->Menu();
 	}
 
 	//キー入力の判定
@@ -227,6 +234,8 @@ void Player::CardSelect()
 		selectedCard = selectCardIndex;
 		std::string logCardSelected = cards[selectedCard].name + "を選択\n";
 		logManager->AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
+		turnState->SelectEnd();
+		cardSelectEnd = true;
 	}
 }
 
