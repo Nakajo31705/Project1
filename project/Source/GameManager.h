@@ -10,6 +10,7 @@ class CardManager;
 class Monster;
 class PlayerTurnState;
 class EnemyTurnState;
+class Player;
 
 struct ActionRequest;
 
@@ -21,9 +22,6 @@ public:
 	void Update() override;
 	void Draw() override;
 	LogManager& GetLogManager();
-
-	//情報に合わせてターンを切り替える
-	void ResolveTurn();
 
 	//ターゲットの取得
 	Monster& GetPlayerTarget();
@@ -39,6 +37,7 @@ private:
 	//初期化
 	KeyInput input;
 	LogManager log;
+	int King;
 
 	//ポインタで保持
 	PlayerManager* playerManager;	//プレイヤー

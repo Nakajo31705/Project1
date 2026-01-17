@@ -8,6 +8,9 @@
 class Player;
 class Monster;
 class Skill;
+class GameManager;
+class EnemyManager;
+class PlayerTurnState;
 
 class PlayerManager
 {
@@ -17,19 +20,22 @@ public:
 	void SetPlayer(Player* p) { player = p; }
 
 	//-----行動選択関数-----//
-	void SkillSelect() { return player->SkillSelect(); }
-	void SwitchMonster() { return player->SwitchMonster(); }
-	void CardSelect() { return player->CardSelect(); }
+	void SkillSelect();
+	void SwitchMonster();
+	void CardSelect();
+
+	void SetTurnState(PlayerTurnState* turnState);
 
 	//メニュー
 	MenuCommand Menu();
 	void SetLogManager(LogManager& logManager);
 
 	//攻撃のリクエスト
-	ActionRequest RequestAttack();
+	void RequestAttack(GameManager& gameManager,Monster& target);
 	
 	//バトル場のモンスターを取得(エネミー側のターゲット取得用)
 	Monster* GetActiveMonster();
+	Monster& GetTarget();
 private:
 	//初期化
 	LogManager log;
@@ -37,6 +43,7 @@ private:
 
 	//ポインタで保持
 	Player* player = nullptr;
+	EnemyManager* enemyManager;
 
 	int selected = 0;		//メニュー選択用
 

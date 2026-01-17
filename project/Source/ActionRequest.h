@@ -7,5 +7,6 @@ class Skill;
 struct ActionRequest
 {
 	Monster* attacker;	// バトル場のモンスター
+	Monster* target;	//ターゲットのモンスター
 	Skill* skill;		// 選択したスキル
 };

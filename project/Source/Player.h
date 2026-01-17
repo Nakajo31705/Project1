@@ -39,6 +39,8 @@ public:
 
 	Skill* GetSelectedSkill();
 
+	void SetTurnState(PlayerTurnState* pts);
+
 	//-----カード選択-----//
 	
 	//カードの選択処理
@@ -63,16 +65,13 @@ private:
 	bool cardSelectEnd = false;				//カードの選択終了フラグ
 	PlayerTurnState* turnState;
 	PlayerManager* pm;
-
-	//リクエスト
-	ActionRequest attack;
 	
+
 	//カード
 	CardManager* cardManager;
 	CardDataBase* CDB;
 	int selectedCard;
 	int selectCardIndex = 0;
-
 
 
 	//描画用＆UI操作

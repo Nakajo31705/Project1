@@ -3,8 +3,10 @@
 #include "EnemyManager.h"
 #include "Monster.h"
 #include "PlayerTurnState.h"
+#include "Player.h"
 #include "EnemyTurnState.h"
 #include "Enemy.h"
+#include "Player.h"
 
 GameManager::GameManager()
 {
@@ -14,6 +16,7 @@ GameManager::GameManager()
 	enemyManager->SetEnemy(FindGameObject<Enemy>());
 	playerTurn = new PlayerTurnState(this,playerManager);
 	enemyTurn = new EnemyTurnState(this, enemyManager);
+	playerManager->SetTurnState(playerTurn);
 
 	//ログ表示用
 	playerManager->SetLogManager(log);
@@ -22,6 +25,8 @@ GameManager::GameManager()
 	//プレイヤーのターンから開始
 	currentState = nullptr;
 	ChangeState(playerTurn);
+
+	King = LoadGraph("data/textures/King.png");
 }
 
 GameManager::~GameManager()
@@ -54,11 +59,14 @@ void GameManager::Draw()
 	}
 	else
 	{
-		DrawFormatString(100, 500, GetColor(255, 255, 255), "%s, HP:%d", p->GetName().c_str(), p->GetCurrentHP());
-		DrawFormatString(100, 520, GetColor(255, 255, 255), "%s, HP:%d", e->GetName().c_str(), e->GetCurrentHP());
+		DrawFormatString(100, 500, GetColor(255, 255, 255), "%s【 HP:%d】", p->GetName().c_str(), p->GetCurrentHP());
+		DrawFormatString(910, 180, GetColor(255, 255, 255), "%s 【HP:%d】", e->GetName().c_str(), e->GetCurrentHP());
 	}
 
 	log.Draw();
+
+	DrawGraph(850, 200, King, TRUE);
+
 }
 
 LogManager& GameManager::GetLogManager()
@@ -66,23 +74,6 @@ LogManager& GameManager::GetLogManager()
 	return log;
 }
 
-/// <summary>
-/// PlayerとEnemyの行動を実行する関数
-/// </summary>
-void GameManager::ResolveTurn()
-{
-	//行動を取得
-	ActionRequest playerReq = playerManager->RequestAttack();
-	ActionRequest enemyReq = enemyManager->RequestAttack();
-
-	//攻撃対象を取得
-	Monster& playerTarget = GetPlayerTarget();
-	Monster& enemyTarget = GetEnemyTarget();
-
-	//攻撃の処理を実行
-	ActionAttack(playerReq, playerTarget);
-	ActionAttack(enemyReq, enemyTarget);
-}
 
 /// <summary>
 /// プレイヤーのターゲットとなるモンスターを取得
@@ -109,7 +100,7 @@ Monster& GameManager::GetEnemyTarget()
 /// <param name="target">攻撃対象のモンスター</param>
 void GameManager::ActionAttack(ActionRequest& req, Monster& target)
 {
-	req.attacker->Attack(target, *req.skill);
+	req.attacker->Attack(*req.target, *req.skill);
 }
 
 /// <summary>

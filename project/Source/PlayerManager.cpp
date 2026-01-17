@@ -1,4 +1,7 @@
 #include "PlayerManager.h"
+#include "EnemyManager.h"
+#include "GameManager.h"
+#include "PlayerTurnState.h"
 #include "Player.h"
 #include "Monster.h"
 #include "Skill.h"
@@ -88,12 +91,14 @@ void PlayerManager::SetLogManager(LogManager& logManager)
 /// 攻撃の情報を取得し、リクエストを作成する
 /// </summary>
 /// <returns></returns>
-ActionRequest PlayerManager::RequestAttack()
+void PlayerManager::RequestAttack(GameManager& gameManager, Monster& target)
 {
 	ActionRequest request;
 	request.attacker = player->GetActiveMonster();
 	request.skill = player->GetSelectedSkill();
-	return request;
+	request.target = &GetTarget();
+	
+	gameManager.ActionAttack(request,target);
 }
 
 /// <summary>
@@ -104,4 +109,29 @@ Monster* PlayerManager::GetActiveMonster()
 {
 	if (!player) return nullptr;
 	return player->GetActiveMonster();
+}
+
+void PlayerManager::SetTurnState(PlayerTurnState* turnState)
+{
+	player->SetTurnState(turnState);
+}
+
+Monster& PlayerManager::GetTarget()
+{
+	return *enemyManager->GetActiveMonster();
+}
+
+void PlayerManager::SkillSelect()
+{
+	return player->SkillSelect();
+}
+
+void PlayerManager::SwitchMonster()
+{
+	return player->SwitchMonster();
+}
+
+void PlayerManager::CardSelect()
+{
+	return player->CardSelect();
 }

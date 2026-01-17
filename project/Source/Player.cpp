@@ -84,6 +84,11 @@ Skill* Player::GetSelectedSkill()
 	return const_cast<Skill*>(&skills[selectedSkillIndex]);
 }
 
+void Player::SetTurnState(PlayerTurnState* pts)
+{
+	turnState = pts;
+}
+
 /// <summary>
 /// バトル場と控えのモンスターを交換 
 /// </summary>
@@ -175,6 +180,7 @@ void Player::SkillSelect()
 		std::string logSkillSelected = skills[selectedSkillIndex].GetName() + "を選択\n";
 		logManager->AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 		skillSelectEnd = true;
+		assert(turnState && "playerTurn is nullptr before calling SelectEnd");
 		turnState->SelectEnd();
 	}
 }
