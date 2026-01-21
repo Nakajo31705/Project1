@@ -15,7 +15,7 @@ enum class EnemySubState
 class EnemyTurnState : public TurnState
 {
 public:
-	EnemyTurnState(GameManager* gm, EnemyManager* em);
+	EnemyTurnState(GameManager* gm, EnemyManager* em,LogManager* lm);
 	void Enter() override;
 	void Update() override;
 	void Exit() override;

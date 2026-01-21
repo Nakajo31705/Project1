@@ -12,7 +12,6 @@ public:
 	EnemyManager();
 	void Update();
 	void SelectEnd();
-	void SetLogManager(LogManager& logManager);
 
 	//ƒƒjƒ…[
 	MenuCommand Menu();

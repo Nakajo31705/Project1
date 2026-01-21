@@ -10,6 +10,8 @@
 PlayerManager::PlayerManager()
 	:selected(0)
 {
+	SetPlayer(FindGameObject<Player>());
+	player->SetPlayerManager(this);
 }
 
 void PlayerManager::Update()
@@ -79,12 +81,6 @@ MenuCommand PlayerManager::Menu()
 		}
 		return MenuCommand::None;
 	}
-}
-
-void PlayerManager::SetLogManager(LogManager& logManager)
-{
-	assert(player != nullptr);
-	player->SetLogManager(logManager);
 }
 
 /// <summary>

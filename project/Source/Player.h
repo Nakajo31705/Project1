@@ -16,7 +16,7 @@ class PlayerTurnState;
 class Player : public GameObject
 {
 public:
-	Player(MonsterDataBase& db);
+	Player(MonsterDataBase& db, LogManager* log);
 	~Player();
 	void Update() override;
 	void Draw() override;
@@ -48,6 +48,9 @@ public:
 
 	//-----•`‰æŒn-----//
 	void SetLogManager(LogManager& log) { logManager = &log; }
+
+	//-----Setter-----//
+	void SetPlayerManager(PlayerManager* playerManager);
 
 private:
 	//ƒ‚ƒ“ƒXƒ^[

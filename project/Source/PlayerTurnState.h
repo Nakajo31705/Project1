@@ -16,7 +16,7 @@ enum class PlayerSubState
 class PlayerTurnState : public TurnState
 {
 public:
-	PlayerTurnState(GameManager* gm, PlayerManager* pm);
+	PlayerTurnState(GameManager* gm, PlayerManager* pm, LogManager* lm);
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
@@ -25,7 +25,7 @@ public:
 
 private:
 	//‰Šú‰»
-	LogManager log;
+	LogManager* log;
 	PlayerSubState subState;
 	MenuCommand cmd;
 

@@ -1,7 +1,7 @@
 #include "PlayerTurnState.h"
 
-PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm)
-	:gm(gm), pm(pm)
+PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm, LogManager* lm)
+	:gm(gm), pm(pm), log(lm)
 {
 	cmd = pm->Menu();
 	subState = PlayerSubState::MenuSelect;
@@ -13,7 +13,7 @@ PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm)
 void PlayerTurnState::Enter()
 {
 	myTurn = true;
-	log.AddLog("プレイヤーのターン", 100, 200, 1000);
+	log->AddLog("プレイヤーのターン", 100, 200, 1000);
 }
 
 void PlayerTurnState::Update()
@@ -47,6 +47,7 @@ void PlayerTurnState::Update()
 		pm->CardSelect();
 		break;
 	case PlayerSubState::Done:
+		gm->ChangeState(gm->GetEnemyTurn());
 		Exit();
 		break;
 	}
@@ -58,8 +59,7 @@ void PlayerTurnState::Update()
 void PlayerTurnState::Exit()
 {
 	//ターン終了にエネミーのターンにする
-	log.AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	gm->ChangeState(gm->GetEnemyTurn());
+	log->AddLog("プレイヤーのターン終了", 100, 200, 1000);
 	myTurn = false;
 }
 
@@ -69,15 +69,5 @@ void PlayerTurnState::Exit()
 /// </summary>
 void PlayerTurnState::SelectEnd()
 {
-	if (playCount >= 2)
-	{
-		subState = PlayerSubState::Done;
-		playCount = 0;
-	}
-	else
-	{
-		playCount++;
-		subState = PlayerSubState::MenuSelect;
-		WaitTimer(1000);
-	}
+	subState = PlayerSubState::Done;
 }

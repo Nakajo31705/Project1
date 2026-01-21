@@ -12,15 +12,9 @@ GameManager::GameManager()
 {
 	playerManager = new PlayerManager();
 	enemyManager = new EnemyManager();
-	playerManager->SetPlayer(FindGameObject<Player>());
-	enemyManager->SetEnemy(FindGameObject<Enemy>());
-	playerTurn = new PlayerTurnState(this,playerManager);
-	enemyTurn = new EnemyTurnState(this, enemyManager);
+	playerTurn = new PlayerTurnState(this,playerManager, &log);
+	enemyTurn = new EnemyTurnState(this, enemyManager,&log);
 	playerManager->SetTurnState(playerTurn);
-
-	//ログ表示用
-	playerManager->SetLogManager(log);
-	enemyManager->SetLogManager(log);
 
 	//プレイヤーのターンから開始
 	currentState = nullptr;

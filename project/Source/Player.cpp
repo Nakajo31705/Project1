@@ -7,7 +7,8 @@
 #include "PlayerTurnState.h"
 #include <cassert>
 
-Player::Player(MonsterDataBase& db)
+Player::Player(MonsterDataBase& db, LogManager* log)
+	:logManager(log)
 {
 	//モンスターに技を設定＆monstersリストに追加
 	//剣士の設定
@@ -123,6 +124,7 @@ void Player::SwitchMonster()
 	logManager->AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
 
 	monsterChangeEnd = true;
+	turnState->SelectEnd();
 }
 
 /// <summary>
@@ -243,5 +245,10 @@ void Player::CardSelect()
 		turnState->SelectEnd();
 		cardSelectEnd = true;
 	}
+}
+
+void Player::SetPlayerManager(PlayerManager* playerManager)
+{
+	pm = playerManager;
 }
 

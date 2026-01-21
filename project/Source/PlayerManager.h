@@ -28,7 +28,6 @@ public:
 
 	//メニュー
 	MenuCommand Menu();
-	void SetLogManager(LogManager& logManager);
 
 	//攻撃のリクエスト
 	void RequestAttack(GameManager& gameManager,Monster& target);

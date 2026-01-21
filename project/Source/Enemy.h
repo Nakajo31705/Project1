@@ -9,11 +9,10 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(MonsterDataBase& db);
+	Enemy(MonsterDataBase& db, LogManager* log);
 	~Enemy();
 	void Update() override;
 	void Draw() override;
-	void SetLogManager(LogManager& log) { logManager = &log; }
 
 	Monster* GetActiveMonster();
 	Skill* GetSelectedSkill();

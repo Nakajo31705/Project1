@@ -2,7 +2,8 @@
 #include "Player.h"
 #include <cassert>
 
-Enemy::Enemy(MonsterDataBase& db)
+Enemy::Enemy(MonsterDataBase& db, LogManager* log)
+	:logManager(log)
 {
 	Monster demonKing("–‚‰¤", db.GetMonsterHP("–‚‰¤"), db.GetMonsterPower("–‚‰¤"), db.GetType("•¨—"));
 	{

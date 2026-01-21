@@ -1,7 +1,7 @@
 #include "EnemyTurnState.h"
 
-EnemyTurnState::EnemyTurnState(GameManager* gm, EnemyManager* em)
-	:gm(gm), em(em)
+EnemyTurnState::EnemyTurnState(GameManager* gm, EnemyManager* em, LogManager* lm)
+	:gm(gm), em(em), log(lm)
 {
 	subState = EnemySubState::MenuSelect;
 }
@@ -53,25 +53,5 @@ void EnemyTurnState::Exit()
 /// </summary>
 void EnemyTurnState::SelectEnd()
 {
-	playCount++;
-
-	if (playCount >= 2)
-	{
-		subState = EnemySubState::Done;
-		playCount = 0;
-	}
-	else
-	{
-		subState = EnemySubState::MenuSelect;
-		WaitTimer(1000);
-	}
-}
-
-/// <summary>
-/// ゲームマネージャーのログマネージャーをセット
-/// </summary>
-void EnemyTurnState::SetLogManager()
-{
-	 LogManager lm = gm->GetLogManager();
-	 log = &lm;
+	subState = EnemySubState::Done;
 }

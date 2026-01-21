@@ -6,20 +6,13 @@
 
 EnemyManager::EnemyManager()
 {
+	SetEnemy(FindGameObject<Enemy>());
 }
 
 void EnemyManager::Update()
 {
 }
 
-/// <summary>
-/// ゲームマネージャーのログマネージャーをセット
-/// </summary>
-void EnemyManager::SetLogManager(LogManager& logManager)
-{
-	assert(enemy != nullptr);
-	enemy->SetLogManager(logManager);
-}
 
 /// <summary>
 /// メニューの選択
