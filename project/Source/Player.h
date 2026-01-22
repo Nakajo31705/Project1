@@ -13,6 +13,8 @@ class Monster;
 class Skill;
 class PlayerTurnState;
 
+class Enemy;
+
 class Player : public GameObject
 {
 public:
@@ -86,4 +88,6 @@ private:
 	int monsterDrawY = 500;
 	int defDrawX = 100;
 	int defDrawY = 100;
+
+	Enemy* enemy;
 };

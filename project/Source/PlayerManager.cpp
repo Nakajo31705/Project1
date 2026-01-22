@@ -79,7 +79,7 @@ MenuCommand PlayerManager::Menu()
 			return MenuCommand::CardSelect;
 			
 		}
-		return Menu();
+		return MenuCommand::None;
 	}
 }
 

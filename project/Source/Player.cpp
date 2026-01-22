@@ -7,9 +7,13 @@
 #include "PlayerTurnState.h"
 #include <cassert>
 
+#include "Enemy.h"
+
 Player::Player(MonsterDataBase& db, LogManager* log)
 	:logManager(log)
 {
+	enemy = FindGameObject<Enemy>();
+
 	//ƒ‚ƒ“ƒXƒ^[‚É‹Z‚ðÝ’è•monstersƒŠƒXƒg‚É’Ç‰Á
 	//Œ•Žm‚ÌÝ’è
 	Monster swordMan("Œ•Žm", db.GetMonsterHP("Œ•Žm"),db.GetMonsterPower("Œ•Žm"), db.GetType("•¨—"));
@@ -183,7 +187,9 @@ void Player::SkillSelect()
 		logManager->AddLog(logSkillSelected.c_str(), defDrawX, defDrawY, 1000);
 		skillSelectEnd = true;
 		assert(turnState && "playerTurn is nullptr before calling SelectEnd");
-		turnState->SelectEnd();
+		Monster* enemyM = enemy->GetActiveMonster();
+		monster->Attack(*enemyM, skills[selectedSkillIndex]);
+		//turnState->SelectEnd();
 	}
 }
 
