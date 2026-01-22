@@ -29,12 +29,14 @@ public:
 
 	//バトル場のモンスターを取得(プレイヤー側のターゲット取得用)
 	Monster* GetActiveMonster();
+
+	void SetTurnState(EnemyTurnState* ets);
 private:
 	//ポインタで保持
 	GameManager* gm;
 	Enemy* enemy;
 	Monster* monster;
-	LogManager* log;
+	LogManager log;
 
 	bool myTurn = false;	//自分のターンかどうか
 	int playCount = 0;		//自分のターンで何回行動したかカウント

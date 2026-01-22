@@ -3,12 +3,14 @@
 EnemyTurnState::EnemyTurnState(GameManager* gm, EnemyManager* em, LogManager* lm)
 	:gm(gm), em(em), log(lm)
 {
+	cmd = em->Menu();
 	subState = EnemySubState::MenuSelect;
 }
 
 void EnemyTurnState::Enter()
 {
-	log->AddLog("エネミーのターン", 100, 200, 1000);
+	log->AddLog("エネミーのターン", 100, 250, 1000);
+	WaitTimer(1100);
 	myTurn = true;
 }
 
@@ -24,17 +26,12 @@ void EnemyTurnState::Update()
 		{
 			subState = EnemySubState::SkillSelect;
 		}
-		else if (cmd == MenuCommand::CardSelect)
-		{
-			subState = EnemySubState::CardSelect;
-		}
 		break;
 	case EnemySubState::SkillSelect:
 		em->SkillSelect();
 		break;
-	case EnemySubState::CardSelect:
-		em->CardSelect();
 	case EnemySubState::Done:
+		gm->ChangeState(gm->GetPlayerTurn());
 		Exit();
 		break;
 	}
@@ -43,7 +40,7 @@ void EnemyTurnState::Update()
 void EnemyTurnState::Exit()
 {
 	log->AddLog("エネミーのターン終了", 100, 200, 1000);
-	gm->ChangeState(gm->GetPlayerTurn());
+	WaitTimer(1100);
 	myTurn = false;
 }
 

@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Player.h"
+#include "EnemyTurnState.h"
 #include <cassert>
 
 Enemy::Enemy(MonsterDataBase& db, LogManager* log)
@@ -80,11 +81,11 @@ void Enemy::SkillSelect()
 	
 	//ランダムに選択
 	selectedSkill = &skills[dis(gen)];
+	WaitTimer(1000);
+	turnState->SelectEnd();
 }
 
-/// <summary>
-/// エネミーのカードの選択
-/// </summary>
-void Enemy::CardSelect()
+void Enemy::SetTurnState(EnemyTurnState* ets)
 {
+	turnState = ets;
 }

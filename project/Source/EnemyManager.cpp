@@ -19,16 +19,9 @@ void EnemyManager::Update()
 /// </summary>
 MenuCommand EnemyManager::Menu()
 {
-	if (selected == 0)
-	{
-		log->AddLog("カードを選択", 100, 100, 1000);
-		return MenuCommand::CardSelect;
-	}
-	else if (selected == 1)
-	{
-		log->AddLog("技を選択", 100, 100, 1000);
+		log.AddLog("技を選択", 100, 100, 1000);
+		WaitTimer(1100);
 		return MenuCommand::SkillSelect;
-	}
 }
 
 /// <summary>
@@ -51,5 +44,10 @@ Monster* EnemyManager::GetActiveMonster()
 {
 	if (!enemy) return nullptr;
 	return enemy->GetActiveMonster();
+}
+
+void EnemyManager::SetTurnState(EnemyTurnState* ets)
+{
+	enemy->SetTurnState(ets);
 }
 

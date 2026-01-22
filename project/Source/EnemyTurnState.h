@@ -19,7 +19,6 @@ public:
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
-	void SetLogManager();
 
 	void SelectEnd();
 

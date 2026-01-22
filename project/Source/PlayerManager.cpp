@@ -16,10 +16,6 @@ PlayerManager::PlayerManager()
 
 void PlayerManager::Update()
 {
-	if (player->GetSkillSelectEnd())
-	{
-
-	}
 	input.Update();
 }
 
@@ -67,19 +63,23 @@ MenuCommand PlayerManager::Menu()
 		if (selected == 0)
 		{
 			log.AddLog("技を選択", defDrawX, defDrawY*2, 1000);
+			selected = 3;
 			return MenuCommand::SkillSelect;
 		}
 		else if (selected == 1)
 		{
 			log.AddLog("モンスターを交換", defDrawX, defDrawY * 2, 1000);
+			selected = 3;
 			return MenuCommand::MonsterSwitch;
 		}
 		else if (selected == 2)
 		{
 			log.AddLog("カードの選択", defDrawX, defDrawY * 2, 1000);
+			selected = 3;
 			return MenuCommand::CardSelect;
+			
 		}
-		return MenuCommand::None;
+		return Menu();
 	}
 }
 

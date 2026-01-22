@@ -15,6 +15,7 @@ GameManager::GameManager()
 	playerTurn = new PlayerTurnState(this,playerManager, &log);
 	enemyTurn = new EnemyTurnState(this, enemyManager,&log);
 	playerManager->SetTurnState(playerTurn);
+	enemyManager->SetTurnState(enemyTurn);
 
 	//プレイヤーのターンから開始
 	currentState = nullptr;

@@ -6,6 +6,8 @@
 #include "MonsterDataBase.h"
 #include "LogManager.h"
 
+class EnemyTurnState;
+
 class Enemy : public GameObject
 {
 public:
@@ -19,10 +21,13 @@ public:
 	void SkillSelect();
 	void CardSelect();
 
+	void SetTurnState(EnemyTurnState* ets);
+
 private:
 	int activeMonsterIndex;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//控えのモンスター
 	Skill* selectedSkill = nullptr;			//選択したスキル
+	EnemyTurnState* turnState;
 
 
 	//描画用
