@@ -6,14 +6,18 @@
 #include "Player.h"
 #include "EnemyTurnState.h"
 #include "Enemy.h"
-#include "Player.h"
+#include "Skill.h"
 
 GameManager::GameManager()
 {
-	playerManager = new PlayerManager();
-	enemyManager = new EnemyManager();
+	playerManager = new PlayerManager(this);
+	enemyManager = new EnemyManager(this);
 	playerTurn = new PlayerTurnState(this,playerManager, &log);
 	enemyTurn = new EnemyTurnState(this, enemyManager,&log);
+	player = new Player(MDB, &log, playerManager);
+	enemy = new Enemy(MDB, &log, enemyManager);
+	playerManager->SetPlayer(player);
+	enemyManager->SetEnemy(enemy);
 	playerManager->SetTurnState(playerTurn);
 	enemyManager->SetTurnState(enemyTurn);
 
@@ -61,7 +65,6 @@ void GameManager::Draw()
 	log.Draw();
 
 	DrawGraph(850, 200, King, TRUE);
-
 }
 
 LogManager& GameManager::GetLogManager()
@@ -93,9 +96,15 @@ Monster& GameManager::GetEnemyTarget()
 /// </summary>
 /// <param name="req">行動のリクエスト</param>
 /// <param name="target">攻撃対象のモンスター</param>
-void GameManager::ActionAttack(ActionRequest& req, Monster& target)
+void GameManager::ActionAttack(Skill& skill)
 {
-	req.attacker->Attack(*req.target, *req.skill);
+	Monster* attacker = playerManager->GetActiveMonster();
+	Monster* target = enemyManager->GetActiveMonster();
+
+	if (!attacker || !target) return;
+
+	target->TakeDamage(skill.GetPower());
+	printfDx("Draw Enemy HP: %d\n", target->GetCurrentHP());
 }
 
 /// <summary>

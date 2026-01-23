@@ -1,4 +1,2 @@
-﻿  Player.cpp
-C:\Users\student\Documents\Project1\project\Source\Player.cpp(171,62): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-C:\Users\student\Documents\Project1\project\Source\Player.cpp(235,59): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  project.vcxproj -> C:\Users\student\Documents\Project1\project\x64\Debug\project.exe
+﻿  GameManager.cpp
+  project.vcxproj -> C:\Users\Hinat\OneDrive\ドキュメント\Project1\project\x64\Debug\project.exe

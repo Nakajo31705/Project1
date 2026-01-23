@@ -11,11 +11,12 @@ class Skill;
 class GameManager;
 class EnemyManager;
 class PlayerTurnState;
+class Enemy;
 
 class PlayerManager
 {
 public:
-	PlayerManager();
+	PlayerManager(GameManager* gm);
 	void Update();
 	void SetPlayer(Player* p) { player = p; }
 
@@ -30,7 +31,7 @@ public:
 	MenuCommand Menu();
 
 	//攻撃のリクエスト
-	void RequestAttack(GameManager& gameManager,Monster& target);
+	void RequestAttack(Skill& skill);
 	
 	//バトル場のモンスターを取得(エネミー側のターゲット取得用)
 	Monster* GetActiveMonster();
@@ -41,6 +42,7 @@ private:
 	KeyInput input;
 
 	//ポインタで保持
+	GameManager* gm;
 	Player* player = nullptr;
 	EnemyManager* enemyManager;
 

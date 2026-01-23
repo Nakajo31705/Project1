@@ -2,15 +2,21 @@
 #include "GameManager.h"
 #include "Enemy.h"
 #include "ActionRequest.h"
+#include "Skill.h"
 #include <cassert>
 
-EnemyManager::EnemyManager()
+EnemyManager::EnemyManager(GameManager* gm)
+	:gm(gm)
 {
-	SetEnemy(FindGameObject<Enemy>());
 }
 
 void EnemyManager::Update()
 {
+}
+
+void EnemyManager::RequestAttack(Skill& skill)
+{
+	gm->ActionAttack(skill);
 }
 
 

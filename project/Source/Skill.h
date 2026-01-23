@@ -12,7 +12,7 @@ public:
 	int GetPower() const;
 
 	//‹Z‚ÌˆĞ—Í‚ğ•ÏX
-	void SetPower(int chnagedPower);
+	//void SetPower(int chnagedPower);
 
 	//–¼‘O‚ğæ“¾
 	std::string GetName() const;

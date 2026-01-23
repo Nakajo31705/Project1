@@ -18,7 +18,7 @@ class Enemy;
 class Player : public GameObject
 {
 public:
-	Player(MonsterDataBase& db, LogManager* log);
+	Player(MonsterDataBase& db, LogManager* log,PlayerManager* pm);
 	~Player();
 	void Update() override;
 	void Draw() override;

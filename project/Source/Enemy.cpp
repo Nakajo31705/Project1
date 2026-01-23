@@ -3,8 +3,8 @@
 #include "EnemyTurnState.h"
 #include <cassert>
 
-Enemy::Enemy(MonsterDataBase& db, LogManager* log)
-	:logManager(log)
+Enemy::Enemy(MonsterDataBase& db, LogManager* log,EnemyManager* em)
+	:logManager(log), em(em)
 {
 	Monster demonKing("魔王", db.GetMonsterHP("魔王"), db.GetMonsterPower("魔王"), db.GetType("物理"));
 	{
@@ -70,7 +70,7 @@ Skill* Enemy::GetSelectedSkill()
 void Enemy::SkillSelect()
 {
 	//エネミーのスキル取得
-	std::vector<Skill> skills = monsters[activeMonsterIndex].GetSkills();
+	const auto&  skills = monsters[activeMonsterIndex].GetSkills();
 	
 	//乱数生成器
 	std::random_device rd;
@@ -80,7 +80,8 @@ void Enemy::SkillSelect()
 	std::uniform_int_distribution<> dis(0, skills.size() - 1);
 	
 	//ランダムに選択
-	selectedSkill = &skills[dis(gen)];
+	selectedSkill = const_cast<Skill*>(&skills[dis(gen)]);
+	em->RequestAttack(*GetSelectedSkill());
 	WaitTimer(1000);
 	turnState->SelectEnd();
 }

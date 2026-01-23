@@ -19,8 +19,6 @@ public:
 
 private:
 	//モンスターデータベース
-	MonsterDataBase MDB;
-	LogManager log;
 	Player* player;
 	Enemy* enemy;
 	GameManager* gm;

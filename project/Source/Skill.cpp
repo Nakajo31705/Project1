@@ -13,10 +13,10 @@ int Skill::GetPower() const
 }
 
 //‹Z‚ÌˆĞ—Í‚ğ•ÏX
-void Skill::SetPower(int changedPower)
-{
-    power = changedPower;
-}
+//void Skill::SetPower(int changedPower)
+//{
+//    power = changedPower;
+//}
 
 //‹Z‚Ì–¼‘O‚ğæ“¾
 std::string Skill::GetName() const

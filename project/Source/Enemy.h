@@ -7,11 +7,12 @@
 #include "LogManager.h"
 
 class EnemyTurnState;
+class EnemyManager;
 
 class Enemy : public GameObject
 {
 public:
-	Enemy(MonsterDataBase& db, LogManager* log);
+	Enemy(MonsterDataBase& db, LogManager* log, EnemyManager* em);
 	~Enemy();
 	void Update() override;
 	void Draw() override;
@@ -19,7 +20,6 @@ public:
 	Monster* GetActiveMonster();
 	Skill* GetSelectedSkill();
 	void SkillSelect();
-	void CardSelect();
 
 	void SetTurnState(EnemyTurnState* ets);
 
@@ -28,6 +28,7 @@ private:
 	std::vector<Monster> monsters;			//控えのモンスター
 	Skill* selectedSkill = nullptr;			//選択したスキル
 	EnemyTurnState* turnState;
+	EnemyManager* em;
 
 
 	//描画用

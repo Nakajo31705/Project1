@@ -5,18 +5,22 @@
 #include "Player.h"
 #include "Monster.h"
 #include "Skill.h"
+#include "Enemy.h"
 #include <cassert>
 
-PlayerManager::PlayerManager()
-	:selected(0)
+PlayerManager::PlayerManager(GameManager* gm)
+	:gm(gm)
 {
-	SetPlayer(FindGameObject<Player>());
-	player->SetPlayerManager(this);
 }
 
 void PlayerManager::Update()
 {
 	input.Update();
+
+	if (player->GetSkillSelectEnd())
+	{
+
+	}
 }
 
 /// <summary>
@@ -87,14 +91,10 @@ MenuCommand PlayerManager::Menu()
 /// 攻撃の情報を取得し、リクエストを作成する
 /// </summary>
 /// <returns></returns>
-void PlayerManager::RequestAttack(GameManager& gameManager, Monster& target)
+void PlayerManager::RequestAttack(Skill& skill)
 {
-	ActionRequest request;
-	request.attacker = player->GetActiveMonster();
-	request.skill = player->GetSelectedSkill();
-	request.target = &GetTarget();
 	
-	gameManager.ActionAttack(request,target);
+	gm->ActionAttack(skill);
 }
 
 /// <summary>

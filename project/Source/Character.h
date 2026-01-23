@@ -29,17 +29,17 @@ public:
 	//攻撃の処理
 	virtual void Attack(Character& target, const Skill& skill);
 
-	//攻撃力をあげる処理
-	virtual void AddBuff(float value);
+	////攻撃力をあげる処理
+	//virtual void AddBuff(float value);
 
-	//攻撃力を下げる処理
-	virtual void AddDebuff(float value);
+	////攻撃力を下げる処理
+	//virtual void AddDebuff(float value);
 
-	//回復する処理
-	virtual void AddHeal(float value);
+	////回復する処理
+	//virtual void AddHeal(float value);
 
-	//属性を付与する処理
-	virtual void AddEnchant( int type);
+	////属性を付与する処理
+	//virtual void AddEnchant( int type);
 
 	//ダメージログ
 	virtual void OnDamageLog(int damage) = 0;
@@ -47,8 +47,8 @@ public:
 	//攻撃ログ
 	virtual void OnAttackLog(const std::string& skillName, const std::string& targetName) = 0;
 
-	//現在のパワーを更新
-	virtual void SetCurrentPower(const int _power) { power = _power; }
+	////現在のパワーを更新
+	//virtual void SetCurrentPower(const int _power) { power = _power; }
 private:
 	GameManager* gameManager;
 	
@@ -58,8 +58,8 @@ private:
 	int currentHP;
 	int power;
 
-	float value;
-	int duration;
+	//float value;
+	//int duration;
 	
 	bool turnEnd = false;
 };

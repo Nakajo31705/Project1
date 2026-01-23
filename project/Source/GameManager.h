@@ -3,6 +3,7 @@
 #include "TurnState.h"
 #include "KeyInput.h"
 #include "LogManager.h"
+#include "MonsterDataBase.h"
 
 class PlayerManager;
 class EnemyManager;
@@ -11,6 +12,8 @@ class Monster;
 class PlayerTurnState;
 class EnemyTurnState;
 class Player;
+class Enemy;
+class Skill;
 
 struct ActionRequest;
 
@@ -27,7 +30,7 @@ public:
 	Monster& GetPlayerTarget();
 	Monster& GetEnemyTarget();
 
-	void ActionAttack(ActionRequest& req, Monster& target);
+	void ActionAttack(Skill& skill);
 
 	//ターンの切り替え
 	void ChangeState(TurnState* newState);
@@ -37,11 +40,14 @@ private:
 	//初期化
 	KeyInput input;
 	LogManager log;
+	MonsterDataBase MDB;
 	int King;
 
 	//ポインタで保持
-	PlayerManager* playerManager;	//プレイヤー
-	EnemyManager* enemyManager;		//エネミー
+	Player* player;					//プレイヤー
+	Enemy* enemy;					//エネミー
+	PlayerManager* playerManager;	//プレイヤーマネージャー
+	EnemyManager* enemyManager;		//エネミーマネージャー
 	Monster* monster;				//モンスター
 
 	//ターン管理

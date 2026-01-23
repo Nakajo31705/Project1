@@ -5,13 +5,15 @@
 #include "Enemy.h"
 
 class GameManager;
+class Skill;
 
 class EnemyManager
 {
 public:
-	EnemyManager();
+	EnemyManager(GameManager* gm);
 	void Update();
-	void SelectEnd();
+
+	void RequestAttack(Skill& skill);
 
 	//メニュー
 	MenuCommand Menu();
@@ -19,7 +21,6 @@ public:
 
 	//-----行動選択関数-----//
 	void SkillSelect() { return enemy->SkillSelect(); }
-	void CardSelect() { return enemy->CardSelect(); }
 
 	//自分のターンかどうか取得
 	bool GetTurn() { return myTurn; }
