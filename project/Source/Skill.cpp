@@ -9,7 +9,7 @@ Skill::Skill(const std::string& _name, int _power, MonsterType _type)
 //‹Z‚ÌˆĞ—Í‚ğæ“¾
 int Skill::GetPower() const
 {
-    return 0;
+    return power;
 }
 
 //‹Z‚ÌˆĞ—Í‚ğ•ÏX
