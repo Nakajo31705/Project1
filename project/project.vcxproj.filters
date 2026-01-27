@@ -95,6 +95,9 @@
     <ClCompile Include="Source\EnemyTurnState.cpp">
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
+    <ClCompile Include="Source\TurnManager.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -221,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="Source\MenuCommand.h">
       <Filter>PlayScene\h</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TurnManager.h">
+      <Filter>PlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

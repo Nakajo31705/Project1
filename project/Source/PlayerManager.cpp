@@ -16,11 +16,6 @@ PlayerManager::PlayerManager(GameManager* gm)
 void PlayerManager::Update()
 {
 	input.Update();
-
-	if (player->GetSkillSelectEnd())
-	{
-
-	}
 }
 
 /// <summary>
@@ -107,11 +102,6 @@ Monster* PlayerManager::GetActiveMonster()
 	return player->GetActiveMonster();
 }
 
-void PlayerManager::SetTurnState(PlayerTurnState* turnState)
-{
-	player->SetTurnState(turnState);
-}
-
 Monster& PlayerManager::GetTarget()
 {
 	return *enemyManager->GetActiveMonster();
@@ -125,9 +115,4 @@ void PlayerManager::SkillSelect()
 void PlayerManager::SwitchMonster()
 {
 	return player->SwitchMonster();
-}
-
-void PlayerManager::CardSelect()
-{
-	return player->CardSelect();
 }

@@ -1,10 +1,9 @@
 #include "GameManager.h"
 #include "PlayerManager.h"
 #include "EnemyManager.h"
+#include "TurnManager.h"
 #include "Monster.h"
-#include "PlayerTurnState.h"
 #include "Player.h"
-#include "EnemyTurnState.h"
 #include "Enemy.h"
 #include "Skill.h"
 
@@ -12,18 +11,20 @@ GameManager::GameManager()
 {
 	playerManager = new PlayerManager(this);
 	enemyManager = new EnemyManager(this);
-	playerTurn = new PlayerTurnState(this,playerManager, &log);
-	enemyTurn = new EnemyTurnState(this, enemyManager,&log);
 	player = new Player(MDB, &log, playerManager);
 	enemy = new Enemy(MDB, &log, enemyManager);
+	turnManager = new TurnManager(
+		this,
+		playerManager,
+		enemyManager,
+		player,
+		enemy,
+		&log
+	);
 	playerManager->SetPlayer(player);
 	enemyManager->SetEnemy(enemy);
-	playerManager->SetTurnState(playerTurn);
-	enemyManager->SetTurnState(enemyTurn);
-
-	//プレイヤーのターンから開始
-	currentState = nullptr;
-	ChangeState(playerTurn);
+	player->SetTurnState(turnManager->GetPlayerTurnState());
+	enemy->SetTurnState(turnManager->GetEnemyTurnState());
 
 	King = LoadGraph("data/textures/King.png");
 }
@@ -32,16 +33,16 @@ GameManager::~GameManager()
 {
 	delete playerManager;
 	delete enemyManager;
-	delete playerTurn;
-	delete enemyTurn;
+	delete player;
+	delete enemy;
+	delete turnManager;
 }
 
 void GameManager::Update()
 {
 	log.Update();
-
-	if (currentState)
-		currentState->Update();
+	if (turnManager)
+		turnManager->Update();
 }
 
 void GameManager::Draw()
@@ -72,30 +73,9 @@ LogManager& GameManager::GetLogManager()
 	return log;
 }
 
-
-/// <summary>
-/// プレイヤーのターゲットとなるモンスターを取得
-/// </summary>
-/// <returns>ターゲットを返す</returns>
-Monster& GameManager::GetPlayerTarget()
-{
-	return *enemyManager->GetActiveMonster();
-}
-
-/// <summary>
-/// エネミーのターゲットとなるモンスターを取得
-/// </summary>
-/// <returns>ターゲットを返す</returns>
-Monster& GameManager::GetEnemyTarget()
-{
-	return *playerManager->GetActiveMonster();
-}
-
 /// <summary>
 /// モンスターに対して攻撃アクションを実行
 /// </summary>
-/// <param name="req">行動のリクエスト</param>
-/// <param name="target">攻撃対象のモンスター</param>
 void GameManager::ActionAttack(Skill& skill)
 {
 	Monster* attacker = playerManager->GetActiveMonster();
@@ -104,36 +84,4 @@ void GameManager::ActionAttack(Skill& skill)
 	if (!attacker || !target) return;
 
 	target->TakeDamage(skill.GetPower());
-	printfDx("Draw Enemy HP: %d\n", target->GetCurrentHP());
-}
-
-/// <summary>
-/// ターンをチェンジする関数
-/// </summary>
-/// <param name="newState">変更したいステートを入力</param>
-void GameManager::ChangeState(TurnState* newState)
-{
-	if (currentState)
-	{
-		currentState->Exit();
-		turnEnd = true;
-	}
-		
-	currentState = newState;
-
-	if (currentState)
-	{
-		currentState->Enter();
-		turnEnd = false;
-	}	
-}
-
-TurnState* GameManager::GetPlayerTurn()
-{
-	return playerTurn;
-}
-
-TurnState* GameManager::GetEnemyTurn()
-{
-	return enemyTurn;
 }

@@ -9,11 +9,10 @@ class PlayerManager;
 class EnemyManager;
 class CardManager;
 class Monster;
-class PlayerTurnState;
-class EnemyTurnState;
 class Player;
 class Enemy;
 class Skill;
+class TurnManager;
 
 struct ActionRequest;
 
@@ -26,16 +25,7 @@ public:
 	void Draw() override;
 	LogManager& GetLogManager();
 
-	//ターゲットの取得
-	Monster& GetPlayerTarget();
-	Monster& GetEnemyTarget();
-
 	void ActionAttack(Skill& skill);
-
-	//ターンの切り替え
-	void ChangeState(TurnState* newState);
-	TurnState* GetPlayerTurn();
-	TurnState* GetEnemyTurn();
 private:
 	//初期化
 	KeyInput input;
@@ -49,12 +39,5 @@ private:
 	PlayerManager* playerManager;	//プレイヤーマネージャー
 	EnemyManager* enemyManager;		//エネミーマネージャー
 	Monster* monster;				//モンスター
-
-	//ターン管理
-	TurnState* currentState = nullptr;
-	PlayerTurnState* playerTurn;
-	EnemyTurnState* enemyTurn;
-
-	CardManager* cardManager;
-	bool turnEnd = false;
+	TurnManager* turnManager;		//ターンマネージャー
 };

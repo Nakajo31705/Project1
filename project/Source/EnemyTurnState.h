@@ -1,8 +1,11 @@
 #pragma once
 #include "TurnState.h"
-#include "GameManager.h"
 #include "EnemyManager.h"
 #include "MenuCommand.h"
+#include "LogManager.h"
+
+class TurnManager;
+class Enemy;
 
 enum class EnemySubState
 {
@@ -15,7 +18,7 @@ enum class EnemySubState
 class EnemyTurnState : public TurnState
 {
 public:
-	EnemyTurnState(GameManager* gm, EnemyManager* em,LogManager* lm);
+	EnemyTurnState(TurnManager* tm, EnemyManager* em,LogManager* lm, Enemy* enemy);
 	void Enter() override;
 	void Update() override;
 	void Exit() override;
@@ -28,9 +31,10 @@ private:
 	MenuCommand cmd;
 
 	//ポインタで保持
-	GameManager* gm;
+	TurnManager* tm;
 	EnemyManager* em;
 	LogManager* log;
+	Enemy* enemy;
 
 	bool myTurn = false;	//自分のターンかどうか
 	int playCount = 0;		//自分のターンで何回行動したかカウント

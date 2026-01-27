@@ -177,6 +177,7 @@
     <ClInclude Include="Source\Subject.h" />
     <ClInclude Include="Source\SubjectBase.h" />
     <ClInclude Include="Source\TitleScene.h" />
+    <ClInclude Include="Source\TurnManager.h" />
     <ClInclude Include="Source\TurnState.h" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +213,7 @@
     <ClCompile Include="Source\Skill.cpp" />
     <ClCompile Include="Source\SubjectBase.cpp" />
     <ClCompile Include="Source\TitleScene.cpp" />
+    <ClCompile Include="Source\TurnManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -86,7 +86,15 @@ void Enemy::SkillSelect()
 	turnState->SelectEnd();
 }
 
-void Enemy::SetTurnState(EnemyTurnState* ets)
+/// <summary>
+/// 選択したものをリセットする関数
+/// </summary>
+void Enemy::ResetEnemy()
 {
-	turnState = ets;
+	selectedSkill = nullptr;
+}
+
+void Enemy::SetTurnState(EnemyTurnState* state)
+{
+	turnState = state;
 }

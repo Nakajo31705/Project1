@@ -1,8 +1,6 @@
 #include "Player.h"
 #include "Monster.h"
 #include "MonsterDataBase.h"
-#include "CardDataBase.h"
-#include "CardManager.h"
 #include "Skill.h"
 #include "PlayerTurnState.h"
 #include <cassert>
@@ -85,11 +83,6 @@ Skill* Player::GetSelectedSkill()
 	if (selectedSkillIndex < 0 || selectedSkillIndex >= skills.size()) return nullptr;
 
 	return const_cast<Skill*>(&skills[selectedSkillIndex]);
-}
-
-void Player::SetTurnState(PlayerTurnState* pts)
-{
-	turnState = pts;
 }
 
 /// <summary>
@@ -189,68 +182,24 @@ void Player::SkillSelect()
 	}
 }
 
-/// <summary>
-/// カードの選択
-/// </summary>
-void Player::CardSelect()
-{
-	if (cardSelectEnd)
-	{
-		logManager->AddLog("すでにカードを選択しています。", defDrawX, defDrawY, 1000);
-		pm->Menu();
-		return;
-	}
-
-	//カードリストの表示
-	const auto& cards = CDB->GetAllCards();
-	for (int i = 0; i < cards.size(); i++)
-	{
-		const CardData& cardList = cards[i];
-		if (i == selectCardIndex)
-		{
-			DrawString(monsterDrawX, monsterDrawY + i * yOffset, "→", GetColor(255, 255, 0));
-			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, cardList.name.c_str(), GetColor(255, 255, 0));
-		}
-		else
-		{
-			DrawString(monsterDrawX + 20, monsterDrawY + i * yOffset, cardList.name.c_str(), GetColor(255, 255, 255));
-		}
-	}
-
-	//カードがない場合の表示
-	if (cards.empty())
-	{
-		DrawString(100, 100, "カードがありません。\n", GetColor(255, 255, 255));
-		pm->Menu();
-	}
-
-	//キー入力の判定
-	if (input.isJustReleased(KEY_INPUT_UP) == 1)
-	{
-		selectCardIndex--;
-		if (selectCardIndex < 0) selectCardIndex = cards.size() - 1;
-		WaitTimer(150);
-	}
-	if (input.isJustReleased(KEY_INPUT_DOWN) == 1)
-	{
-		selectCardIndex++;
-		if (selectCardIndex >= cards.size()) selectCardIndex = 0;
-		WaitTimer(150);
-	}
-
-	//決定の処理
-	if (input.isJustReleased(KEY_INPUT_RETURN) == 1)
-	{
-		selectedCard = selectCardIndex;
-		std::string logCardSelected = cards[selectedCard].name + "を選択\n";
-		logManager->AddLog(logCardSelected.c_str(), defDrawX, defDrawY, 1000);
-		turnState->SelectEnd();
-		cardSelectEnd = true;
-	}
-}
-
 void Player::SetPlayerManager(PlayerManager* playerManager)
 {
 	pm = playerManager;
 }
 
+void Player::SetTurnState(PlayerTurnState* state)
+{
+	turnState = state;
+}
+
+/// <summary>
+/// 選択したものをリセット
+/// </summary>
+void Player::ResetPlayer()
+{
+	skillSelectEnd = false;
+	monsterChangeEnd = false;
+
+	selectSkillIndex = 0;
+	selectedSkillIndex = -1;
+}

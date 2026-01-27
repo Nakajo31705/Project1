@@ -1,7 +1,10 @@
 #include "EnemyTurnState.h"
+#include "TurnManager.h"
+#include "Enemy.h"
 
-EnemyTurnState::EnemyTurnState(GameManager* gm, EnemyManager* em, LogManager* lm)
-	:gm(gm), em(em), log(lm)
+
+EnemyTurnState::EnemyTurnState(TurnManager* tm, EnemyManager* em, LogManager* lm, Enemy* enemy)
+	:tm(tm), em(em), log(lm), enemy(enemy)
 {
 	cmd = em->Menu();
 	subState = EnemySubState::MenuSelect;
@@ -9,6 +12,7 @@ EnemyTurnState::EnemyTurnState(GameManager* gm, EnemyManager* em, LogManager* lm
 
 void EnemyTurnState::Enter()
 {
+	enemy->ResetEnemy();
 	log->AddLog("エネミーのターン", 100, 250, 1000);
 	WaitTimer(1100);
 	myTurn = true;
@@ -31,8 +35,8 @@ void EnemyTurnState::Update()
 		em->SkillSelect();
 		break;
 	case EnemySubState::Done:
-		gm->ChangeState(gm->GetPlayerTurn());
 		Exit();
+		tm->SetPhase(TurnPhase::END);
 		break;
 	}
 }
@@ -42,6 +46,7 @@ void EnemyTurnState::Exit()
 	log->AddLog("エネミーのターン終了", 100, 200, 1000);
 	WaitTimer(1100);
 	myTurn = false;
+	subState = EnemySubState::MenuSelect;
 }
 
 /// <summary>

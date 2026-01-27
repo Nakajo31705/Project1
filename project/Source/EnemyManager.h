@@ -31,7 +31,6 @@ public:
 	//バトル場のモンスターを取得(プレイヤー側のターゲット取得用)
 	Monster* GetActiveMonster();
 
-	void SetTurnState(EnemyTurnState* ets);
 private:
 	//ポインタで保持
 	GameManager* gm;
@@ -44,5 +43,5 @@ private:
 	int selected;			//メニュー選択用
 
 	//描画位置
-	int defDraw = 100;		
+	int defDraw = 100;
 };

@@ -6,14 +6,10 @@
 #include "ActionRequest.h"
 
 class MonsterDataBase;
-class CardDataBase;
-class CardManager;
 class PlayerManager;
 class Monster;
 class Skill;
 class PlayerTurnState;
-
-class Enemy;
 
 class Player : public GameObject
 {
@@ -41,20 +37,21 @@ public:
 
 	Skill* GetSelectedSkill();
 
-	void SetTurnState(PlayerTurnState* pts);
-
-	//-----カード選択-----//
-	
-	//カードの選択処理
-	void CardSelect();
-
 	//-----描画系-----//
 	void SetLogManager(LogManager& log) { logManager = &log; }
 
 	//-----Setter-----//
 	void SetPlayerManager(PlayerManager* playerManager);
+	void SetTurnState(PlayerTurnState* state);
+
+	//-----初期化-----//
+	void ResetPlayer();
 
 private:
+	//ポインタで保持
+	PlayerTurnState* turnState;
+	PlayerManager* pm;
+
 	//モンスター
 	int activeMonsterIndex = -1;			//バトル場のモンスター
 	std::vector<Monster> monsters;			//自分のモンスター
@@ -64,20 +61,10 @@ private:
 	int selectSkillIndex = 0;				//選択中のスキル番号
 	int selectedSkillIndex;					//選択したスキル番号
 
-	//行動確認
+	//行動確認フラグ
 	bool skillSelectEnd = false;			//スキル選択終了フラグ
 	bool monsterChangeEnd = false;			//モンスター交換の終了フラグ
-	bool cardSelectEnd = false;				//カードの選択終了フラグ
-	PlayerTurnState* turnState;
-	PlayerManager* pm;
 	
-
-	//カード
-	CardManager* cardManager;
-	CardDataBase* CDB;
-	int selectedCard;
-	int selectCardIndex = 0;
-
 
 	//描画用＆UI操作
 	KeyInput input;							//キーボード入力管理
@@ -88,6 +75,4 @@ private:
 	int monsterDrawY = 500;
 	int defDrawX = 100;
 	int defDrawY = 100;
-
-	Enemy* enemy;
 };

@@ -21,7 +21,9 @@ public:
 	Skill* GetSelectedSkill();
 	void SkillSelect();
 
-	void SetTurnState(EnemyTurnState* ets);
+	void ResetEnemy();
+
+	void SetTurnState(EnemyTurnState* state);
 
 private:
 	int activeMonsterIndex;					//バトル場のモンスター

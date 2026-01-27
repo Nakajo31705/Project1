@@ -1,7 +1,9 @@
 #include "PlayerTurnState.h"
+#include "Player.h"
+#include "TurnManager.h"
 
-PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm, LogManager* lm)
-	:gm(gm), pm(pm), log(lm)
+PlayerTurnState::PlayerTurnState(TurnManager* tm, PlayerManager* pm, LogManager* lm,Player* player)
+	:tm(tm), pm(pm), log(lm), player(player)
 {
 	cmd = pm->Menu();
 	subState = PlayerSubState::MenuSelect;
@@ -12,6 +14,7 @@ PlayerTurnState::PlayerTurnState(GameManager* gm, PlayerManager* pm, LogManager*
 /// </summary>
 void PlayerTurnState::Enter()
 {
+	player->ResetPlayer();
 	myTurn = true;
 	log->AddLog("プレイヤーのターン", 100, 200, 1000);
 }
@@ -43,12 +46,9 @@ void PlayerTurnState::Update()
 	case PlayerSubState::MonsterSelect:
 		pm->SwitchMonster();
 		break;
-	case PlayerSubState::CardSelect:
-		pm->CardSelect();
-		break;
 	case PlayerSubState::Done:
-		gm->ChangeState(gm->GetEnemyTurn());
 		Exit();
+		tm->SetPhase(TurnPhase::ENEMY_TURN);
 		break;
 	}
 }
@@ -61,6 +61,7 @@ void PlayerTurnState::Exit()
 	//ターン終了にエネミーのターンにする
 	log->AddLog("プレイヤーのターン終了", 100, 200, 1000);
 	myTurn = false;
+	subState = PlayerSubState::MenuSelect;
 }
 
 /// <summary>

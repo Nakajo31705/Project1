@@ -23,9 +23,6 @@ public:
 	//-----行動選択関数-----//
 	void SkillSelect();
 	void SwitchMonster();
-	void CardSelect();
-
-	void SetTurnState(PlayerTurnState* turnState);
 
 	//メニュー
 	MenuCommand Menu();

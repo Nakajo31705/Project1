@@ -52,8 +52,3 @@ Monster* EnemyManager::GetActiveMonster()
 	return enemy->GetActiveMonster();
 }
 
-void EnemyManager::SetTurnState(EnemyTurnState* ets)
-{
-	enemy->SetTurnState(ets);
-}
-
