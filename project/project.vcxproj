@@ -160,6 +160,7 @@
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\EnemyManager.h" />
     <ClInclude Include="Source\EnemyTurnState.h" />
+    <ClInclude Include="Source\GameClearScene.h" />
     <ClInclude Include="Source\GameManager.h" />
     <ClInclude Include="Source\GameOverScene.h" />
     <ClInclude Include="Source\KeyInput.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\EnemyManager.cpp" />
     <ClCompile Include="Source\EnemyTurnState.cpp" />
+    <ClCompile Include="Source\GameClearScene.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
     <ClCompile Include="Source\GameOverScene.cpp" />
     <ClCompile Include="Source\LogManager.cpp" />

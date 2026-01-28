@@ -81,9 +81,6 @@ void TurnManager::SetPhase(TurnPhase nextPhase)
 		ChangeState(&enemyTurn);
 		break;
 	case TurnPhase::END:
-		/*死亡判定を確認
-		死んでいないならStartへ
-		死んでいるならゲーム終了*/
 		break;
 	}
 }

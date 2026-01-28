@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "EnemyTurnState.h"
 #include <cassert>
+#include "PlayScene.h"
 
 Enemy::Enemy(MonsterDataBase& db, LogManager* log,EnemyManager* em)
 	:logManager(log), em(em)
@@ -9,9 +10,9 @@ Enemy::Enemy(MonsterDataBase& db, LogManager* log,EnemyManager* em)
 	Monster demonKing("–‚‰¤", db.GetMonsterHP("–‚‰¤"), db.GetMonsterPower("–‚‰¤"), db.GetType("•¨—"));
 	{
 		std::vector<Skill> skills;
-		/*skills.push_back(Skill("aŒ‚", db.GetSkillPower("aŒ‚"), db.GetType("•¨—")));
-		skills.push_back(Skill("–‚–@", db.GetSkillPower("–‚–@"), db.GetType("–‚–@")));*/
-		skills.push_back(Skill("‘å–‚–@", db.GetSkillPower("‘å–‚–@"), db.GetType("–‚–@")));
+		skills.push_back(Skill("aŒ‚", db.GetSkillPower("aŒ‚"), db.GetType("•¨—")));
+		skills.push_back(Skill("–‚–@", db.GetSkillPower("–‚–@"), db.GetType("–‚–@")));
+		skills.push_back(Skill("‘åaŒ‚", db.GetSkillPower("‘åaŒ‚"), db.GetType("•¨—")));
 		demonKing.SetSkills(skills);
 	}
 
@@ -97,4 +98,11 @@ void Enemy::ResetEnemy()
 void Enemy::SetTurnState(EnemyTurnState* state)
 {
 	turnState = state;
+}
+
+void Enemy::DeadMonster()
+{
+	logManager->AddLog("–‚‰¤‚ª“|‚³‚ê‚½I", defDrawX, defDrawY, 1000);
+	SceneManager::ChangeScene("GameClear");
+	return;
 }

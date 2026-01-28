@@ -107,7 +107,7 @@ void ObjectManager::Pop(GameObject* obj)
 
 void ObjectManager::DeleteAllGameObject()
 {
-	assert(running == nullptr);
+	/*assert(running == nullptr);
 
 	for (auto itr = objects->begin(); itr != objects->end(); itr++)
 	{
@@ -127,7 +127,7 @@ void ObjectManager::DeleteAllGameObject()
 		{
 			itr++;
 		}
-	}
+	}*/
 }
 
 const std::list<GameObject*>& ObjectManager::GetAllObject()

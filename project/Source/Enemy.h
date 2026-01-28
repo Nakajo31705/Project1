@@ -25,6 +25,8 @@ public:
 
 	void SetTurnState(EnemyTurnState* state);
 
+	void DeadMonster();
+
 private:
 	int activeMonsterIndex;					//バトル場のモンスター
 	std::vector<Monster> monsters;			//控えのモンスター

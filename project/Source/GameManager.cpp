@@ -29,15 +29,19 @@ GameManager::GameManager()
 
 	castel = LoadGraph("data/textures/castel.png");
 	King = LoadGraph("data/textures/King.png");
+	SwordMan = LoadGraph("data/textures/SwordMan.png");
+	Wizard = LoadGraph("data/textures/Wizard.png");
 }
 
 GameManager::~GameManager()
 {
 	delete playerManager;
 	delete enemyManager;
-	delete player;
-	delete enemy;
 	delete turnManager;
+	DeleteGraph(castel);
+	DeleteGraph(King);
+	DeleteGraph(SwordMan);
+	DeleteGraph(Wizard);
 }
 
 void GameManager::Update()
@@ -51,6 +55,18 @@ void GameManager::Draw()
 {
 	DrawExtendGraph(0, 0, 1280, 450, castel, TRUE);
 	DrawGraph(850, 150, King, TRUE);
+	if (playerManager && playerManager->GetActiveMonster())
+	{
+		Monster* p = playerManager->GetActiveMonster();
+		if (p->GetName() == "–‚–@Žg‚¢")
+		{
+			DrawExtendGraph(190, 200, 446, 400, Wizard, TRUE);
+		}
+		else
+		{
+			DrawExtendGraph(190, 200, 446, 400, SwordMan, TRUE);
+		}
+	}
 
 	if (!playerManager|| !enemyManager) return;
 
@@ -101,7 +117,11 @@ void GameManager::ActionAttack(Skill& skill)
 	{
 		std::string defeatLog = target->GetName() + "‚Í“|‚ê‚½I";
 		log.AddLog(defeatLog, defDrawX, defDrawY, 1000);
-		player->DeadMonsterSwitch();
+
+		if (turnManager->GetPhase() == TurnPhase::PLAYER_TURN)
+			enemy->DeadMonster();
+		else
+			player->DeadMonsterSwitch();
 	}
 	else
 	{

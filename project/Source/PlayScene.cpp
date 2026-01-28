@@ -7,12 +7,15 @@ PlayScene::PlayScene()
 
 PlayScene::~PlayScene()
 {
+	delete gm; gm;
+	gm = nullptr;
 }
 
 void PlayScene::Update()
 {
 	if (CheckHitKey(KEY_INPUT_T)) {
 		SceneManager::ChangeScene("TITLE");
+		return;
 	}
 }
 

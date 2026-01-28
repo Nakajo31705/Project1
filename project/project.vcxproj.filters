@@ -101,6 +101,9 @@
     <ClCompile Include="Source\GameOverScene.cpp">
       <Filter>GameOver</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameClearScene.cpp">
+      <Filter>GameClear</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Screen.h" />
@@ -234,6 +237,9 @@
     <ClInclude Include="Source\GameOverScene.h">
       <Filter>GameOver</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GameClearScene.h">
+      <Filter>GameClear</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -268,6 +274,9 @@
     </Filter>
     <Filter Include="GameOver">
       <UniqueIdentifier>{d74102c2-b1e3-4dc1-aca2-ba3cb7a581d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClear">
+      <UniqueIdentifier>{08cbb335-cd83-440e-8ccc-0aa3fc982e41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

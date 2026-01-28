@@ -23,8 +23,8 @@ void PlayerManager::Update()
 /// </summary>
 MenuCommand PlayerManager::Menu()
 {
-	const int MENU_NUM = 3;
-	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換" ,"カードの選択"};
+	const int MENU_NUM = 2;
+	const char* menu[MENU_NUM] = { "技を選択", "モンスターを交換"};
 	int yOffset = 30;
 
 	//メニューの表示
@@ -70,13 +70,6 @@ MenuCommand PlayerManager::Menu()
 			log.AddLog("モンスターを交換", defDrawX, defDrawY * 2, 1000);
 			selected = 3;
 			return MenuCommand::MonsterSwitch;
-		}
-		else if (selected == 2)
-		{
-			log.AddLog("カードの選択", defDrawX, defDrawY * 2, 1000);
-			selected = 3;
-			return MenuCommand::CardSelect;
-			
 		}
 		return MenuCommand::None;
 	}

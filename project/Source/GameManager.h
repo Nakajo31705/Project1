@@ -33,6 +33,8 @@ private:
 	MonsterDataBase MDB;
 	int King;
 	int castel;
+	int SwordMan;
+	int Wizard;
 
 	//ポインタで保持
 	Player* player;					//プレイヤー

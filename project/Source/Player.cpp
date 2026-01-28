@@ -133,7 +133,7 @@ void Player::DeadMonsterSwitch()
 	if (nextIndex == -1)
 	{
 		logManager->AddLog("すべてのモンスターが倒れた!", defDrawX, defDrawY, 1000);
-		SceneManager::ChangeScene("GameOverScene");
+		SceneManager::ChangeScene("GameOver");
 		return;
 	}
 	//バトル場のモンスターを入れ替え

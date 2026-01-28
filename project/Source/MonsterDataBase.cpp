@@ -109,7 +109,7 @@ void MonsterDataBase::InitializeMonsters()
 {
 	//モンスターのHPを設定
 	monsterHP["剣士"] = 200;
-	monsterHP["魔法使い"] = 200;
+	monsterHP["魔法使い"] = 140;
 	monsterHP["魔王"] = 300;
 
 	monsterPower["剣士"] = 0;
@@ -126,8 +126,8 @@ void MonsterDataBase::InitializeSkills()
 	//技の威力を設定
 	skillPower["斬撃"] = 20;
 	skillPower["大斬撃"] = 40;
-	skillPower["魔法"] = 20;
-	skillPower["大魔法"] = 200;
+	skillPower["魔法"] = 30;
+	skillPower["大魔法"] = 60;
 
 	//技をリストに追加
 	skillList.push_back(Skill("斬撃", skillPower["斬撃"], type["物理"]));
