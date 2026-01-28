@@ -1,6 +1,7 @@
 #pragma once
 #include "PlayerTurnState.h"
 #include "EnemyTurnState.h"
+#include "KeyInput.h"
 
 class TurnState;
 class GameManager;
@@ -30,8 +31,10 @@ public:
 		LogManager* log
 	);
 	void Update();
+	void UpdateEndPhase();
 	void ChangeState(TurnState* newState);
 	void SetPhase(TurnPhase nextPhase);
+	TurnPhase GetPhase();
 
 	PlayerTurnState* GetPlayerTurnState();
 	EnemyTurnState* GetEnemyTurnState();	
@@ -42,6 +45,8 @@ private:
 
 	PlayerTurnState playerTurn;
 	EnemyTurnState enemyTurn;
+	KeyInput input;
+	LogManager* log;
 };
 
 

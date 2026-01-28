@@ -9,8 +9,9 @@ Enemy::Enemy(MonsterDataBase& db, LogManager* log,EnemyManager* em)
 	Monster demonKing("魔王", db.GetMonsterHP("魔王"), db.GetMonsterPower("魔王"), db.GetType("物理"));
 	{
 		std::vector<Skill> skills;
-		skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
-		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));
+		/*skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
+		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));*/
+		skills.push_back(Skill("大魔法", db.GetSkillPower("大魔法"), db.GetType("魔法")));
 		demonKing.SetSkills(skills);
 	}
 
@@ -82,7 +83,6 @@ void Enemy::SkillSelect()
 	//ランダムに選択
 	selectedSkill = const_cast<Skill*>(&skills[dis(gen)]);
 	em->RequestAttack(*GetSelectedSkill());
-	WaitTimer(1000);
 	turnState->SelectEnd();
 }
 

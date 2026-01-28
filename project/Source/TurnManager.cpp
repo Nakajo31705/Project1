@@ -16,7 +16,8 @@ TurnManager::TurnManager(
 	LogManager* log)
 	: playerTurn(this, pm, log, p),
 	enemyTurn(this, en, log, e),
-	currentState(nullptr)
+	currentState(nullptr),
+	log(log)
 {
 	SetPhase(TurnPhase::PLAYER_TURN);
 }
@@ -25,6 +26,22 @@ void TurnManager::Update()
 {
 	if (currentState)
 		currentState->Update();
+
+	if (phase == TurnPhase::END)
+	{
+		UpdateEndPhase();
+	}
+
+}
+
+void TurnManager::UpdateEndPhase()
+{
+	log->AddLog("Enterキーを押して次のターンへ進む", 560, 500, 1000);
+
+	if (input.isJustReleased(KEY_INPUT_RETURN))
+	{
+		SetPhase(TurnPhase::START);
+	}
 }
 
 /// <summary>
@@ -64,7 +81,6 @@ void TurnManager::SetPhase(TurnPhase nextPhase)
 		ChangeState(&enemyTurn);
 		break;
 	case TurnPhase::END:
-		SetPhase(TurnPhase::START);
 		/*死亡判定を確認
 		死んでいないならStartへ
 		死んでいるならゲーム終了*/
@@ -72,11 +88,28 @@ void TurnManager::SetPhase(TurnPhase nextPhase)
 	}
 }
 
+/// <summary>
+/// 現在のターンを取得する関数
+/// </summary>
+/// <returns></returns>
+TurnPhase TurnManager::GetPhase()
+{
+	return phase;
+}
+
+/// <summary>
+/// プレイヤーのターンの状態をしゅとくする関数
+/// </summary>
+/// <returns></returns>
 PlayerTurnState* TurnManager::GetPlayerTurnState()
 {
 	return &playerTurn;
 }
 
+/// <summary>
+/// エネミーのターンの状態を取得する関数
+/// </summary>
+/// <returns></returns>
 EnemyTurnState* TurnManager::GetEnemyTurnState()
 {
 	return &enemyTurn;

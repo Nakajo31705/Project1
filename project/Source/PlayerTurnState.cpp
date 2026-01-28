@@ -16,7 +16,8 @@ void PlayerTurnState::Enter()
 {
 	player->ResetPlayer();
 	myTurn = true;
-	log->AddLog("プレイヤーのターン", 100, 200, 1000);
+	log->AddLog("プレイヤーのターン", defDrawX, defDrawY, 1000);
+	subState = PlayerSubState::MenuSelect;
 }
 
 void PlayerTurnState::Update()
@@ -46,9 +47,21 @@ void PlayerTurnState::Update()
 	case PlayerSubState::MonsterSelect:
 		pm->SwitchMonster();
 		break;
+	case PlayerSubState::WaitPhase:
+		if (--waitFrame <= 0)
+		{
+			subState = PlayerSubState::Done;
+		}
+		break;
 	case PlayerSubState::Done:
 		Exit();
-		tm->SetPhase(TurnPhase::ENEMY_TURN);
+		break;
+	case PlayerSubState::WaitDone:
+		if (--waitFrame <= 0)
+		{
+			tm->SetPhase(TurnPhase::ENEMY_TURN);
+			myTurn = false;
+		}
 		break;
 	}
 }
@@ -59,9 +72,9 @@ void PlayerTurnState::Update()
 void PlayerTurnState::Exit()
 {
 	//ターン終了にエネミーのターンにする
-	log->AddLog("プレイヤーのターン終了", 100, 200, 1000);
-	myTurn = false;
-	subState = PlayerSubState::MenuSelect;
+	log->AddLog("プレイヤーのターン終了", defDrawX, defDrawY, 1000);
+	subState = PlayerSubState::WaitDone;
+	waitFrame = 120; //2秒待機
 }
 
 /// <summary>
@@ -70,5 +83,6 @@ void PlayerTurnState::Exit()
 /// </summary>
 void PlayerTurnState::SelectEnd()
 {
-	subState = PlayerSubState::Done;
+	waitFrame = 120; //2秒待機
+	subState = PlayerSubState::WaitPhase;
 }

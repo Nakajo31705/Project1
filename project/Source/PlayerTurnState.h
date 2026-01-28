@@ -2,9 +2,11 @@
 #include "TurnState.h"
 #include "PlayerManager.h"
 #include "MenuCommand.h"
+#include "ActionRequest.h"
 
 class Player;
 class TurnManager;
+class Monster;
 
 enum class PlayerSubState
 {
@@ -12,7 +14,9 @@ enum class PlayerSubState
 	SkillSelect,	//技選択
 	MonsterSelect,	//モンスター選択
 	CardSelect,		//カード選択
-	Done			//ターン終了
+	Done,			//ターン終了
+	WaitDone,
+	WaitPhase
 };
 
 class PlayerTurnState : public TurnState
@@ -30,12 +34,16 @@ private:
 	LogManager* log;
 	PlayerSubState subState;
 	MenuCommand cmd;
+	ActionRequest req;
 
 	//ポインタで保持
 	Player* player;
 	TurnManager* tm;
 	PlayerManager* pm;
+	Monster* monster;
 
 	bool myTurn = false;	//自分のターンかどうか
-	int playCount = 0;		//自分のターンで何回行動したかカウント
+	int waitFrame = 0;		//選択後の待機フレーム
+	int defDrawX = 300;
+	int defDrawY = 600;
 };

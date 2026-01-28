@@ -96,7 +96,10 @@
       <Filter>PlayScene\Turn</Filter>
     </ClCompile>
     <ClCompile Include="Source\TurnManager.cpp">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameOverScene.cpp">
+      <Filter>GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -226,7 +229,10 @@
       <Filter>PlayScene\h</Filter>
     </ClInclude>
     <ClInclude Include="Source\TurnManager.h">
-      <Filter>PlayScene</Filter>
+      <Filter>PlayScene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameOverScene.h">
+      <Filter>GameOver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,9 @@
     </Filter>
     <Filter Include="PlayScene\Turn">
       <UniqueIdentifier>{71375dd3-4c5a-415a-9a66-3fe274715ace}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameOver">
+      <UniqueIdentifier>{d74102c2-b1e3-4dc1-aca2-ba3cb7a581d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

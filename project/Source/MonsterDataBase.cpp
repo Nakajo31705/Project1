@@ -108,8 +108,8 @@ inline MonsterType MonsterDataBase::StringToMonsterType(const std::string& typeS
 void MonsterDataBase::InitializeMonsters()
 {
 	//モンスターのHPを設定
-	monsterHP["剣士"] = 100;
-	monsterHP["魔法使い"] = 100;
+	monsterHP["剣士"] = 200;
+	monsterHP["魔法使い"] = 200;
 	monsterHP["魔王"] = 300;
 
 	monsterPower["剣士"] = 0;
@@ -125,9 +125,13 @@ void MonsterDataBase::InitializeSkills()
 {
 	//技の威力を設定
 	skillPower["斬撃"] = 20;
+	skillPower["大斬撃"] = 40;
 	skillPower["魔法"] = 20;
+	skillPower["大魔法"] = 200;
 
 	//技をリストに追加
 	skillList.push_back(Skill("斬撃", skillPower["斬撃"], type["物理"]));
 	skillList.push_back(Skill("魔法", skillPower["魔法"], type["魔法"]));
+	skillList.push_back(Skill("大斬撃", skillPower["大斬撃"], type["物理"]));
+	skillList.push_back(Skill("大魔法", skillPower["大魔法"], type["魔法"]));
 }

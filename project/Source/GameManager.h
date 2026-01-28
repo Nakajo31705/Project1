@@ -32,6 +32,7 @@ private:
 	LogManager log;
 	MonsterDataBase MDB;
 	int King;
+	int castel;
 
 	//ポインタで保持
 	Player* player;					//プレイヤー
@@ -40,4 +41,9 @@ private:
 	EnemyManager* enemyManager;		//エネミーマネージャー
 	Monster* monster;				//モンスター
 	TurnManager* turnManager;		//ターンマネージャー
+	Monster* attacker;
+	Monster* target;
+
+	int defDrawX = 560;
+	int defDrawY = 500;
 };

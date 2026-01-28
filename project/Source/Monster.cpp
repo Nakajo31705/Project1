@@ -18,7 +18,7 @@ void Monster::Draw()
 void Monster::OnDamageLog(int damage)
 {
 	std::string logDamage = GetName() + "は" + std::to_string(damage) + "のダメージを受けた！";
-	log.AddLog(logDamage.c_str(), 100, 100, 1000);
+	log.AddLog(logDamage.c_str(), 560, 500, 1000);
 }
 
 /// <summary>

@@ -46,8 +46,8 @@ private:
 	int selected = 0;		//メニュー選択用
 
 	//描画位置
-	int defDrawX = 100;
-	int defDrawY = 100;
+	int defDrawX = 560;
+	int defDrawY = 600;
 	int menuDrawX = 1100;
 	int menuDrawY = 500;
 };

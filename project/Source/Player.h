@@ -24,6 +24,9 @@ public:
 
 	//モンスターのチェンジ処理
 	void SwitchMonster();
+	void DeadMonsterSwitch();
+
+	int FindNextAliveMonsterIndex();
 
 	//-----スキル選択-----//
 	
@@ -73,6 +76,6 @@ private:
 	int yOffset = 30;
 	int monsterDrawX = 1000;
 	int monsterDrawY = 500;
-	int defDrawX = 100;
-	int defDrawY = 100;
+	int defDrawX = 560;
+	int defDrawY = 600;
 };

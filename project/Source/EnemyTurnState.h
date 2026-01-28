@@ -11,7 +11,8 @@ enum class EnemySubState
 {
 	MenuSelect,
 	SkillSelect,
-	CardSelect,
+	WaitSkill,
+	WaitDone,
 	Done
 };
 
@@ -37,5 +38,7 @@ private:
 	Enemy* enemy;
 
 	bool myTurn = false;	//自分のターンかどうか
-	int playCount = 0;		//自分のターンで何回行動したかカウント
+	int waitFrame = 0;		//技選択後の待機フレーム
+	int defDrawX = 300;
+	int defDrawY = 650;
 };

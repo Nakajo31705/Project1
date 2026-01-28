@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Skill.h"
+#include <string>
 
 GameManager::GameManager()
 {
@@ -26,6 +27,7 @@ GameManager::GameManager()
 	player->SetTurnState(turnManager->GetPlayerTurnState());
 	enemy->SetTurnState(turnManager->GetEnemyTurnState());
 
+	castel = LoadGraph("data/textures/castel.png");
 	King = LoadGraph("data/textures/King.png");
 }
 
@@ -47,6 +49,9 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
+	DrawExtendGraph(0, 0, 1280, 450, castel, TRUE);
+	DrawGraph(850, 150, King, TRUE);
+
 	if (!playerManager|| !enemyManager) return;
 
 	//ƒoƒgƒ‹ê‚Ìƒ‚ƒ“ƒXƒ^[‚Ìî•ñ‚ð•\Ž¦
@@ -55,17 +60,15 @@ void GameManager::Draw()
 
 	if (!p || !e)
 	{
-		DrawString(100, 500, "ƒ‚ƒ“ƒXƒ^[€”õ’†", GetColor(255, 255, 255));
+		DrawString(defDrawX, defDrawY, "ƒ‚ƒ“ƒXƒ^[€”õ’†", GetColor(255, 255, 255));
 	}
 	else
 	{
-		DrawFormatString(100, 500, GetColor(255, 255, 255), "%sy HP:%dz", p->GetName().c_str(), p->GetCurrentHP());
-		DrawFormatString(910, 180, GetColor(255, 255, 255), "%s yHP:%dz", e->GetName().c_str(), e->GetCurrentHP());
+		DrawFormatString(250, 100, GetColor(255, 255, 255), "%sy HP:%dz", p->GetName().c_str(), p->GetCurrentHP());
+		DrawFormatString(915, 100, GetColor(255, 255, 255), "%s yHP:%dz", e->GetName().c_str(), e->GetCurrentHP());
 	}
 
 	log.Draw();
-
-	DrawGraph(850, 200, King, TRUE);
 }
 
 LogManager& GameManager::GetLogManager()
@@ -78,10 +81,30 @@ LogManager& GameManager::GetLogManager()
 /// </summary>
 void GameManager::ActionAttack(Skill& skill)
 {
-	Monster* attacker = playerManager->GetActiveMonster();
-	Monster* target = enemyManager->GetActiveMonster();
+	if (turnManager->GetPhase() == TurnPhase::PLAYER_TURN)
+	{
+		attacker = playerManager->GetActiveMonster();
+		target = enemyManager->GetActiveMonster();
+	}
+	else if (turnManager->GetPhase() == TurnPhase::ENEMY_TURN)
+	{
+		attacker = enemyManager->GetActiveMonster();
+		target = playerManager->GetActiveMonster();
+	}
 
 	if (!attacker || !target) return;
 
 	target->TakeDamage(skill.GetPower());
+
+	//ƒƒO‚Ì•\Ž¦
+	if (target->IsDead())
+	{
+		std::string defeatLog = target->GetName() + "‚Í“|‚ê‚½I";
+		log.AddLog(defeatLog, defDrawX, defDrawY, 1000);
+		player->DeadMonsterSwitch();
+	}
+	else
+	{
+		target->OnDamageLog(skill.GetPower());
+	}
 }

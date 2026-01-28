@@ -13,8 +13,8 @@ EnemyTurnState::EnemyTurnState(TurnManager* tm, EnemyManager* em, LogManager* lm
 void EnemyTurnState::Enter()
 {
 	enemy->ResetEnemy();
-	log->AddLog("エネミーのターン", 100, 250, 1000);
-	WaitTimer(1100);
+	log->AddLog("エネミーのターン", defDrawX, defDrawY, 1000);
+	subState = EnemySubState::MenuSelect;
 	myTurn = true;
 }
 
@@ -34,19 +34,30 @@ void EnemyTurnState::Update()
 	case EnemySubState::SkillSelect:
 		em->SkillSelect();
 		break;
+	case EnemySubState::WaitSkill:
+		if (--waitFrame <= 0)
+		{
+			subState = EnemySubState::Done;
+		}
+		break;
 	case EnemySubState::Done:
 		Exit();
-		tm->SetPhase(TurnPhase::END);
+		break;
+	case EnemySubState::WaitDone:
+		if (--waitFrame <= 0)
+		{
+			tm->SetPhase(TurnPhase::END);
+			myTurn = false;
+		}
 		break;
 	}
 }
 
 void EnemyTurnState::Exit()
 {
-	log->AddLog("エネミーのターン終了", 100, 200, 1000);
-	WaitTimer(1100);
-	myTurn = false;
-	subState = EnemySubState::MenuSelect;
+	log->AddLog("エネミーのターン終了", defDrawX, defDrawY, 1000);
+	waitFrame = 120; //2秒待機
+	subState = EnemySubState::WaitDone;
 }
 
 /// <summary>
@@ -55,5 +66,6 @@ void EnemyTurnState::Exit()
 /// </summary>
 void EnemyTurnState::SelectEnd()
 {
-	subState = EnemySubState::Done;
+	waitFrame = 120; //2秒待機
+	subState = EnemySubState::WaitSkill;
 }

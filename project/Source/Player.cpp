@@ -4,6 +4,7 @@
 #include "Skill.h"
 #include "PlayerTurnState.h"
 #include <cassert>
+#include "PlayScene.h"
 
 #include "Enemy.h"
 
@@ -16,6 +17,7 @@ Player::Player(MonsterDataBase& db, LogManager* log, PlayerManager* pm)
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("斬撃", db.GetSkillPower("斬撃"), db.GetType("物理")));
+		skills.push_back(Skill("大斬撃", db.GetSkillPower("大斬撃"), db.GetType("物理")));
 		swordMan.SetSkills(skills);
 	}
 	monsters.push_back(swordMan);
@@ -25,6 +27,7 @@ Player::Player(MonsterDataBase& db, LogManager* log, PlayerManager* pm)
 	{
 		std::vector<Skill> skills;
 		skills.push_back(Skill("魔法", db.GetSkillPower("魔法"), db.GetType("魔法")));
+		skills.push_back(Skill("大魔法", db.GetSkillPower("大魔法"), db.GetType("魔法")));
 		wizard.SetSkills(skills);
 	}
 	monsters.push_back(wizard);
@@ -90,15 +93,16 @@ Skill* Player::GetSelectedSkill()
 /// </summary>
 void Player::SwitchMonster()
 {
-	logManager->AddLog("SwitchMonster start", defDrawX, defDrawY, 1000);
-
 	if (monsterChangeEnd)
 	{
 		logManager->AddLog("モンスターはすでに交換されています。", defDrawX, defDrawY, 1000);
 		pm->Menu();
 		return;
 	}
-	if (monsters.size() < 2)
+
+	int nextIndex = FindNextAliveMonsterIndex();
+
+	if (nextIndex == -1)
 	{
 		logManager->AddLog("控えのモンスターがいません。", defDrawX, defDrawY, 1000);
 		pm->Menu();
@@ -106,9 +110,7 @@ void Player::SwitchMonster()
 	}
 	
 	//バトル場のモンスターを入れ替え
-	activeMonsterIndex++;
-	if (activeMonsterIndex >= monsters.size()) 
-		activeMonsterIndex = 0;
+	activeMonsterIndex = nextIndex;
 
 	//スキルの選択状態をリセット
 	selectSkillIndex = 0;
@@ -120,6 +122,51 @@ void Player::SwitchMonster()
 
 	monsterChangeEnd = true;
 	turnState->SelectEnd();
+}
+
+/// <summary>
+/// モンスターが倒れたときに控えのモンスターと交換
+/// </summary>
+void Player::DeadMonsterSwitch()
+{
+	int nextIndex = FindNextAliveMonsterIndex();
+	if (nextIndex == -1)
+	{
+		logManager->AddLog("すべてのモンスターが倒れた!", defDrawX, defDrawY, 1000);
+		SceneManager::ChangeScene("GameOverScene");
+		return;
+	}
+	//バトル場のモンスターを入れ替え
+	activeMonsterIndex = nextIndex;
+
+	//スキルの選択状態をリセット
+	selectSkillIndex = 0;
+	selectedSkillIndex = -1;
+	//ログ表示
+	std::string logSwitchMonster = monsters[activeMonsterIndex].GetName() + "をバトル場に出した!\n";
+	logManager->AddLog(logSwitchMonster.c_str(), defDrawX, defDrawY, 1000);
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+int Player::FindNextAliveMonsterIndex()
+{
+	if (monsters.empty()) return -1;
+
+	int size = monsters.size();
+	int index = activeMonsterIndex;
+
+	for (int i = 0; i < size; i++)
+	{
+		index = (index + 1) % size;
+		if (!monsters[index].IsDead())
+		{
+			return index;
+		}
+	}
+	return -1;
 }
 
 /// <summary>

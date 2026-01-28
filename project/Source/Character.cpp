@@ -21,6 +21,11 @@ void Character::Attack(Character& target, const Skill& skill)
 	target.TakeDamage(skill.GetPower());
 }
 
+bool Character::IsDead()
+{
+	return dead;
+}
+
 /// <summary>
 /// ƒ_ƒ[ƒW‚ğó‚¯‚éˆ—
 /// </summary>
@@ -28,7 +33,11 @@ void Character::Attack(Character& target, const Skill& skill)
 void Character::TakeDamage(int damage)
 {
 	currentHP -= damage;
-	if (currentHP < 0) currentHP = 0;
+	if (currentHP <= 0)
+	{
+		currentHP = 0;
+		dead = true;
+	}	
 }
 
 ///// <summary>

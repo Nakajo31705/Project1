@@ -29,6 +29,8 @@ public:
 	//UŒ‚‚Ìˆ—
 	virtual void Attack(Character& target, const Skill& skill);
 
+	virtual bool IsDead();
+
 	////UŒ‚—Í‚ğ‚ ‚°‚éˆ—
 	//virtual void AddBuff(float value);
 
@@ -57,6 +59,7 @@ private:
 	int maxHP;
 	int currentHP;
 	int power;
+	bool dead = false;
 
 	//float value;
 	//int duration;

@@ -25,7 +25,7 @@ void EnemyManager::RequestAttack(Skill& skill)
 /// </summary>
 MenuCommand EnemyManager::Menu()
 {
-		log.AddLog("‹Z‚ð‘I‘ð", 100, 100, 1000);
+		log.AddLog("‹Z‚ð‘I‘ð", defDrawX, defDrawY, 1000);
 		WaitTimer(1100);
 		return MenuCommand::SkillSelect;
 }
